@@ -6,16 +6,17 @@
 package backend;
 
 import java.util.Date;
+import tree.Tree;
 
 /**
  *
  * @author alekc
  */
 public class Sprint {
-    int id;
-    String title, description;
-    Date startDate, endDate;
-    Tree tasks;
+    private int id;
+    private String title, description;
+    private Date startDate, endDate;
+    private Tree tasks;
     
     public Sprint(String title, String description) {
         this.title = title;
@@ -27,6 +28,10 @@ public class Sprint {
         this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
+    }
+    
+    public void addTask() {
+        //ToDo
     }
     
     //Setters & Getters
