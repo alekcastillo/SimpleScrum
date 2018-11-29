@@ -9,16 +9,19 @@ package backend;
  *
  * @author alekc
  */
-public class Task {
-    private int id, status, priority;
+public class Project {
+    private int id;
     private String title, description;
-    private User assignee;
+    private Sprint backlog;
     
-    public Task(int status, int priority, String title, String description) {
-        this.status = status;
-        this.priority = priority;
+    public Project(String title, String description) {
         this.title = title;
         this.description = description;
+        this.backlog = new Sprint("Backlog", title + "'s backlog");
+    }
+
+    public void addTask() {
+        
     }
     
     //Setters & Getters
@@ -27,22 +30,6 @@ public class Task {
         return id;
     }
     
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
-    public int getPriority() {
-        return priority;
-    }
-
-    public void setPriority(int priority) {
-        this.priority = priority;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -58,12 +45,6 @@ public class Task {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public User getAssignee() {
-        return assignee;
-    }
-
-    public void setAssignee(User assignee) {
-        this.assignee = assignee;
-    }
+    
+    //Cola sprints
 }

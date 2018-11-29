@@ -3,31 +3,46 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package stack;
+package list;
+
+import backend.Project;
 
 /**
  *
  * @author alekc
  */
 public class Node {
-    private Object object;
-    private Node previous;
+    private Project object;
+    private Node next, previous;
     
-    public Node(Object object) {
+    public Node(Project object) {
         this.object = object;
     }
+
+    @Override
+    public String toString() {
+        return "" + object;
+    }
     
-    //@Override
-    //public String toString() {
-        //return "Nodo{" + "dato=" + dato + '}';
-    //}
+    public void clearPointers() {
+        next = null;
+        previous = null;
+    }
     
-    public Object getObject() {
+    public Project getObject() {
         return object;
     }
 
-    public void setObject(Object object) {
+    public void setObject(Project object) {
         this.object = object;
+    }
+
+    public Node getNext() {
+        return next;
+    }
+
+    public void setNext(Node next) {
+        this.next = next;
     }
 
     public Node getPrevious() {

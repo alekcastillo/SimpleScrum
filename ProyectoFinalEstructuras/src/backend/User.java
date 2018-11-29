@@ -11,6 +11,37 @@ package backend;
  */
 public class User {
     String name, lastname, email, password;
-    int type, activeTasks;
+    int type;
+    
+    public User(String name, String lastname, String email, String password, int type) {
+        this.name = name;
+        this.lastname = lastname;
+        this.email = email;
+        this.password = password;
+        this.type = type;
+    }
+    
+    //Setters & Getters
+
+    public String getName() {
+        return name;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public int getType() {
+        return type;
+    }
+    
     
 }

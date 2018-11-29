@@ -5,11 +5,22 @@
  */
 package backend;
 
+import list.List;
+import queue.Queue;
+
 /**
  *
  * @author alekc
  */
 public class BackEnd {
-    //Lista users
-    //Lista proyects
+    Queue users;
+    List projects;
+    
+    public BackEnd() {
+        
+    }
+    
+    public void addProject() {
+        
+    }
 }
