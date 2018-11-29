@@ -9,8 +9,7 @@ package backend;
  *
  * @author alekc
  */
-public class User {
-    String name, lastname, email, password;
-    int type, activeTasks;
-    
+public class BackEnd {
+    //Lista users
+    //Lista proyects
 }
