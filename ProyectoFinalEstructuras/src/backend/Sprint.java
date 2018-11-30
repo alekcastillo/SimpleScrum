@@ -26,7 +26,7 @@ public class Sprint {
     }
     
     public void addTask(Task task) {
-        tasks.inserta(task);
+        tasks.add(task);
     }
     
     //Setters & Getters
