@@ -27,36 +27,36 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lblTask" alignment="0" pref="548" max="32767" attributes="0"/>
-                  <Group type="103" alignment="1" groupAlignment="1" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="btnReturn" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="btnReturn1" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="btnReturn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btnDiscard" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnSave" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="lblProject" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblDescription" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtProject" pref="260" max="32767" attributes="0"/>
+                          <Component id="txtTitle" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jScrollPane2" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="lblProject" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblTitle" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblDescription" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtProject" pref="260" max="32767" attributes="0"/>
-                              <Component id="txtTitle" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jScrollPane2" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtPriority" max="32767" attributes="0"/>
-                              <Component id="cboxStatus" max="32767" attributes="0"/>
-                              <Component id="cboxAsignee" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtSprint" alignment="0" max="32767" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblSprint" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblPriority" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblStatus" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblAsignee" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="txtPriority" max="32767" attributes="0"/>
+                          <Component id="cboxStatus" max="32767" attributes="0"/>
+                          <Component id="cboxAsignee" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtSprint" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblSprint" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblPriority" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblStatus" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblAsignee" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -109,7 +109,8 @@
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnReturn" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnReturn1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnSave" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnDiscard" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -242,7 +243,7 @@
         <Property name="text" type="java.lang.String" value="Return"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnReturn1">
+    <Component class="javax.swing.JButton" name="btnSave">
       <Properties>
         <Property name="text" type="java.lang.String" value="Save changes"/>
       </Properties>
@@ -267,5 +268,10 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="btnDiscard">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Discard changes"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>

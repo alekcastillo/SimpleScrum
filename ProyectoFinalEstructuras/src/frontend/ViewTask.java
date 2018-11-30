@@ -46,9 +46,10 @@ public class ViewTask extends javax.swing.JFrame {
         lblAsignee = new javax.swing.JLabel();
         cboxAsignee = new javax.swing.JComboBox<>();
         btnReturn = new javax.swing.JButton();
-        btnReturn1 = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtDescription = new javax.swing.JTextPane();
+        btnDiscard = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -90,12 +91,14 @@ public class ViewTask extends javax.swing.JFrame {
 
         btnReturn.setText("Return");
 
-        btnReturn1.setText("Save changes");
+        btnSave.setText("Save changes");
 
         txtDescription.setEditable(false);
         txtDescription.setBackground(new java.awt.Color(240, 240, 240));
         txtDescription.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jScrollPane2.setViewportView(txtDescription);
+
+        btnDiscard.setText("Discard changes");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,32 +108,33 @@ public class ViewTask extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTask, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(btnReturn)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnReturn1))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(lblProject)
-                                .addComponent(lblTitle)
-                                .addComponent(lblDescription)
-                                .addComponent(txtProject, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                                .addComponent(txtTitle)
-                                .addComponent(jScrollPane2))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtPriority)
-                                .addComponent(cboxStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cboxAsignee, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtSprint)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblSprint)
-                                        .addComponent(lblPriority)
-                                        .addComponent(lblStatus)
-                                        .addComponent(lblAsignee))
-                                    .addGap(0, 0, Short.MAX_VALUE))))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnReturn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnDiscard)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSave))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblProject)
+                            .addComponent(lblTitle)
+                            .addComponent(lblDescription)
+                            .addComponent(txtProject, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                            .addComponent(txtTitle)
+                            .addComponent(jScrollPane2))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPriority)
+                            .addComponent(cboxStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cboxAsignee, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtSprint)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblSprint)
+                                    .addComponent(lblPriority)
+                                    .addComponent(lblStatus)
+                                    .addComponent(lblAsignee))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -170,7 +174,8 @@ public class ViewTask extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnReturn)
-                    .addComponent(btnReturn1))
+                    .addComponent(btnSave)
+                    .addComponent(btnDiscard))
                 .addContainerGap())
         );
 
@@ -179,8 +184,9 @@ public class ViewTask extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDiscard;
     private javax.swing.JButton btnReturn;
-    private javax.swing.JButton btnReturn1;
+    private javax.swing.JButton btnSave;
     private javax.swing.JComboBox<String> cboxAsignee;
     private javax.swing.JComboBox<String> cboxStatus;
     private javax.swing.JScrollPane jScrollPane2;
