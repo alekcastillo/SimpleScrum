@@ -6,6 +6,9 @@
 package frontend;
 
 import backend.BackEnd;
+import backend.Project;
+import backend.Sprint;
+import backend.Task;
 
 /**
  *
@@ -13,13 +16,56 @@ import backend.BackEnd;
  */
 public class ViewTask extends javax.swing.JFrame {
     private BackEnd backend;
+    private Project project;
+    private Sprint sprint;
+    private Task task;
 
     /**
      * Creates new form ViewTask
      */
-    public ViewTask(BackEnd backend) {
+    public ViewTask(BackEnd backend, Project project, Sprint sprint) {
         initComponents();
         this.backend = backend;
+        this.project = project;
+        this.sprint = sprint;
+        
+        lblInformation.setText("New task");
+        btnDiscard.setEnabled(false);
+        
+        fillForm();
+    }
+    
+    public ViewTask(BackEnd backend, Project project, Sprint sprint, Task task) {
+        initComponents();
+        this.backend = backend;
+        this.project = project;
+        this.sprint = sprint;
+        this.task = task;
+        
+        lblInformation.setText("New task");
+        btnDiscard.setEnabled(false);
+        
+        fillForm();
+    }
+    
+    private void saveTask() {
+        task.setTitle(txtTitle.getText());
+        task.setDescription(txtDescription.getText());
+        //task.setPriority(txtPriority.getText());
+        //task.setStatus(txtStatus.getText());
+    }
+    
+    private void fillForm() {
+        txtProject.setText(project.getTitle());
+        txtSprint.setText(sprint.getTitle());
+            
+        if (task != null) {
+            txtTitle.setText(task.getTitle());
+            txtDescription.setText(task.getDescription());
+            //txtPriority.setText(task.getPriority());
+            //txtStatus.setText(task.getStatus());
+            //fill asignees cbox
+        }
     }
 
     /**
@@ -31,7 +77,7 @@ public class ViewTask extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblTask = new javax.swing.JLabel();
+        lblInformation = new javax.swing.JLabel();
         txtTitle = new javax.swing.JTextField();
         lblTitle = new javax.swing.JLabel();
         lblDescription = new javax.swing.JLabel();
@@ -53,8 +99,8 @@ public class ViewTask extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblTask.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lblTask.setText("Task Information");
+        lblInformation.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblInformation.setText("Task Information");
 
         txtTitle.setBackground(new java.awt.Color(240, 240, 240));
         txtTitle.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -107,7 +153,7 @@ public class ViewTask extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTask, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
+                    .addComponent(lblInformation, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnReturn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -141,7 +187,7 @@ public class ViewTask extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblTask)
+                .addComponent(lblInformation)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblProject)
@@ -192,11 +238,11 @@ public class ViewTask extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblAsignee;
     private javax.swing.JLabel lblDescription;
+    private javax.swing.JLabel lblInformation;
     private javax.swing.JLabel lblPriority;
     private javax.swing.JLabel lblProject;
     private javax.swing.JLabel lblSprint;
     private javax.swing.JLabel lblStatus;
-    private javax.swing.JLabel lblTask;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTextPane txtDescription;
     private javax.swing.JTextField txtPriority;
