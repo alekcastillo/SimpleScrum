@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package backend;
 
+import data.JsonHandler;
 import list.List;
 import queue.Queue;
 
@@ -13,14 +9,22 @@ import queue.Queue;
  * @author alekc
  */
 public class BackEnd {
+
     Queue users;
     List projects;
-    
+    JsonHandler helper = new JsonHandler();
+
     public BackEnd() {
-        
+
     }
-    
+
     public void addProject() {
-        
+
+    }
+
+    public void saveAll() {
+        helper.save(projects);
+        helper.save(users);
+
     }
 }
