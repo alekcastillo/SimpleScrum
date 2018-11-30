@@ -13,7 +13,7 @@ import backend.Project;
  * @author alekc
  */
 public class ViewProject extends javax.swing.JFrame {
-    BackEnd backend;
+    private BackEnd backend;
 
     /**
      * Creates new form ViewProject
@@ -21,6 +21,7 @@ public class ViewProject extends javax.swing.JFrame {
     public ViewProject(BackEnd backend, Project project) {
         initComponents();
         this.backend = backend;
+        this.fillForm(project);
     }
     
     public ViewProject(BackEnd backend) {
@@ -31,6 +32,11 @@ public class ViewProject extends javax.swing.JFrame {
         chkEdit.setSelected(true);
         chkEdit.setEnabled(false);
         this.setEditable(true);
+    }
+    
+    public void fillForm(Project project) {
+        txtTitle.setText(project.getTitle());
+        txtDescription.setText(project.getDescription());
     }
     
     public void setEditable(boolean editable) {

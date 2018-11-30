@@ -13,14 +13,18 @@ import queue.Node;
  */
 public class Queue {
     private Node first, last;
+    
+    //Control
    
     public int length() {
         Node aux = first;
         int length = 0;
+        
         while (aux != null) {
             length++;
             aux = aux.getPrevious();
         }
+        
         return length;
     }
 
@@ -36,6 +40,7 @@ public class Queue {
 
     public Node attend() {
         Node output = first;
+        
         if (first != null) {
             last = (last == output ? null : last);
             first = output.getPrevious();
@@ -49,6 +54,7 @@ public class Queue {
         Node aux = first;
         Node toGet = null;
         int length = 0;
+        
         while (aux != null) {
             length++;
             if (length == index) {
@@ -56,6 +62,7 @@ public class Queue {
             }
             aux = aux.getPrevious();
         }
+        
         return toGet;
     }
 
@@ -63,23 +70,41 @@ public class Queue {
         Node aux = first;
         Node previous = null;
         int length = 0;
+        
         while (aux != null) {
             length++;
             if (length == index) {
-                if (previous != null) {
-
+                if (previous != null)
                     previous.setPrevious(aux.getPrevious());
-                } else {
+                else
                     first = aux.getPrevious();
-                }
             }
+            
             previous = aux;
             aux = aux.getPrevious();
         }
     }
     
+    //Other
+    
     public String[] getUserNames() {
         String[] output = new String[this.length()];
+        
+        return output;
+    }
+    
+    public Node find(String email, String password) {
+        Node aux = first;
+        Node output = null;
+        
+        while (aux != null) {
+            if (aux.getObject().getEmail().equals(email) && aux.getObject().getPassword().equals(password)) {
+                output = aux;
+                break;
+            }
+            
+            aux = aux.getPrevious();
+        }
         
         return output;
     }

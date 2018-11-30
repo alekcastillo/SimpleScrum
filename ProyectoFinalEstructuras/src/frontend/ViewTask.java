@@ -5,17 +5,21 @@
  */
 package frontend;
 
+import backend.BackEnd;
+
 /**
  *
  * @author alekc
  */
 public class ViewTask extends javax.swing.JFrame {
+    private BackEnd backend;
 
     /**
      * Creates new form ViewTask
      */
-    public ViewTask() {
+    public ViewTask(BackEnd backend) {
         initComponents();
+        this.backend = backend;
     }
 
     /**

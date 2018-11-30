@@ -6,6 +6,7 @@
 package backend;
 
 import list.List;
+import queue.Node;
 import queue.Queue;
 
 /**
@@ -13,14 +14,26 @@ import queue.Queue;
  * @author alekc
  */
 public class BackEnd {
-    Queue users;
-    List projects;
+    public Queue users;
+    public List projects;
+    private User currentUser;
     
     public BackEnd() {
-        
+        users = new Queue();
+        projects = new List();
     }
     
     public void addProject() {
         
+    }
+    
+    public boolean tryLogin(String email, String password) {
+        Node found = users.find(email, password);
+        
+        if (found != null) {
+            currentUser = found.getObject();
+        }
+        
+        return found != null;
     }
 }

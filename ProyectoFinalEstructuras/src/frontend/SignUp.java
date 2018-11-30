@@ -3,14 +3,14 @@ package frontend;
 import javax.swing.JOptionPane;
 import backend.BackEnd;
 
-public class Registro extends javax.swing.JFrame {
-    BackEnd backend;
+public class SignUp extends javax.swing.JFrame {
+    private BackEnd backend;
 
     /**
      * Creates new form Registro
      */
     
-    public Registro(BackEnd backend) {
+    public SignUp(BackEnd backend) {
         initComponents();
         this.backend = backend;
     }
@@ -55,25 +55,21 @@ public class Registro extends javax.swing.JFrame {
         lblTitle.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblTitle.setText("Create an account");
 
-        txtProject.setEditable(false);
         txtProject.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
         lblProject.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         lblProject.setText("First name");
 
-        txtProject1.setEditable(false);
         txtProject1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
         lblProject1.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         lblProject1.setText("Last name");
 
-        txtProject2.setEditable(false);
         txtProject2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
         lblProject2.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         lblProject2.setText("Email");
 
-        txtProject3.setEditable(false);
         txtProject3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
         lblProject3.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
@@ -137,7 +133,7 @@ public class Registro extends javax.swing.JFrame {
                         .addComponent(lblProject3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtProject3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistro)
                     .addComponent(btnCancelar))

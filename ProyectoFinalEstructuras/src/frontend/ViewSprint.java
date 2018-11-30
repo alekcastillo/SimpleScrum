@@ -5,17 +5,21 @@
  */
 package frontend;
 
+import backend.BackEnd;
+
 /**
  *
  * @author alekc
  */
 public class ViewSprint extends javax.swing.JFrame {
+    private BackEnd backend;
 
     /**
      * Creates new form ViewProject
      */
-    public ViewSprint() {
+    public ViewSprint(BackEnd backend) {
         initComponents();
+        this.backend = backend;
     }
 
     /**

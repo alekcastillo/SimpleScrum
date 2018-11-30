@@ -5,17 +5,21 @@
  */
 package frontend;
 
+import backend.BackEnd;
+
 /**
  *
  * @author alekc
  */
 public class Menu extends javax.swing.JFrame {
+    private BackEnd backend;
 
     /**
      * Creates new form ViewProject
      */
-    public Menu() {
+    public Menu(BackEnd backend) {
         initComponents();
+        this.backend = backend;
     }
 
     /**
@@ -137,7 +141,7 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNewProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewProjectActionPerformed
-        new ViewProject().show();
+        new ViewProject(this.backend).show();
         dispose();
     }//GEN-LAST:event_btnNewProjectActionPerformed
 
