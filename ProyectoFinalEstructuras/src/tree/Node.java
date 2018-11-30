@@ -12,9 +12,9 @@ package tree;
 public class Node {
         
     private int dato;
-    private Nodo hijoIzq,hijoDer;
+    private Node hijoIzq,hijoDer;
 
-    public Nodo(int dato) {
+    public Node(int dato) {
         this.dato = dato;
     }
 
@@ -26,19 +26,19 @@ public class Node {
         this.dato = dato;
     }
 
-    public Nodo getHijoIzq() {
+    public Node getHijoIzq() {
         return hijoIzq;
     }
 
-    public void setHijoIzq(Nodo hijoIzq) {
+    public void setHijoIzq(Node hijoIzq) {
         this.hijoIzq = hijoIzq;
     }
 
-    public Nodo getHijoDer() {
+    public Node getHijoDer() {
         return hijoDer;
     }
 
-    public void setHijoDer(Nodo hijoDer) {
+    public void setHijoDer(Node hijoDer) {
         this.hijoDer = hijoDer;
     }
 

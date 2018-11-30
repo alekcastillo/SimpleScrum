@@ -12,11 +12,12 @@ import backend.Project;
  * @author alekc
  */
 public class List {
+
     private Node head, ultimo;
-    
+
     public void insert(Project project) {
         Node toInsert = new Node(project);
-        
+
         if (head == null) {
             head = toInsert;
             ultimo = head;
@@ -37,7 +38,7 @@ public class List {
                     while (project.getId() > aux.getNext().getObject().getId()) {
                         aux = aux.getNext();
                     }
-                    
+
                     Node temp = toInsert;
                     temp.setNext(aux.getNext());
                     temp.setPrevious(aux);
@@ -56,5 +57,29 @@ public class List {
         String[] output = new String[this.length()];
         
         return output;
+    }
+    public int length() {
+        Node aux = head;
+        int length = 0;
+        do {
+            length++;
+            aux = aux.getNext();
+        } while (aux != head);
+        return length;
+    }
+
+    public Node get(int index) {
+        Node aux = head;
+        Node toGet = null;
+        int length = 0;
+        do {
+            length++;
+            if (index == length) {
+                toGet = aux;
+            }
+            aux = aux.getNext();
+        } while (aux != head);
+
+        return toGet;
     }
 }
