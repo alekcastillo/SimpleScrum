@@ -70,10 +70,11 @@ public class Menu extends javax.swing.JFrame {
         btnDeleteProject = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
         lblProjects = new javax.swing.JLabel();
-        txtHelp = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProjects = new javax.swing.JTable();
         btnNewProject = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtWelcome = new javax.swing.JTextPane();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -109,9 +110,6 @@ public class Menu extends javax.swing.JFrame {
         lblProjects.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblProjects.setText("Projects");
 
-        txtHelp.setEditable(false);
-        txtHelp.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-
         tblProjects.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -133,6 +131,11 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        txtWelcome.setEditable(false);
+        txtWelcome.setBackground(new java.awt.Color(240, 240, 240));
+        txtWelcome.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jScrollPane2.setViewportView(txtWelcome);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -143,7 +146,7 @@ public class Menu extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
-                            .addComponent(txtHelp))
+                            .addComponent(jScrollPane2))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -169,7 +172,7 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
-                    .addComponent(txtHelp))
+                    .addComponent(jScrollPane2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDeleteProject)
@@ -213,9 +216,10 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblProjects;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tblProjects;
-    private javax.swing.JTextField txtHelp;
+    private javax.swing.JTextPane txtWelcome;
     // End of variables declaration//GEN-END:variables
 }

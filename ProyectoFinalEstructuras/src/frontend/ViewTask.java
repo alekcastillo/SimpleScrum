@@ -35,7 +35,6 @@ public class ViewTask extends javax.swing.JFrame {
         txtTitle = new javax.swing.JTextField();
         lblTitle = new javax.swing.JLabel();
         lblDescription = new javax.swing.JLabel();
-        txtDescription = new javax.swing.JTextField();
         txtProject = new javax.swing.JTextField();
         lblProject = new javax.swing.JLabel();
         lblSprint = new javax.swing.JLabel();
@@ -48,12 +47,15 @@ public class ViewTask extends javax.swing.JFrame {
         cboxAsignee = new javax.swing.JComboBox<>();
         btnReturn = new javax.swing.JButton();
         btnReturn1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtDescription = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblTask.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblTask.setText("Task Information");
 
+        txtTitle.setBackground(new java.awt.Color(240, 240, 240));
         txtTitle.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
         lblTitle.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
@@ -61,8 +63,6 @@ public class ViewTask extends javax.swing.JFrame {
 
         lblDescription.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         lblDescription.setText("Description");
-
-        txtDescription.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
         txtProject.setEditable(false);
         txtProject.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -79,6 +79,7 @@ public class ViewTask extends javax.swing.JFrame {
         lblPriority.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         lblPriority.setText("Priority");
 
+        txtPriority.setBackground(new java.awt.Color(240, 240, 240));
         txtPriority.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
         lblStatus.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
@@ -91,6 +92,11 @@ public class ViewTask extends javax.swing.JFrame {
 
         btnReturn1.setText("Save changes");
 
+        txtDescription.setEditable(false);
+        txtDescription.setBackground(new java.awt.Color(240, 240, 240));
+        txtDescription.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jScrollPane2.setViewportView(txtDescription);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -98,32 +104,33 @@ public class ViewTask extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTask, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblProject)
-                            .addComponent(lblTitle)
-                            .addComponent(lblDescription)
-                            .addComponent(txtProject, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                            .addComponent(txtTitle)
-                            .addComponent(txtDescription))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtSprint)
-                            .addComponent(txtPriority)
-                            .addComponent(cboxStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cboxAsignee, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblSprint)
-                                    .addComponent(lblPriority)
-                                    .addComponent(lblStatus)
-                                    .addComponent(lblAsignee))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnReturn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnReturn1)))
+                    .addComponent(lblTask, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btnReturn)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnReturn1))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lblProject)
+                                .addComponent(lblTitle)
+                                .addComponent(lblDescription)
+                                .addComponent(txtProject, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                                .addComponent(txtTitle)
+                                .addComponent(jScrollPane2))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtPriority)
+                                .addComponent(cboxStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cboxAsignee, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtSprint)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblSprint)
+                                        .addComponent(lblPriority)
+                                        .addComponent(lblStatus)
+                                        .addComponent(lblAsignee))
+                                    .addGap(0, 0, Short.MAX_VALUE))))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -159,7 +166,7 @@ public class ViewTask extends javax.swing.JFrame {
                         .addComponent(lblAsignee)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cboxAsignee, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtDescription))
+                    .addComponent(jScrollPane2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnReturn)
@@ -176,6 +183,7 @@ public class ViewTask extends javax.swing.JFrame {
     private javax.swing.JButton btnReturn1;
     private javax.swing.JComboBox<String> cboxAsignee;
     private javax.swing.JComboBox<String> cboxStatus;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblAsignee;
     private javax.swing.JLabel lblDescription;
     private javax.swing.JLabel lblPriority;
@@ -184,7 +192,7 @@ public class ViewTask extends javax.swing.JFrame {
     private javax.swing.JLabel lblStatus;
     private javax.swing.JLabel lblTask;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JTextField txtDescription;
+    private javax.swing.JTextPane txtDescription;
     private javax.swing.JTextField txtPriority;
     private javax.swing.JTextField txtProject;
     private javax.swing.JTextField txtSprint;

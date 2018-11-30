@@ -55,6 +55,8 @@ public class ViewSprint extends javax.swing.JFrame {
     public void saveSprint() {
         sprint.setTitle(txtTitle.getText());
         sprint.setDescription(txtDescription.getText());
+        sprint.setStartDate(dateStart.getDate());
+        sprint.setEndDate(dateEnd.getDate());
     }
     
     public void fillForm() {
@@ -80,6 +82,8 @@ public class ViewSprint extends javax.swing.JFrame {
             txtTitle.setText(sprint.getTitle());
             txtDescription.setText(sprint.getDescription());
             btnNewTask.setEnabled(true);
+            dateStart.setDate(sprint.getStartDate());
+            dateEnd.setDate(sprint.getEndDate());
         }
     }
     
@@ -89,6 +93,8 @@ public class ViewSprint extends javax.swing.JFrame {
         btnEdit.setEnabled(!editable);
         btnSave.setEnabled(editable);
         btnDiscard.setEnabled(editable);
+        dateStart.setEnabled(editable);
+        dateEnd.setEnabled(editable);
     }
     
     /**
@@ -110,7 +116,6 @@ public class ViewSprint extends javax.swing.JFrame {
         lblInformation = new javax.swing.JLabel();
         lblTasks = new javax.swing.JLabel();
         txtProject = new javax.swing.JTextField();
-        txtDescription = new javax.swing.JTextField();
         lblDescription = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblTasks = new javax.swing.JTable();
@@ -124,6 +129,8 @@ public class ViewSprint extends javax.swing.JFrame {
         lblStart = new javax.swing.JLabel();
         dateStart = new com.toedter.calendar.JDateChooser();
         dateEnd = new com.toedter.calendar.JDateChooser();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtDescription = new javax.swing.JTextPane();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -159,9 +166,6 @@ public class ViewSprint extends javax.swing.JFrame {
 
         txtProject.setEditable(false);
         txtProject.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-
-        txtDescription.setEditable(false);
-        txtDescription.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
         lblDescription.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         lblDescription.setText("Description");
@@ -221,6 +225,11 @@ public class ViewSprint extends javax.swing.JFrame {
 
         dateEnd.setEnabled(false);
 
+        txtDescription.setEditable(false);
+        txtDescription.setBackground(new java.awt.Color(240, 240, 240));
+        txtDescription.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jScrollPane2.setViewportView(txtDescription);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -253,21 +262,23 @@ public class ViewSprint extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnSave))
                             .addComponent(txtTitle)
-                            .addComponent(txtDescription)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblTitle)
-                                    .addComponent(lblDescription)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addComponent(lblEnd)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addComponent(lblStart)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                    .addComponent(lblDescription))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(lblEnd)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(lblStart)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -290,28 +301,23 @@ public class ViewSprint extends javax.swing.JFrame {
                         .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblDescription)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblStart))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(82, 82, 82)
-                                .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblStart)
+                            .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblEnd)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnDiscard, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblEnd)
                             .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(5, 5, 5))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnDiscard, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDeleteTask)
                     .addComponent(btnEditTask)
@@ -330,7 +336,7 @@ public class ViewSprint extends javax.swing.JFrame {
             if (sprint != null) {
                 saveSprint();
             } else {
-                sprint = project.addSprint(txtTitle.getText(), txtDescription.getText());
+                sprint = project.addSprint(txtTitle.getText(), txtDescription.getText(), dateStart.getDate(), dateEnd.getDate());
             }
 
             JOptionPane.showMessageDialog(null, "Sprint saved succesfully!");
@@ -373,6 +379,7 @@ public class ViewSprint extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblDescription;
     private javax.swing.JLabel lblEnd;
     private javax.swing.JLabel lblInformation;
@@ -381,7 +388,7 @@ public class ViewSprint extends javax.swing.JFrame {
     private javax.swing.JLabel lblTasks;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tblTasks;
-    private javax.swing.JTextField txtDescription;
+    private javax.swing.JTextPane txtDescription;
     private javax.swing.JTextField txtProject;
     private javax.swing.JTextField txtTitle;
     // End of variables declaration//GEN-END:variables

@@ -25,6 +25,7 @@ public class Stack {
         
         return length;
     }
+    
     public void push(Sprint sprint) {
         Node node = new Node(sprint);
         
@@ -53,14 +54,16 @@ public class Stack {
         
         while (aux != null) {
             length++;
+            
             if (index == length) {
                 toGet = aux;
+                break;
             }
 
             aux = aux.getPrevious();
         }
+        
         return toGet;
-
     }
 
     public void delete(int index) {

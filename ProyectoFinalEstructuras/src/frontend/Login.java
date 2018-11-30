@@ -53,6 +53,7 @@ public class Login extends javax.swing.JFrame {
         lblTitle.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblTitle.setText("Agiler");
 
+        txtEmail.setBackground(new java.awt.Color(240, 240, 240));
         txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
         lblEmail.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
@@ -61,6 +62,7 @@ public class Login extends javax.swing.JFrame {
         lblPassword.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         lblPassword.setText("Password");
 
+        txtPassword.setBackground(new java.awt.Color(240, 240, 240));
         txtPassword.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

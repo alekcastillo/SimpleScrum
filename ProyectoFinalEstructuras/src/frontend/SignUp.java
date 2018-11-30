@@ -37,6 +37,7 @@ public class SignUp extends javax.swing.JFrame {
         lblPassword = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -55,21 +56,25 @@ public class SignUp extends javax.swing.JFrame {
         lblTitle.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblTitle.setText("Create an account");
 
+        txtFirstName.setBackground(new java.awt.Color(240, 240, 240));
         txtFirstName.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
         lblFirstName.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         lblFirstName.setText("First name");
 
+        txtLastName.setBackground(new java.awt.Color(240, 240, 240));
         txtLastName.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
         lblLastName.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         lblLastName.setText("Last name");
 
+        txtEmail.setBackground(new java.awt.Color(240, 240, 240));
         txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
         lblEmail.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         lblEmail.setText("Email");
 
+        txtPassword.setBackground(new java.awt.Color(240, 240, 240));
         txtPassword.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
         lblPassword.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
