@@ -10,7 +10,7 @@ public class Tree {
     private Node raiz;
   
 
-    public void inserta(Task task) {
+    public void add(Task task) {
         if (raiz == null) {
             raiz = new Node(task);
         } else {
