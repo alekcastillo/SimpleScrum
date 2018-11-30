@@ -171,7 +171,6 @@
     <Component class="javax.swing.JButton" name="btnNewTask">
       <Properties>
         <Property name="text" type="java.lang.String" value="Add task"/>
-        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnNewTask1">

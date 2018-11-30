@@ -52,14 +52,14 @@ public class ViewSprint extends javax.swing.JFrame {
         btnEditTask.setEnabled(true);
     }
 
-    public void saveSprint() {
+    private void saveSprint() {
         sprint.setTitle(txtTitle.getText());
         sprint.setDescription(txtDescription.getText());
         sprint.setStartDate(dateStart.getDate());
         sprint.setEndDate(dateEnd.getDate());
     }
     
-    public void fillForm() {
+    private void fillForm() {
         txtProject.setText(project.getTitle());
         
         tblTasks.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
@@ -87,7 +87,7 @@ public class ViewSprint extends javax.swing.JFrame {
         }
     }
     
-    public void setEditable(boolean editable) {
+    private void setEditable(boolean editable) {
         txtTitle.setEditable(editable);
         txtDescription.setEditable(editable);
         btnEdit.setEnabled(!editable);

@@ -74,6 +74,7 @@ public class ViewProject extends javax.swing.JFrame {
             txtTitle.setText(project.getTitle());
             txtDescription.setText(project.getDescription());
             btnNewSprint.setEnabled(true);
+            btnBacklog.setEnabled(true);
         }
         
         tblSprints.setModel(model);
@@ -352,7 +353,8 @@ public class ViewProject extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeleteSprintActionPerformed
 
     private void btnBacklogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBacklogActionPerformed
-        // TODO add your handling code here:
+        new ViewBacklog(backend, project).show();
+        dispose();
     }//GEN-LAST:event_btnBacklogActionPerformed
 
 

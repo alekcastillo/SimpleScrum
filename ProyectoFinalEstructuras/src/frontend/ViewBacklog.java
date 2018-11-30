@@ -27,6 +27,7 @@ public class ViewBacklog extends javax.swing.JFrame {
      */
         
     public ViewBacklog(BackEnd backend, Project project) {
+        initComponents();
         this.backend = backend;
         this.project = project;
         this.sprint = project.backlog;
@@ -39,7 +40,7 @@ public class ViewBacklog extends javax.swing.JFrame {
         btnEditTask.setEnabled(true);
     }
     
-    public void fillForm() {
+    private void fillForm() {
         txtProject.setText(project.getTitle());
         
         tblTasks.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
@@ -132,7 +133,6 @@ public class ViewBacklog extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblTasks);
 
         btnNewTask.setText("Add task");
-        btnNewTask.setEnabled(false);
 
         btnNewTask1.setText("Move task to sprint");
         btnNewTask1.setEnabled(false);
