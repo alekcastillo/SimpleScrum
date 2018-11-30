@@ -27,17 +27,140 @@ public class ViewTask extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblTask = new javax.swing.JLabel();
+        txtTitle = new javax.swing.JTextField();
+        lblTitle = new javax.swing.JLabel();
+        lblDescription = new javax.swing.JLabel();
+        txtDescription = new javax.swing.JTextField();
+        txtProject = new javax.swing.JTextField();
+        lblProject = new javax.swing.JLabel();
+        lblSprint = new javax.swing.JLabel();
+        txtSprint = new javax.swing.JTextField();
+        lblPriority = new javax.swing.JLabel();
+        txtPriority = new javax.swing.JTextField();
+        lblStatus = new javax.swing.JLabel();
+        cboxStatus = new javax.swing.JComboBox<>();
+        lblAsignee = new javax.swing.JLabel();
+        cboxAsignee = new javax.swing.JComboBox<>();
+        btnReturn = new javax.swing.JButton();
+        btnReturn1 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lblTask.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblTask.setText("Task Information");
+
+        txtTitle.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+
+        lblTitle.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        lblTitle.setText("Title");
+
+        lblDescription.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        lblDescription.setText("Description");
+
+        txtDescription.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+
+        txtProject.setEditable(false);
+        txtProject.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+
+        lblProject.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        lblProject.setText("Project");
+
+        lblSprint.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        lblSprint.setText("Sprint");
+
+        txtSprint.setEditable(false);
+        txtSprint.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+
+        lblPriority.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        lblPriority.setText("Priority");
+
+        txtPriority.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+
+        lblStatus.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        lblStatus.setText("Status");
+
+        lblAsignee.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        lblAsignee.setText("Asignee");
+
+        btnReturn.setText("Return");
+
+        btnReturn1.setText("Save changes");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTask, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblProject)
+                            .addComponent(lblTitle)
+                            .addComponent(lblDescription)
+                            .addComponent(txtProject, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                            .addComponent(txtTitle)
+                            .addComponent(txtDescription))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtSprint)
+                            .addComponent(txtPriority)
+                            .addComponent(cboxStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cboxAsignee, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblSprint)
+                                    .addComponent(lblPriority)
+                                    .addComponent(lblStatus)
+                                    .addComponent(lblAsignee))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnReturn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnReturn1)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTask)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblProject)
+                    .addComponent(lblSprint))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtProject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSprint, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTitle)
+                    .addComponent(lblPriority))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPriority, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDescription)
+                    .addComponent(lblStatus))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cboxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblAsignee)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cboxAsignee, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDescription))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnReturn)
+                    .addComponent(btnReturn1))
+                .addContainerGap())
         );
 
         pack();
@@ -79,5 +202,22 @@ public class ViewTask extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnReturn;
+    private javax.swing.JButton btnReturn1;
+    private javax.swing.JComboBox<String> cboxAsignee;
+    private javax.swing.JComboBox<String> cboxStatus;
+    private javax.swing.JLabel lblAsignee;
+    private javax.swing.JLabel lblDescription;
+    private javax.swing.JLabel lblPriority;
+    private javax.swing.JLabel lblProject;
+    private javax.swing.JLabel lblSprint;
+    private javax.swing.JLabel lblStatus;
+    private javax.swing.JLabel lblTask;
+    private javax.swing.JLabel lblTitle;
+    private javax.swing.JTextField txtDescription;
+    private javax.swing.JTextField txtPriority;
+    private javax.swing.JTextField txtProject;
+    private javax.swing.JTextField txtSprint;
+    private javax.swing.JTextField txtTitle;
     // End of variables declaration//GEN-END:variables
 }

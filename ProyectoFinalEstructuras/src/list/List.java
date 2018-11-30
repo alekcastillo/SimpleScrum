@@ -54,17 +54,30 @@ public class List {
     }
     
     public String[] getProjectNames() {
+        Node aux = head;
         String[] output = new String[this.length()];
+        int current = 0;
+        
+        do {
+            current++;
+            
+            output[current] = aux.getObject().getTitle();
+            
+            aux = aux.getNext();
+        } while (aux != head);
         
         return output;
     }
+    
     public int length() {
         Node aux = head;
         int length = 0;
+        
         do {
             length++;
             aux = aux.getNext();
         } while (aux != head);
+        
         return length;
     }
 
@@ -72,6 +85,7 @@ public class List {
         Node aux = head;
         Node toGet = null;
         int length = 0;
+        
         do {
             length++;
             if (index == length) {
