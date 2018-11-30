@@ -223,7 +223,6 @@ public class ViewSprint extends javax.swing.JFrame {
 
         dateStart.setDateFormatString("dd-mm-yyyy");
         dateStart.setEnabled(false);
-        dateStart.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
 
         dateEnd.setDateFormatString("dd-mm-yyyy");
         dateEnd.setEnabled(false);

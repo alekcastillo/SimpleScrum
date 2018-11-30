@@ -10,7 +10,7 @@ import stack.Stack;
 public class Project {
     private int id;
     private String title, description;
-    private Sprint backlog;
+    public Sprint backlog;
     public Stack sprints;
     
     public Project(String title, String description) {
