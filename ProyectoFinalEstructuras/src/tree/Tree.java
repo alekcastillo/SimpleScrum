@@ -8,6 +8,7 @@ import backend.Task;
  */
 public class Tree {
     private Node raiz;
+    private int length = 0;
   
 
     public void add(Task task) {
@@ -37,6 +38,7 @@ public class Tree {
 
     private void inOrdenRec(Node n) {
         if (n != null) {
+            this.length++;
             inOrdenRec(n.getHijoIzq());
             System.out.print(" " + n);
             inOrdenRec(n.getHijoDer());
@@ -82,8 +84,13 @@ public class Tree {
 
     }
     
+
+    
+    
+    
     public String[] getTaskNames() {
-        String[] output = new String[this.length()];
+        this.inOrden();
+        String[] output = new String[this.length];
         
         return output;
     }
