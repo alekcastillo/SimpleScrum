@@ -17,7 +17,7 @@ public class ViewTask extends javax.swing.JFrame {
     /**
      * Creates new form ViewTask
      */
-    public ViewTask() {
+    public ViewTask(BackEnd backend) {
         initComponents();
         this.backend = backend;
     }

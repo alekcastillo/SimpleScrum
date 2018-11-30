@@ -5,9 +5,11 @@ import backend.BackEnd;
 
 public class Login extends javax.swing.JFrame {
     private BackEnd backend;
+    
     /**
      * Creates new form Login
      */
+    
     public Login(BackEnd backend) {
         initComponents();
         this.backend = backend;
@@ -22,22 +24,17 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtEmail = new javax.swing.JTextField();
         btnSignIn = new javax.swing.JButton();
-        txtPassword = new javax.swing.JTextField();
-        lblEmail = new javax.swing.JLabel();
-        lblPassword = new javax.swing.JLabel();
         btnSignUp = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
+        lblEmail = new javax.swing.JLabel();
+        lblPassword = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        txtEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmailActionPerformed(evt);
-            }
-        });
+        setResizable(false);
 
         btnSignIn.setText("Login");
         btnSignIn.addActionListener(new java.awt.event.ActionListener() {
@@ -45,10 +42,6 @@ public class Login extends javax.swing.JFrame {
                 btnSignInActionPerformed(evt);
             }
         });
-
-        lblEmail.setText("Email");
-
-        lblPassword.setText("Password");
 
         btnSignUp.setText("Sign up");
         btnSignUp.addActionListener(new java.awt.event.ActionListener() {
@@ -60,6 +53,16 @@ public class Login extends javax.swing.JFrame {
         lblTitle.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblTitle.setText("Agiler");
 
+        txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+
+        lblEmail.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        lblEmail.setText("Email");
+
+        lblPassword.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        lblPassword.setText("Password");
+
+        txtPassword.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -67,17 +70,20 @@ public class Login extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTitle)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(btnSignUp)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnSignIn))
-                        .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
-                        .addComponent(lblPassword, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblEmail, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtPassword)
+                    .addComponent(txtEmail)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTitle)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(125, 125, 125)
+                                .addComponent(btnSignUp)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnSignIn))
+                            .addComponent(lblEmail)
+                            .addComponent(lblPassword))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,7 +98,7 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(lblPassword)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSignIn)
                     .addComponent(btnSignUp))
@@ -103,24 +109,18 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
-        //boolean ingresado = backend.tryLogin(txtCorreo.getText(), txtClave.getText());
+        boolean loggedIn = backend.tryLogin(txtEmail.getText(), txtPassword.getText());
         
-        //if (ingresado) {
-            //JOptionPane.showMessageDialog(null, "Ingresado correctamente!");
-            //new Menu(backend).show();
-            //dispose();
-        //} else
-            //JOptionPane.showMessageDialog(null, "El correo o la clave estan incorrectos!");
+        if (loggedIn) {
+            JOptionPane.showMessageDialog(null, "Login successful. Welcome back!");
+            new Menu(backend).show();
+            dispose();
+        } else
+            JOptionPane.showMessageDialog(null, "The email and/or password are incorrect!");
     }//GEN-LAST:event_btnSignInActionPerformed
 
-    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
-        
-        
-        
-    }//GEN-LAST:event_txtEmailActionPerformed
-
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
-        //new Registro(backend).show();
+        new SignUp(backend).show();
         dispose();
     }//GEN-LAST:event_btnSignUpActionPerformed
 
