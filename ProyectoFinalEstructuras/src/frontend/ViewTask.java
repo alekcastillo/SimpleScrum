@@ -139,7 +139,6 @@ public class ViewTask extends javax.swing.JFrame {
 
         btnSave.setText("Save changes");
 
-        txtDescription.setEditable(false);
         txtDescription.setBackground(new java.awt.Color(240, 240, 240));
         txtDescription.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jScrollPane2.setViewportView(txtDescription);
