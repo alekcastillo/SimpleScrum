@@ -120,12 +120,18 @@
         <Property name="text" type="java.lang.String" value="View/Edit task"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditTaskActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnDeleteTask">
       <Properties>
         <Property name="text" type="java.lang.String" value="Delete task"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteTaskActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblInformation">
       <Properties>
@@ -172,6 +178,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Add task"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNewTaskActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnNewTask1">
       <Properties>

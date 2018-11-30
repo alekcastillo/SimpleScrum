@@ -105,9 +105,19 @@ public class ViewBacklog extends javax.swing.JFrame {
 
         btnEditTask.setText("View/Edit task");
         btnEditTask.setEnabled(false);
+        btnEditTask.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditTaskActionPerformed(evt);
+            }
+        });
 
         btnDeleteTask.setText("Delete task");
         btnDeleteTask.setEnabled(false);
+        btnDeleteTask.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteTaskActionPerformed(evt);
+            }
+        });
 
         lblInformation.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblInformation.setText("Backlog");
@@ -133,6 +143,11 @@ public class ViewBacklog extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblTasks);
 
         btnNewTask.setText("Add task");
+        btnNewTask.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewTaskActionPerformed(evt);
+            }
+        });
 
         btnNewTask1.setText("Move task to sprint");
         btnNewTask1.setEnabled(false);
@@ -193,6 +208,27 @@ public class ViewBacklog extends javax.swing.JFrame {
         new ViewProject(backend, project).show();
         dispose();
     }//GEN-LAST:event_btnReturnActionPerformed
+
+    private void btnNewTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewTaskActionPerformed
+        new ViewTask(backend, project, sprint).show();
+        dispose();
+    }//GEN-LAST:event_btnNewTaskActionPerformed
+
+    private void btnEditTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditTaskActionPerformed
+        //new ViewTask(backend, project, sprint, sprint.tasks.get(tblTasks.getSelectedRow() + 1).getObject()).show();
+        dispose();
+    }//GEN-LAST:event_btnEditTaskActionPerformed
+
+    private void btnDeleteTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteTaskActionPerformed
+        int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this task?");
+        
+        if (confirmation == JOptionPane.YES_OPTION) {
+            //sprint.tasks.delete(tblTasks.getSelectedRow() + 1);
+            fillForm();
+            
+            JOptionPane.showMessageDialog(null, "Task deleted succesfully!");
+        }
+    }//GEN-LAST:event_btnDeleteTaskActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
