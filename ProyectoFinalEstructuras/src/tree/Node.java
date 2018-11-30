@@ -5,24 +5,26 @@
  */
 package tree;
 
+import backend.Task;
+
 /**
  *
  * @author alekc
  */
 public class Node {
         
-    private int dato;
+    private Task dato;
     private Node hijoIzq,hijoDer;
 
-    public Node(int dato) {
+    public Node(Task dato) {
         this.dato = dato;
     }
 
-    public int getDato() {
+    public Task getDato() {
         return dato;
     }
 
-    public void setDato(int dato) {
+    public void setDato(Task dato) {
         this.dato = dato;
     }
 
