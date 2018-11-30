@@ -104,10 +104,8 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="btnSave" max="32767" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                              <Component id="lblEdit" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="chkEdit" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="chkEdit" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
+                          <Component id="lblEdit" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="jScrollPane1" min="-2" pref="327" max="-2" attributes="0"/>
@@ -141,11 +139,13 @@
     <Component class="javax.swing.JButton" name="btnEditSprint">
       <Properties>
         <Property name="text" type="java.lang.String" value="View/Edit sprint"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnDeleteSprint">
       <Properties>
         <Property name="text" type="java.lang.String" value="Delete sprint"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblInformation">
@@ -208,6 +208,7 @@
     <Component class="javax.swing.JButton" name="btnNewSprint">
       <Properties>
         <Property name="text" type="java.lang.String" value="Add sprint"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblEdit">
@@ -219,6 +220,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="chkEdit">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkEditActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnSave">
       <Properties>

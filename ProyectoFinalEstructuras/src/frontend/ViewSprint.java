@@ -5,17 +5,21 @@
  */
 package frontend;
 
+import backend.BackEnd;
+
 /**
  *
  * @author alekc
  */
 public class ViewSprint extends javax.swing.JFrame {
+    private BackEnd backend;
 
     /**
      * Creates new form ViewProject
      */
     public ViewSprint() {
         initComponents();
+        this.backend = backend;
     }
 
     /**
@@ -63,8 +67,10 @@ public class ViewSprint extends javax.swing.JFrame {
         btnReturn.setText("Return");
 
         btnEditTask.setText("View/Edit task");
+        btnEditTask.setEnabled(false);
 
         btnDeleteTask.setText("Delete task");
+        btnDeleteTask.setEnabled(false);
 
         lblInformation.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblInformation.setText("Sprint Information");
@@ -96,6 +102,7 @@ public class ViewSprint extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblTasks);
 
         btnNewTask.setText("Add task");
+        btnNewTask.setEnabled(false);
 
         lblEdit.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         lblEdit.setText("Edit");
@@ -132,11 +139,14 @@ public class ViewSprint extends javax.swing.JFrame {
                                 .addComponent(txtTitle))
                             .addComponent(lblTitle)
                             .addComponent(lblDescription))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblTasks))
-                        .addGap(0, 7, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(371, 371, 371)
+                                .addComponent(lblTasks)
+                                .addGap(0, 7, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnReturn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -186,41 +196,6 @@ public class ViewSprint extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewSprint.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewSprint.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewSprint.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewSprint.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ViewSprint().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDeleteTask;

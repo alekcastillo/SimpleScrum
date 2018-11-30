@@ -5,15 +5,17 @@
  */
 package stack;
 
+import backend.Sprint;
+
 /**
  *
  * @author alekc
  */
 public class Node {
-    private Object object;
+    private Sprint object;
     private Node previous;
     
-    public Node(Object object) {
+    public Node(Sprint object) {
         this.object = object;
     }
     
@@ -22,11 +24,11 @@ public class Node {
         //return "Nodo{" + "dato=" + dato + '}';
     //}
     
-    public Object getObject() {
+    public Sprint getObject() {
         return object;
     }
 
-    public void setObject(Object object) {
+    public void setObject(Sprint object) {
         this.object = object;
     }
 

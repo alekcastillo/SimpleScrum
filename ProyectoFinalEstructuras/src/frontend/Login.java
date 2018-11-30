@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;
 import backend.BackEnd;
 
 public class Login extends javax.swing.JFrame {
-    BackEnd backend;
+    private BackEnd backend;
     /**
      * Creates new form Login
      */

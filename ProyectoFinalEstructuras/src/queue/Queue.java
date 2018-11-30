@@ -12,8 +12,17 @@ import queue.Node;
  * @author alekc
  */
 public class Queue {
-
     private Node first, last;
+   
+    public int length() {
+        Node aux = first;
+        int length = 0;
+        while (aux != null) {
+            length++;
+            aux = aux.getPrevious();
+        }
+        return length;
+    }
 
     public void queue(Node node) {
         if (first == null) {
@@ -34,22 +43,6 @@ public class Queue {
         }
 
         return output;
-    }
-    
-    public String[] getUserNames() {
-        String[] output = new String[this.length()];
-        
-        return output;
-    }
-
-    public int length() {
-        Node aux = first;
-        int length = 0;
-        while (aux != null) {
-            length++;
-            aux = aux.getPrevious();
-        }
-        return length;
     }
 
     public Node get(int index) {
@@ -83,5 +76,11 @@ public class Queue {
             previous = aux;
             aux = aux.getPrevious();
         }
+    }
+    
+    public String[] getUserNames() {
+        String[] output = new String[this.length()];
+        
+        return output;
     }
 }
