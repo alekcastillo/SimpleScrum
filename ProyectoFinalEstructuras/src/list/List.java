@@ -77,4 +77,33 @@ public class List {
         return toGet;
     }
 
+    public void delete(int index) {
+        Node aux = head;
+        Node last = null;
+        int length = 0;
+        do {
+            length++;
+            if (index == length) {
+                if (aux == head) {
+                    head = aux.getNext();
+                    ultimo.setNext(aux.getNext());
+                    head.setPrevious(ultimo);
+                } else if (aux == ultimo) {
+                    ultimo = aux.getPrevious();
+                    ultimo.setNext(head);
+                    ultimo.setPrevious(aux.getPrevious().getPrevious());
+                } else {
+                    last.setNext(aux.getNext());
+                    Node temp;
+                    temp = aux.getNext();
+                    temp.setPrevious(last);
+                }
+
+            }
+            last = aux;
+            aux = aux.getNext();
+        } while (aux != head);
+
+    }
+
 }

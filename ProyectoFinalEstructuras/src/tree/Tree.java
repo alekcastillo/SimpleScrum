@@ -1,9 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tree;
+
+import backend.Task;
 
 /**
  *
@@ -11,27 +8,28 @@ package tree;
  */
 public class Tree {
     private Node raiz;
+  
 
-    public void inserta(int num) {
+    public void inserta(Task task) {
         if (raiz == null) {
-            raiz = new Node(num);
+            raiz = new Node(task);
         } else {
-            insertaRec(num, raiz);
+            insertaRec(task, raiz);
         }
     }
 
-    private void insertaRec(int num, Node n) {
-        if (num < n.getDato()) {
+    private void insertaRec(Task task, Node n) {
+        if (task.getPriority() < n.getDato().getPriority()) {
             if (n.getHijoIzq() == null) {
-                n.setHijoIzq(new Node(num));
+                n.setHijoIzq(new Node(task));
             } else {
-                insertaRec(num, n.getHijoIzq());
+                insertaRec(task, n.getHijoIzq());
             }
         } else {
             if (n.getHijoDer() == null) {
-                n.setHijoDer(new Node(num));
+                n.setHijoDer(new Node(task));
             } else {
-                insertaRec(num, n.getHijoDer());
+                insertaRec(task, n.getHijoDer());
             }
         }
 
