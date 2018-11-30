@@ -5,17 +5,37 @@
  */
 package frontend;
 
+import backend.BackEnd;
+import backend.Project;
+
 /**
  *
  * @author alekc
  */
 public class ViewProject extends javax.swing.JFrame {
+    BackEnd backend;
 
     /**
      * Creates new form ViewProject
      */
-    public ViewProject() {
+    public ViewProject(BackEnd backend, Project project) {
         initComponents();
+        this.backend = backend;
+    }
+    
+    public ViewProject(BackEnd backend) {
+        initComponents();
+        this.backend = backend;
+        
+        lblInformation.setText("New project");
+        chkEdit.setSelected(true);
+        chkEdit.setEnabled(false);
+        this.setEditable(true);
+    }
+    
+    public void setEditable(boolean editable) {
+        txtTitle.setEditable(editable);
+        txtDescription.setEditable(editable);
     }
 
     /**
@@ -61,8 +81,10 @@ public class ViewProject extends javax.swing.JFrame {
         btnReturn.setText("Return");
 
         btnEditSprint.setText("View/Edit sprint");
+        btnEditSprint.setEnabled(false);
 
         btnDeleteSprint.setText("Delete sprint");
+        btnDeleteSprint.setEnabled(false);
 
         lblInformation.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblInformation.setText("Project information");
@@ -94,9 +116,16 @@ public class ViewProject extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblSprints);
 
         btnNewSprint.setText("Add sprint");
+        btnNewSprint.setEnabled(false);
 
         lblEdit.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         lblEdit.setText("Edit");
+
+        chkEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkEditActionPerformed(evt);
+            }
+        });
 
         btnSave.setText("Save changes");
         btnSave.setEnabled(false);
@@ -156,9 +185,8 @@ public class ViewProject extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblEdit)
-                                .addComponent(chkEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(chkEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblEdit)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -172,40 +200,10 @@ public class ViewProject extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewProject.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewProject.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewProject.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewProject.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void chkEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkEditActionPerformed
+        this.setEditable(chkEdit.isSelected());
+    }//GEN-LAST:event_chkEditActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ViewProject().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDeleteSprint;

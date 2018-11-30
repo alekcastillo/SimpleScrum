@@ -10,9 +10,19 @@ package stack;
  * @author alekc
  */
 public class Stack {
-
     private Node top;
 
+    public int length() {
+        int length = 0;
+        Node aux = top;
+        
+        while (aux != null) {
+            length++;
+            aux = aux.getPrevious();
+        }
+        
+        return length;
+    }
     public void push(Node node) {
         if (top != null) {
             node.setPrevious(top);
@@ -28,29 +38,15 @@ public class Stack {
             top = output.getPrevious();
             output.setPrevious(null);
         }
-        return output;
-    }
-    
-    public String[] getSprintNames() {
-        String[] output = new String[this.length()];
         
         return output;
     }
-
-    public int length() {
-        Node aux = top;
-        int length = 0;
-        while (aux != null) {
-            length++;
-            aux = aux.getPrevious();
-        }
-        return length;
-    }
-
+    
     public Node get(int index) {
-        Node aux = top;
         Node toGet = null;
+        Node aux = top;
         int length = 0;
+        
         while (aux != null) {
             length++;
             if (index == length) {
@@ -67,6 +63,7 @@ public class Stack {
         Node aux = top;
         Node last =  null;
         int length = 0;
+        
         while (aux != null) {
             length++;
             if (index == length) {
@@ -79,5 +76,20 @@ public class Stack {
 
             aux = aux.getPrevious();
         }
+    }
+    
+    public String[] getSprintNames() {
+        String[] output = new String[this.length()];
+        Node aux = top;
+        int current = 0;
+
+        while (aux != null) {
+            output[current] = aux.getObject().getTitle();
+            
+            current++;
+            aux = aux.getPrevious();
+        }
+        
+        return output;
     }
 }

@@ -9,7 +9,6 @@ import backend.Task;
 public class Tree {
     private Node raiz;
   
-
     public void add(Task task) {
         if (raiz == null) {
             raiz = new Node(task);
@@ -32,7 +31,6 @@ public class Tree {
                 insertaRec(task, n.getHijoDer());
             }
         }
-
     }
 
     private void inOrdenRec(Node n) {
@@ -54,16 +52,13 @@ public class Tree {
             postOrdenRec(n.getHijoIzq());
             postOrdenRec(n.getHijoDer());
             System.out.print(" " + n);
-
         }
-
     }
 
     public void postOrden() {
         if (raiz != null) {
             postOrdenRec(raiz);
         }
-
     }
 
     private void preOrdenRec(Node n) {
@@ -79,12 +74,11 @@ public class Tree {
         if (raiz != null) {
             preOrdenRec(raiz);
         }
-
     }
     
-    public String[] getTaskNames() {
-        String[] output = new String[this.length()];
+    //public String[] getTaskNames() {
+        //String[] output = new String[this.length()];
         
-        return output;
-    }
+        //return output;
+    //}
 }

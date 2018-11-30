@@ -5,28 +5,25 @@
  */
 package queue;
 
+import backend.User;
+
 /**
  *
  * @author alekc
  */
 public class Node {
-    private Object object;
+    private User object;
     private Node previous;
     
-    public Node(Object object) {
+    public Node(User object) {
         this.object = object;
     }
     
-    //@Override
-    //public String toString() {
-        //return "Nodo{" + "dato=" + dato + '}';
-    //}
-    
-    public Object getObject() {
+    public User getObject() {
         return object;
     }
 
-    public void setObject(Object object) {
+    public void setObject(User object) {
         this.object = object;
     }
 
