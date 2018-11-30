@@ -11,7 +11,7 @@ public class Sprint {
     private int id;
     private String title, description;
     private Date startDate, endDate;
-    private Tree tasks;
+    public Tree tasks;
     
     public Sprint(String title, String description) {
         this.title = title;

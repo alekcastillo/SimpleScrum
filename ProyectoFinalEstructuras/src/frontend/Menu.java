@@ -6,6 +6,8 @@
 package frontend;
 
 import backend.BackEnd;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,13 +23,27 @@ public class Menu extends javax.swing.JFrame {
     public Menu(BackEnd backend) {
         initComponents();
         this.backend = backend;
+        
+        tblProjects.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+            public void valueChanged(ListSelectionEvent event) {
+                if (tblProjects.getSelectedRow() > -1) {
+                    enableEditButtons();
+                }
+            }
+        });
+        
         fillForm();
+    }
+    
+    private void enableEditButtons() {
+        btnDeleteProject.setEnabled(true);
+        btnEditProject.setEnabled(true);
     }
     
     private void fillForm() {
         DefaultTableModel model = new DefaultTableModel(
             null,
-            new String [] {"Title", "Sprints"});
+            new String [] {"Title", "Sprints", "Tasks in backlog"});
         
         for (int x = 1; x <= backend.projects.length(); x++) {
             model.addRow(backend.projects.get(x).getObject().getTableRow());
@@ -71,9 +87,19 @@ public class Menu extends javax.swing.JFrame {
 
         btnEditProject.setText("View/Edit project");
         btnEditProject.setEnabled(false);
+        btnEditProject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditProjectActionPerformed(evt);
+            }
+        });
 
         btnDeleteProject.setText("Delete project");
         btnDeleteProject.setEnabled(false);
+        btnDeleteProject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteProjectActionPerformed(evt);
+            }
+        });
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblTitle.setText("Welcome back!");
@@ -159,6 +185,16 @@ public class Menu extends javax.swing.JFrame {
         new ViewProject(this.backend).show();
         dispose();
     }//GEN-LAST:event_btnNewProjectActionPerformed
+
+    private void btnEditProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditProjectActionPerformed
+        new ViewProject(this.backend, this.backend.projects.get(tblProjects.getSelectedRow() + 1).getObject()).show();
+        dispose();
+    }//GEN-LAST:event_btnEditProjectActionPerformed
+
+    private void btnDeleteProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteProjectActionPerformed
+        this.backend.projects.delete(tblProjects.getSelectedRow() + 1);
+        fillForm();
+    }//GEN-LAST:event_btnDeleteProjectActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
