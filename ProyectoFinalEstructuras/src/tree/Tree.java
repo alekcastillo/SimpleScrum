@@ -83,4 +83,10 @@ public class Tree {
         }
 
     }
+    
+    public String[] getTaskNames() {
+        String[] output = new String[this.length()];
+        
+        return output;
+    }
 }

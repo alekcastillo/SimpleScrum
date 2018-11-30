@@ -34,7 +34,7 @@ public class List {
                 } else {
                     Node aux = head;
                     
-                    while (j.getPrecio() > aux.getNext().getObject().getId()) {
+                    while (project.getId() > aux.getNext().getObject().getId()) {
                         aux = aux.getNext();
                     }
                     
@@ -47,7 +47,14 @@ public class List {
 
             }
         }
+        
         ultimo.setNext(head);
         head.setPrevious(ultimo);
+    }
+    
+    public String[] getProjectNames() {
+        String[] output = new String[this.length()];
+        
+        return output;
     }
 }

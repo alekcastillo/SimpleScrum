@@ -29,4 +29,10 @@ public class Stack {
         }
         return output;
     }
+    
+    public String[] getSprintNames() {
+        String[] output = new String[this.length()];
+        
+        return output;
+    }
 }

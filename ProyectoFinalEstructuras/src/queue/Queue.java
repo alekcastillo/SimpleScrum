@@ -35,4 +35,10 @@ public class Queue {
         
         return output;
     }
+    
+    public String[] getUserNames() {
+        String[] output = new String[this.length()];
+        
+        return output;
+    }
 }

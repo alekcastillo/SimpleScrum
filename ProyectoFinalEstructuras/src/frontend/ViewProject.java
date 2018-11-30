@@ -27,32 +27,53 @@ public class ViewProject extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane2 = new javax.swing.JScrollPane();
-        lstSprints = new javax.swing.JList<>();
-        lblSprints = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblTasks = new javax.swing.JTable();
-        lblSprintInfo = new javax.swing.JLabel();
-        lblTasks = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        txtSprintInfo = new javax.swing.JTextArea();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        lblTitle = new javax.swing.JLabel();
         btnReturn = new javax.swing.JButton();
-        btnEditTask = new javax.swing.JButton();
-        btnNewTask = new javax.swing.JButton();
-        btnDeleteTask = new javax.swing.JButton();
-        btnNewSprint = new javax.swing.JButton();
         btnEditSprint = new javax.swing.JButton();
         btnDeleteSprint = new javax.swing.JButton();
+        lblInformation = new javax.swing.JLabel();
+        lblSprints = new javax.swing.JLabel();
+        txtTitle = new javax.swing.JTextField();
+        txtDescription = new javax.swing.JTextField();
+        lblDescription = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblSprints = new javax.swing.JTable();
+        btnNewSprint = new javax.swing.JButton();
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lstSprints.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane2.setViewportView(lstSprints);
+        lblTitle.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        lblTitle.setText("Title");
+
+        btnReturn.setText("Return");
+
+        btnEditSprint.setText("View/Edit sprint");
+
+        btnDeleteSprint.setText("Delete sprint");
+
+        lblInformation.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblInformation.setText("Project information");
 
         lblSprints.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblSprints.setText("Sprints");
 
-        tblTasks.setModel(new javax.swing.table.DefaultTableModel(
+        txtTitle.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+
+        txtDescription.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+
+        lblDescription.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        lblDescription.setText("Description");
+
+        tblSprints.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -63,31 +84,9 @@ public class ViewProject extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tblTasks);
-
-        lblSprintInfo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lblSprintInfo.setText("Sprint information");
-
-        lblTasks.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lblTasks.setText("Tasks");
-
-        txtSprintInfo.setColumns(20);
-        txtSprintInfo.setRows(5);
-        jScrollPane3.setViewportView(txtSprintInfo);
-
-        btnReturn.setText("Return");
-
-        btnEditTask.setText("Edit task");
-
-        btnNewTask.setText("Add task");
-
-        btnDeleteTask.setText("Delete task");
+        jScrollPane1.setViewportView(tblSprints);
 
         btnNewSprint.setText("Add sprint");
-
-        btnEditSprint.setText("Edit sprint");
-
-        btnDeleteSprint.setText("Delete sprint");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -97,73 +96,56 @@ public class ViewProject extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnReturn)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblInformation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblTitle)
+                            .addComponent(txtTitle)
+                            .addComponent(lblDescription)
+                            .addComponent(txtDescription))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblSprints))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lblSprintInfo))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblSprints)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnDeleteSprint)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnEditSprint)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnNewSprint, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 49, Short.MAX_VALUE)
-                                .addComponent(btnDeleteTask)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnEditTask)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnNewTask))
-                            .addComponent(jScrollPane3)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
+                        .addComponent(btnReturn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnDeleteSprint)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEditSprint)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnNewSprint, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(530, Short.MAX_VALUE)
-                    .addComponent(lblTasks)
-                    .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblInformation)
+                    .addComponent(lblSprints))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTitle)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblDescription)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addComponent(txtDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSprints)
-                    .addComponent(lblSprintInfo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnNewTask)
-                            .addComponent(btnEditTask)
-                            .addComponent(btnDeleteTask)
-                            .addComponent(btnNewSprint)
-                            .addComponent(btnEditSprint)
-                            .addComponent(btnDeleteSprint))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(btnReturn)
-                        .addContainerGap())))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(155, 155, 155)
-                    .addComponent(lblTasks)
-                    .addContainerGap(270, Short.MAX_VALUE)))
+                    .addComponent(btnDeleteSprint)
+                    .addComponent(btnEditSprint)
+                    .addComponent(btnNewSprint)
+                    .addComponent(btnReturn))
+                .addContainerGap())
         );
 
         pack();
@@ -206,20 +188,19 @@ public class ViewProject extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDeleteSprint;
-    private javax.swing.JButton btnDeleteTask;
     private javax.swing.JButton btnEditSprint;
-    private javax.swing.JButton btnEditTask;
     private javax.swing.JButton btnNewSprint;
-    private javax.swing.JButton btnNewTask;
     private javax.swing.JButton btnReturn;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JLabel lblSprintInfo;
+    private javax.swing.JLabel lblDescription;
+    private javax.swing.JLabel lblInformation;
     private javax.swing.JLabel lblSprints;
-    private javax.swing.JLabel lblTasks;
-    private javax.swing.JList<String> lstSprints;
-    private javax.swing.JTable tblTasks;
-    private javax.swing.JTextArea txtSprintInfo;
+    private javax.swing.JLabel lblTitle;
+    private javax.swing.JTable tblSprints;
+    private javax.swing.JTextField txtDescription;
+    private javax.swing.JTextField txtTitle;
     // End of variables declaration//GEN-END:variables
 }
