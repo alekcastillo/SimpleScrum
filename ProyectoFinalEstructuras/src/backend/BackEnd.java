@@ -27,6 +27,11 @@ public class BackEnd {
         
     }
     
+    public void addUser(String firstName, String lastName, String email, String password, int type) {
+        User user = new User(firstName, lastName, email, password, type);
+        users.queue(user);
+    }
+    
     public boolean tryLogin(String email, String password) {
         Node found = users.find(email, password);
         
@@ -35,5 +40,11 @@ public class BackEnd {
         }
         
         return found != null;
+    }
+    
+    public boolean trySignUp(String firstName, String lastName, String email, String password) {
+        addUser(firstName, lastName, email, password, 0);
+        
+        return true;
     }
 }

@@ -27,14 +27,14 @@ public class SignUp extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
         btnRegistro = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
-        txtProject = new javax.swing.JTextField();
-        lblProject = new javax.swing.JLabel();
-        txtProject1 = new javax.swing.JTextField();
-        lblProject1 = new javax.swing.JLabel();
-        txtProject2 = new javax.swing.JTextField();
-        lblProject2 = new javax.swing.JLabel();
-        txtProject3 = new javax.swing.JTextField();
-        lblProject3 = new javax.swing.JLabel();
+        txtFirstName = new javax.swing.JTextField();
+        lblFirstName = new javax.swing.JLabel();
+        txtLastName = new javax.swing.JTextField();
+        lblLastName = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
+        lblEmail = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JTextField();
+        lblPassword = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,25 +55,25 @@ public class SignUp extends javax.swing.JFrame {
         lblTitle.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblTitle.setText("Create an account");
 
-        txtProject.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtFirstName.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
-        lblProject.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
-        lblProject.setText("First name");
+        lblFirstName.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        lblFirstName.setText("First name");
 
-        txtProject1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtLastName.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
-        lblProject1.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
-        lblProject1.setText("Last name");
+        lblLastName.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        lblLastName.setText("Last name");
 
-        txtProject2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
-        lblProject2.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
-        lblProject2.setText("Email");
+        lblEmail.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        lblEmail.setText("Email");
 
-        txtProject3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtPassword.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
-        lblProject3.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
-        lblProject3.setText("Password");
+        lblPassword.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        lblPassword.setText("Password");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -91,20 +91,20 @@ public class SignUp extends javax.swing.JFrame {
                             .addComponent(lblTitle)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblProject)
-                                    .addComponent(txtProject, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lblFirstName)
+                                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblProject1)
-                                    .addComponent(txtProject1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(lblLastName)
+                                    .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblProject2)
-                                    .addComponent(txtProject2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lblEmail)
+                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblProject3)
-                                    .addComponent(txtProject3, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(lblPassword)
+                                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -116,23 +116,23 @@ public class SignUp extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblProject)
+                        .addComponent(lblFirstName)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtProject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblProject1)
+                        .addComponent(lblLastName)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtProject1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblProject2)
+                        .addComponent(lblEmail)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtProject2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblProject3)
+                        .addComponent(lblPassword)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtProject3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistro)
@@ -149,28 +149,28 @@ public class SignUp extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActionPerformed
-        //boolean registrado = backend.agregarCliente(txtNombre.getText(), txtCorreo.getText(), txtClave.getText(), txtDireccion.getText(), Integer.parseInt(txtTelefono.getText()));
+        boolean registered = backend.trySignUp(txtFirstName.getText(), txtLastName.getText(), txtEmail.getText(), txtPassword.getText());
                 
-        //if (registrado) {
-            //JOptionPane.showMessageDialog(null, "Registrado correctamente!");
-            //new Login(backend).show();
-            //dispose();
-        // else
-            //JOptionPane.showMessageDialog(null, "Algunos campos estan incorrectos!");
+        if (registered) {
+            JOptionPane.showMessageDialog(null, "Account created sucessfully!");
+            new Login(backend).show();
+            dispose();
+        } else
+            JOptionPane.showMessageDialog(null, "Please, fill all the fields!");
     }//GEN-LAST:event_btnRegistroActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnRegistro;
-    private javax.swing.JLabel lblProject;
-    private javax.swing.JLabel lblProject1;
-    private javax.swing.JLabel lblProject2;
-    private javax.swing.JLabel lblProject3;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblFirstName;
+    private javax.swing.JLabel lblLastName;
+    private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JTextField txtProject;
-    private javax.swing.JTextField txtProject1;
-    private javax.swing.JTextField txtProject2;
-    private javax.swing.JTextField txtProject3;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtFirstName;
+    private javax.swing.JTextField txtLastName;
+    private javax.swing.JTextField txtPassword;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,8 @@
  */
 package stack;
 
+import backend.Sprint;
+
 /**
  *
  * @author alekc
@@ -23,7 +25,9 @@ public class Stack {
         
         return length;
     }
-    public void push(Node node) {
+    public void push(Sprint sprint) {
+        Node node = new Node(sprint);
+        
         if (top != null) {
             node.setPrevious(top);
         }

@@ -5,6 +5,7 @@
  */
 package queue;
 
+import backend.User;
 import queue.Node;
 
 /**
@@ -28,7 +29,9 @@ public class Queue {
         return length;
     }
 
-    public void queue(Node node) {
+    public void queue(User user) {
+        Node node = new Node(user);
+        
         if (first == null) {
             first = node;
         } else {
