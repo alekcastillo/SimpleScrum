@@ -148,12 +148,18 @@
         <Property name="text" type="java.lang.String" value="View/Edit sprint"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditSprintActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnDeleteSprint">
       <Properties>
         <Property name="text" type="java.lang.String" value="Delete sprint"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteSprintActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblInformation">
       <Properties>
@@ -217,6 +223,9 @@
         <Property name="text" type="java.lang.String" value="Add sprint"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNewSprintActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnSave">
       <Properties>

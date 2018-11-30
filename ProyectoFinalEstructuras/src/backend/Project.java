@@ -10,7 +10,7 @@ public class Project {
     private int id;
     private String title, description;
     private Sprint backlog;
-    private Stack sprints;
+    public Stack sprints;
     
     public Project(String title, String description) {
         this.title = title;
@@ -18,8 +18,14 @@ public class Project {
         this.backlog = new Sprint("Backlog", title + "'s backlog");
         this.sprints = new Stack();
     }
+    
+    public Sprint addSprint(String title, String description) {
+        Sprint sprint = new Sprint(title, description);
+        sprints.push(sprint);
+        return sprint;
+    }
 
-    public void addTask(Task userStory) {
+    public void addBacklogTask(Task userStory) {
         backlog.addTask(userStory);
     }
     

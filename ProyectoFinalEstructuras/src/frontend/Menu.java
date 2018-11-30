@@ -6,6 +6,7 @@
 package frontend;
 
 import backend.BackEnd;
+import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
@@ -24,14 +25,6 @@ public class Menu extends javax.swing.JFrame {
         initComponents();
         this.backend = backend;
         
-        tblProjects.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
-            public void valueChanged(ListSelectionEvent event) {
-                if (tblProjects.getSelectedRow() > -1) {
-                    enableEditButtons();
-                }
-            }
-        });
-        
         fillForm();
     }
     
@@ -41,6 +34,14 @@ public class Menu extends javax.swing.JFrame {
     }
     
     private void fillForm() {
+        tblProjects.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+            public void valueChanged(ListSelectionEvent event) {
+                if (tblProjects.getSelectedRow() > -1) {
+                    enableEditButtons();
+                }
+            }
+        });
+        
         DefaultTableModel model = new DefaultTableModel(
             null,
             new String [] {"Title", "Sprints", "Tasks in backlog"});
@@ -192,8 +193,14 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditProjectActionPerformed
 
     private void btnDeleteProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteProjectActionPerformed
-        this.backend.projects.delete(tblProjects.getSelectedRow() + 1);
-        fillForm();
+        int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this project?");
+        
+        if (confirmation == JOptionPane.YES_OPTION) {
+            this.backend.projects.delete(tblProjects.getSelectedRow() + 1);
+            fillForm();
+            
+            JOptionPane.showMessageDialog(null, "Project deleted succesfully!");
+        }
     }//GEN-LAST:event_btnDeleteProjectActionPerformed
 
 

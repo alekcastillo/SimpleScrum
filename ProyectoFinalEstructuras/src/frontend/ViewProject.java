@@ -8,6 +8,9 @@ package frontend;
 import backend.BackEnd;
 import backend.Project;
 import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,12 +23,6 @@ public class ViewProject extends javax.swing.JFrame {
     /**
      * Creates new form ViewProject
      */
-    public ViewProject(BackEnd backend, Project project) {
-        initComponents();
-        this.backend = backend;
-        this.project = project;
-        fillForm();
-    }
     
     public ViewProject(BackEnd backend) {
         initComponents();
@@ -34,19 +31,53 @@ public class ViewProject extends javax.swing.JFrame {
         lblInformation.setText("New project");
         setEditable(true);
         btnDiscard.setEnabled(false);
+        
+        fillForm();
     }
     
-    public void saveProject() {
+    public ViewProject(BackEnd backend, Project project) {
+        initComponents();
+        this.backend = backend;
+        this.project = project;
+        
+        fillForm();
+    }
+    
+    private void enableEditButtons() {
+        btnDeleteSprint.setEnabled(true);
+        btnEditSprint.setEnabled(true);
+    }
+    
+    private void saveProject() {
         project.setTitle(txtTitle.getText());
         project.setDescription(txtDescription.getText());
     }
     
-    public void fillForm() {
-        txtTitle.setText(project.getTitle());
-        txtDescription.setText(project.getDescription());
+    private void fillForm() {
+        tblSprints.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+            public void valueChanged(ListSelectionEvent event) {
+                if (tblSprints.getSelectedRow() > -1) {
+                    enableEditButtons();
+                }
+            }
+        });
+        
+        DefaultTableModel model = new DefaultTableModel(
+            null,
+            new String [] {"Title", "Start date", "End date"});
+        
+        if (project != null) {
+            for (int x = 1; x <= project.sprints.length(); x++) {
+                model.addRow(project.sprints.get(x).getObject().getTableRow());
+            }
+            
+            txtTitle.setText(project.getTitle());
+            txtDescription.setText(project.getDescription());
+            btnNewSprint.setEnabled(true);
+        }
     }
     
-    public void setEditable(boolean editable) {
+    private void setEditable(boolean editable) {
         txtTitle.setEditable(editable);
         txtDescription.setEditable(editable);
         btnEdit.setEnabled(!editable);
@@ -103,9 +134,19 @@ public class ViewProject extends javax.swing.JFrame {
 
         btnEditSprint.setText("View/Edit sprint");
         btnEditSprint.setEnabled(false);
+        btnEditSprint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditSprintActionPerformed(evt);
+            }
+        });
 
         btnDeleteSprint.setText("Delete sprint");
         btnDeleteSprint.setEnabled(false);
+        btnDeleteSprint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteSprintActionPerformed(evt);
+            }
+        });
 
         lblInformation.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblInformation.setText("Project information");
@@ -138,6 +179,11 @@ public class ViewProject extends javax.swing.JFrame {
 
         btnNewSprint.setText("Add sprint");
         btnNewSprint.setEnabled(false);
+        btnNewSprint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewSprintActionPerformed(evt);
+            }
+        });
 
         btnSave.setText("Save");
         btnSave.setEnabled(false);
@@ -239,26 +285,56 @@ public class ViewProject extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnDiscardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiscardActionPerformed
-        fillForm();
-        setEditable(false);
+        int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to discard your changes to this project?");
+        
+        if (confirmation == JOptionPane.YES_OPTION) {
+            fillForm();
+            setEditable(false);
+        }
     }//GEN-LAST:event_btnDiscardActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        if (project != null) {
-            saveProject();
-        } else {
-            project = backend.addProject(txtTitle.getText(), txtDescription.getText());
+        int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to save this project?");
+        
+        if (confirmation == JOptionPane.YES_OPTION) {
+            if (project != null) {
+                saveProject();
+            } else {
+                project = backend.addProject(txtTitle.getText(), txtDescription.getText());
+            }
+
+            JOptionPane.showMessageDialog(null, "Project saved succesfully!");
+
+            fillForm();
+            setEditable(false);
         }
-        
-        JOptionPane.showMessageDialog(null, "Project save succesfully!");
-        
-        setEditable(false);
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
         new Menu(backend).show();
         dispose();
     }//GEN-LAST:event_btnReturnActionPerformed
+
+    private void btnNewSprintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewSprintActionPerformed
+        new ViewSprint(backend, project).show();
+        dispose();
+    }//GEN-LAST:event_btnNewSprintActionPerformed
+
+    private void btnEditSprintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditSprintActionPerformed
+        new ViewSprint(backend, project, project.sprints.get(tblSprints.getSelectedRow() + 1).getObject()).show();
+        dispose();
+    }//GEN-LAST:event_btnEditSprintActionPerformed
+
+    private void btnDeleteSprintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteSprintActionPerformed
+        int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this sprint?");
+        
+        if (confirmation == JOptionPane.YES_OPTION) {
+            project.sprints.delete(tblSprints.getSelectedRow() + 1);
+            fillForm();
+            
+            JOptionPane.showMessageDialog(null, "Sprint deleted succesfully!");
+        }
+    }//GEN-LAST:event_btnDeleteSprintActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

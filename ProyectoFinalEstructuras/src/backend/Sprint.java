@@ -1,5 +1,6 @@
 package backend;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import tree.Tree;
 
@@ -25,8 +26,17 @@ public class Sprint {
         this.endDate = endDate;
     }
     
+    public static String dateToString(Date date) {
+        return new SimpleDateFormat("dd-mm-yyyy").format(date);  
+    }
+    
     public void addTask(Task task) {
         tasks.add(task);
+    }
+    
+    public String[] getTableRow() {
+        String[] output = {title, dateToString(startDate), dateToString(endDate)}; //String.valueOf(backlog.tasks.length())};
+        return output;
     }
     
     //Setters & Getters
