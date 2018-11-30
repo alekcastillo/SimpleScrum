@@ -6,6 +6,7 @@
 package frontend;
 
 import backend.BackEnd;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,6 +21,19 @@ public class Menu extends javax.swing.JFrame {
     public Menu(BackEnd backend) {
         initComponents();
         this.backend = backend;
+        fillForm();
+    }
+    
+    private void fillForm() {
+        DefaultTableModel model = new DefaultTableModel(
+            null,
+            new String [] {"Title", "Sprints"});
+        
+        for (int x = 1; x <= backend.projects.length(); x++) {
+            model.addRow(backend.projects.get(x).getObject().getTableRow());
+        }
+        
+        tblProjects.setModel(model);
     }
 
     /**
@@ -82,6 +96,7 @@ public class Menu extends javax.swing.JFrame {
 
             }
         ));
+        tblProjects.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(tblProjects);
 
         btnNewProject.setText("Add project");

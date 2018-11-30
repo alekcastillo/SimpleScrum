@@ -73,10 +73,12 @@ public class List {
         Node aux = head;
         int length = 0;
         
-        do {
-            length++;
-            aux = aux.getNext();
-        } while (aux != head);
+        if (aux != null) {
+            do {
+                length++;
+                aux = aux.getNext();
+            } while (aux != head);
+        }
         
         return length;
     }
@@ -123,6 +125,5 @@ public class List {
             last = aux;
             aux = aux.getNext();
         } while (aux != head);
-
     }
 }

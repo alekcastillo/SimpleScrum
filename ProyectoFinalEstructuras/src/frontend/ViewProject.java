@@ -7,6 +7,7 @@ package frontend;
 
 import backend.BackEnd;
 import backend.Project;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,6 +15,7 @@ import backend.Project;
  */
 public class ViewProject extends javax.swing.JFrame {
     private BackEnd backend;
+    private Project project;
 
     /**
      * Creates new form ViewProject
@@ -21,7 +23,8 @@ public class ViewProject extends javax.swing.JFrame {
     public ViewProject(BackEnd backend, Project project) {
         initComponents();
         this.backend = backend;
-        this.fillForm(project);
+        this.project = project;
+        fillForm();
     }
     
     public ViewProject(BackEnd backend) {
@@ -29,12 +32,16 @@ public class ViewProject extends javax.swing.JFrame {
         this.backend = backend;
         
         lblInformation.setText("New project");
-        chkEdit.setSelected(true);
-        chkEdit.setEnabled(false);
-        this.setEditable(true);
+        setEditable(true);
+        btnDiscard.setEnabled(false);
     }
     
-    public void fillForm(Project project) {
+    public void saveProject() {
+        project.setTitle(txtTitle.getText());
+        project.setDescription(txtDescription.getText());
+    }
+    
+    public void fillForm() {
         txtTitle.setText(project.getTitle());
         txtDescription.setText(project.getDescription());
     }
@@ -42,6 +49,9 @@ public class ViewProject extends javax.swing.JFrame {
     public void setEditable(boolean editable) {
         txtTitle.setEditable(editable);
         txtDescription.setEditable(editable);
+        btnEdit.setEnabled(!editable);
+        btnSave.setEnabled(editable);
+        btnDiscard.setEnabled(editable);
     }
 
     /**
@@ -68,9 +78,9 @@ public class ViewProject extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSprints = new javax.swing.JTable();
         btnNewSprint = new javax.swing.JButton();
-        lblEdit = new javax.swing.JLabel();
-        chkEdit = new javax.swing.JCheckBox();
         btnSave = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
+        btnDiscard = new javax.swing.JButton();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -85,6 +95,11 @@ public class ViewProject extends javax.swing.JFrame {
         lblTitle.setText("Title");
 
         btnReturn.setText("Return");
+        btnReturn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReturnActionPerformed(evt);
+            }
+        });
 
         btnEditSprint.setText("View/Edit sprint");
         btnEditSprint.setEnabled(false);
@@ -124,17 +139,28 @@ public class ViewProject extends javax.swing.JFrame {
         btnNewSprint.setText("Add sprint");
         btnNewSprint.setEnabled(false);
 
-        lblEdit.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
-        lblEdit.setText("Edit");
-
-        chkEdit.addActionListener(new java.awt.event.ActionListener() {
+        btnSave.setText("Save");
+        btnSave.setEnabled(false);
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkEditActionPerformed(evt);
+                btnSaveActionPerformed(evt);
             }
         });
 
-        btnSave.setText("Save changes");
-        btnSave.setEnabled(false);
+        btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
+
+        btnDiscard.setText("Discard");
+        btnDiscard.setEnabled(false);
+        btnDiscard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDiscardActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -144,23 +170,25 @@ public class ViewProject extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblInformation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblTitle)
                             .addComponent(txtTitle)
-                            .addComponent(lblDescription)
                             .addComponent(txtDescription)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(7, 7, 7)
+                                .addComponent(btnDiscard)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnSave))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblEdit)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(chkEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblTitle)
+                                    .addComponent(lblDescription))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblSprints))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(lblSprints)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnReturn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -189,10 +217,10 @@ public class ViewProject extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(chkEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblEdit)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnDiscard, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -206,24 +234,46 @@ public class ViewProject extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void chkEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkEditActionPerformed
-        this.setEditable(chkEdit.isSelected());
-    }//GEN-LAST:event_chkEditActionPerformed
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        setEditable(true);
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnDiscardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiscardActionPerformed
+        fillForm();
+        setEditable(false);
+    }//GEN-LAST:event_btnDiscardActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        if (project != null) {
+            saveProject();
+        } else {
+            project = backend.addProject(txtTitle.getText(), txtDescription.getText());
+        }
+        
+        JOptionPane.showMessageDialog(null, "Project save succesfully!");
+        
+        setEditable(false);
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
+        new Menu(backend).show();
+        dispose();
+    }//GEN-LAST:event_btnReturnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDeleteSprint;
+    private javax.swing.JButton btnDiscard;
+    private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnEditSprint;
     private javax.swing.JButton btnNewSprint;
     private javax.swing.JButton btnReturn;
     private javax.swing.JButton btnSave;
-    private javax.swing.JCheckBox chkEdit;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDescription;
-    private javax.swing.JLabel lblEdit;
     private javax.swing.JLabel lblInformation;
     private javax.swing.JLabel lblSprints;
     private javax.swing.JLabel lblTitle;

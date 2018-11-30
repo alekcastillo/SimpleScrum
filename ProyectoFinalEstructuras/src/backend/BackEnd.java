@@ -23,13 +23,16 @@ public class BackEnd {
         projects = new List();
     }
     
-    public void addProject() {
-        
+    public Project addProject(String title, String description) {
+        Project project = new Project(title, description);
+        projects.insert(project);
+        return project;
     }
     
-    public void addUser(String firstName, String lastName, String email, String password, int type) {
+    public User addUser(String firstName, String lastName, String email, String password, int type) {
         User user = new User(firstName, lastName, email, password, type);
         users.queue(user);
+        return user;
     }
     
     public boolean tryLogin(String email, String password) {
