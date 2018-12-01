@@ -86,6 +86,11 @@ public class Menu extends javax.swing.JFrame {
         setResizable(false);
 
         btnExit.setText("Exit");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
 
         btnEditProject.setText("View/Edit project");
         btnEditProject.setEnabled(false);
@@ -205,6 +210,11 @@ public class Menu extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Project deleted succesfully!");
         }
     }//GEN-LAST:event_btnDeleteProjectActionPerformed
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        JOptionPane.showMessageDialog(null, "Thanks for using Agiler!");
+        dispose();
+    }//GEN-LAST:event_btnExitActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

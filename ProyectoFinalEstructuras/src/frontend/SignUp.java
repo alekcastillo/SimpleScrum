@@ -24,8 +24,8 @@ public class SignUp extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnCancelar = new javax.swing.JButton();
-        btnRegistro = new javax.swing.JButton();
+        btnReturn = new javax.swing.JButton();
+        btnSignUp = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
         txtFirstName = new javax.swing.JTextField();
         lblFirstName = new javax.swing.JLabel();
@@ -39,17 +39,17 @@ public class SignUp extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        btnCancelar.setText("Cancelar");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+        btnReturn.setText("Return");
+        btnReturn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
+                btnReturnActionPerformed(evt);
             }
         });
 
-        btnRegistro.setText("Registrarse");
-        btnRegistro.addActionListener(new java.awt.event.ActionListener() {
+        btnSignUp.setText("Create account");
+        btnSignUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistroActionPerformed(evt);
+                btnSignUpActionPerformed(evt);
             }
         });
 
@@ -88,9 +88,9 @@ public class SignUp extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnCancelar)
+                        .addComponent(btnReturn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnRegistro))
+                        .addComponent(btnSignUp))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTitle)
@@ -140,20 +140,20 @@ public class SignUp extends javax.swing.JFrame {
                         .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegistro)
-                    .addComponent(btnCancelar))
+                    .addComponent(btnSignUp)
+                    .addComponent(btnReturn))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+    private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
         new Login(backend).show();
         dispose();
-    }//GEN-LAST:event_btnCancelarActionPerformed
+    }//GEN-LAST:event_btnReturnActionPerformed
 
-    private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActionPerformed
+    private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
         boolean registered = backend.trySignUp(txtFirstName.getText(), txtLastName.getText(), txtEmail.getText(), txtPassword.getText());
                 
         if (registered) {
@@ -162,12 +162,12 @@ public class SignUp extends javax.swing.JFrame {
             dispose();
         } else
             JOptionPane.showMessageDialog(null, "Please, fill all the fields!");
-    }//GEN-LAST:event_btnRegistroActionPerformed
+    }//GEN-LAST:event_btnSignUpActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnRegistro;
+    private javax.swing.JButton btnReturn;
+    private javax.swing.JButton btnSignUp;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblFirstName;
     private javax.swing.JLabel lblLastName;
