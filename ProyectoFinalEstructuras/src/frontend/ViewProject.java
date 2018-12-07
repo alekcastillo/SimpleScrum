@@ -17,69 +17,69 @@ import javax.swing.table.DefaultTableModel;
  * @author alekc
  */
 public class ViewProject extends javax.swing.JFrame {
+
     private BackEnd backend;
     private Project project;
 
     /**
      * Creates new form ViewProject
      */
-    
     public ViewProject(BackEnd backend) {
         initComponents();
         this.backend = backend;
-        
+
         lblInformation.setText("New project");
         setEditable(true);
         btnDiscard.setEnabled(false);
-        
+
         fillForm();
     }
-    
+
     public ViewProject(BackEnd backend, Project project) {
         initComponents();
         this.backend = backend;
         this.project = project;
-        
+
         fillForm();
     }
-    
+
     private void enableEditButtons() {
         btnDeleteSprint.setEnabled(true);
         btnEditSprint.setEnabled(true);
     }
-    
+
     private void saveProject() {
         project.setTitle(txtTitle.getText());
         project.setDescription(txtDescription.getText());
     }
-    
+
     private void fillForm() {
-        tblSprints.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+        tblSprints.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent event) {
                 if (tblSprints.getSelectedRow() > -1) {
                     enableEditButtons();
                 }
             }
         });
-        
+
         DefaultTableModel model = new DefaultTableModel(
-            null,
-            new String [] {"Title", "Start date", "End date"});
-        
+                null,
+                new String[]{"Title", "Start date", "End date"});
+
         if (project != null) {
             for (int x = 1; x <= project.sprints.length(); x++) {
                 model.addRow(project.sprints.get(x).getObject().getTableRow());
             }
-            
+
             txtTitle.setText(project.getTitle());
             txtDescription.setText(project.getDescription());
             btnNewSprint.setEnabled(true);
             btnBacklog.setEnabled(true);
         }
-        
+
         tblSprints.setModel(model);
     }
-    
+
     private void setEditable(boolean editable) {
         txtTitle.setEditable(editable);
         txtDescription.setEditable(editable);
@@ -302,7 +302,7 @@ public class ViewProject extends javax.swing.JFrame {
 
     private void btnDiscardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiscardActionPerformed
         int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to discard your changes to this project?");
-        
+
         if (confirmation == JOptionPane.YES_OPTION) {
             fillForm();
             setEditable(false);
@@ -310,19 +310,22 @@ public class ViewProject extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDiscardActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to save this project?");
-        
-        if (confirmation == JOptionPane.YES_OPTION) {
-            if (project != null) {
-                saveProject();
-            } else {
-                project = backend.addProject(txtTitle.getText(), txtDescription.getText());
+        if (txtTitle.getText() != null && txtDescription.getText() != null) {
+            int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to save this project?");
+            if (confirmation == JOptionPane.YES_OPTION) {
+                if (project != null) {
+                    saveProject();
+                } else {
+                    project = backend.addProject(txtTitle.getText(), txtDescription.getText());
+                }
+
+                JOptionPane.showMessageDialog(null, "Project saved succesfully!");
+
+                fillForm();
+                setEditable(false);
             }
-
-            JOptionPane.showMessageDialog(null, "Project saved succesfully!");
-
-            fillForm();
-            setEditable(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please fill all the fields!");
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -343,11 +346,11 @@ public class ViewProject extends javax.swing.JFrame {
 
     private void btnDeleteSprintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteSprintActionPerformed
         int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this sprint?");
-        
+
         if (confirmation == JOptionPane.YES_OPTION) {
             project.sprints.delete(tblSprints.getSelectedRow() + 1);
             fillForm();
-            
+
             JOptionPane.showMessageDialog(null, "Sprint deleted succesfully!");
         }
     }//GEN-LAST:event_btnDeleteSprintActionPerformed

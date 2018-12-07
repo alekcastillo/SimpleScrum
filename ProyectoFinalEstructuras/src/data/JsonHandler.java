@@ -25,7 +25,7 @@ public class JsonHandler {
 
     public void save(Queue queue) {
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\jorer\\Desktop\\users.json"));
+            BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\jorer\\Desktop\\Proyecto Final\\proyecto_estructuras\\users.json"));
             this.gson.toJson(queue, writer);
             writer.close();
         } catch (IOException ex) {
@@ -49,7 +49,7 @@ public class JsonHandler {
         BufferedReader bufferedReader;
         Queue json = null;
         try {
-            bufferedReader = new BufferedReader(new FileReader("C:\\Users\\jorer\\Desktop\\users.json"));
+            bufferedReader = new BufferedReader(new FileReader("C:\\Users\\jorer\\Desktop\\Proyecto Final\\proyecto_estructuras\\users.json"));
             json = gson.fromJson(bufferedReader, Queue.class);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(JsonHandler.class.getName()).log(Level.SEVERE, null, ex);

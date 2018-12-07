@@ -4,12 +4,12 @@ import javax.swing.JOptionPane;
 import backend.BackEnd;
 
 public class SignUp extends javax.swing.JFrame {
+
     private BackEnd backend;
 
     /**
      * Creates new form Registro
      */
-    
     public SignUp(BackEnd backend) {
         initComponents();
         this.backend = backend;
@@ -154,14 +154,21 @@ public class SignUp extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReturnActionPerformed
 
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
-        boolean registered = backend.trySignUp(txtFirstName.getText(), txtLastName.getText(), txtEmail.getText(), txtPassword.getText());
-                
-        if (registered) {
-            JOptionPane.showMessageDialog(null, "Account created sucessfully!");
-            new Login(backend).show();
-            dispose();
-        } else
-            JOptionPane.showMessageDialog(null, "Please, fill all the fields!");
+        if (txtEmail.getText().contains("@") && txtFirstName.getText() != txtLastName.getText()) {
+            boolean registered = backend.trySignUp(txtFirstName.getText(), txtLastName.getText(), txtEmail.getText(), txtPassword.getText());
+            if (registered) {
+                JOptionPane.showMessageDialog(null, "Account created sucessfully!");
+                new Login(backend).show();
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Please, fill all the fields!");
+            }
+        } else {
+             JOptionPane.showMessageDialog(null, "Por favor ingrese un correo valido");
+        
+        }
+
+
     }//GEN-LAST:event_btnSignUpActionPerformed
 
 

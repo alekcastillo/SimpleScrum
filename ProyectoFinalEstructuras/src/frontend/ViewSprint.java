@@ -18,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
  * @author alekc
  */
 public class ViewSprint extends javax.swing.JFrame {
+
     private BackEnd backend;
     private Project project;
     private Sprint sprint;
@@ -25,28 +26,27 @@ public class ViewSprint extends javax.swing.JFrame {
     /**
      * Creates new form ViewProject
      */
-    
     public ViewSprint(BackEnd backend, Project project) {
         initComponents();
         this.backend = backend;
         this.project = project;
-        
+
         lblInformation.setText("New sprint");
         setEditable(true);
         btnDiscard.setEnabled(false);
-        
+
         fillForm();
     }
-        
+
     public ViewSprint(BackEnd backend, Project project, Sprint sprint) {
         initComponents();
         this.backend = backend;
         this.project = project;
         this.sprint = sprint;
-        
+
         fillForm();
     }
-    
+
     private void enableEditButtons() {
         btnDeleteTask.setEnabled(true);
         btnEditTask.setEnabled(true);
@@ -58,27 +58,27 @@ public class ViewSprint extends javax.swing.JFrame {
         sprint.setStartDate(dateStart.getDate());
         sprint.setEndDate(dateEnd.getDate());
     }
-    
+
     private void fillForm() {
         txtProject.setText(project.getTitle());
-        
-        tblTasks.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+
+        tblTasks.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent event) {
                 if (tblTasks.getSelectedRow() > -1) {
                     enableEditButtons();
                 }
             }
         });
-        
+
         DefaultTableModel model = new DefaultTableModel(
-            null,
-            new String [] {"Title", "Priority", "Status"});
-        
+                null,
+                new String[]{"Title", "Priority", "Status"});
+
         if (sprint != null) {
             //for (int x = 1; x <= sprint.tasks.length(); x++) {
-                //model.addRow(sprint.tasks.get(x).getObject().getTableRow());
+            //model.addRow(sprint.tasks.get(x).getObject().getTableRow());
             //}
-            
+
             txtTitle.setText(sprint.getTitle());
             txtDescription.setText(sprint.getDescription());
             btnNewTask.setEnabled(true);
@@ -86,7 +86,7 @@ public class ViewSprint extends javax.swing.JFrame {
             dateEnd.setDate(sprint.getEndDate());
         }
     }
-    
+
     private void setEditable(boolean editable) {
         txtTitle.setEditable(editable);
         txtDescription.setEditable(editable);
@@ -96,7 +96,7 @@ public class ViewSprint extends javax.swing.JFrame {
         dateStart.setEnabled(editable);
         dateEnd.setEnabled(editable);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -347,19 +347,23 @@ public class ViewSprint extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to save this sprint?");
+        if (txtTitle.getText() != null && txtDescription.getText() != null && dateStart.getDate() != null && dateEnd.getDate() != null) {
+            int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to save this sprint?");
 
-        if (confirmation == JOptionPane.YES_OPTION) {
-            if (sprint != null) {
-                saveSprint();
-            } else {
-                sprint = project.addSprint(txtTitle.getText(), txtDescription.getText(), dateStart.getDate(), dateEnd.getDate());
+            if (confirmation == JOptionPane.YES_OPTION) {
+                if (sprint != null) {
+                    saveSprint();
+                } else {
+                    sprint = project.addSprint(txtTitle.getText(), txtDescription.getText(), dateStart.getDate(), dateEnd.getDate());
+                }
+
+                JOptionPane.showMessageDialog(null, "Sprint saved succesfully!");
+
+                fillForm();
+                setEditable(false);
             }
-
-            JOptionPane.showMessageDialog(null, "Sprint saved succesfully!");
-            
-            fillForm();
-            setEditable(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please fill all the fields!");
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -393,11 +397,11 @@ public class ViewSprint extends javax.swing.JFrame {
 
     private void btnDeleteTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteTaskActionPerformed
         int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this task?");
-        
+
         if (confirmation == JOptionPane.YES_OPTION) {
             //sprint.tasks.delete(tblTasks.getSelectedRow() + 1);
             fillForm();
-            
+
             JOptionPane.showMessageDialog(null, "Task deleted succesfully!");
         }
     }//GEN-LAST:event_btnDeleteTaskActionPerformed
