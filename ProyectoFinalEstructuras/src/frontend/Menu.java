@@ -204,7 +204,7 @@ public class Menu extends javax.swing.JFrame {
         int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this project?");
         
         if (confirmation == JOptionPane.YES_OPTION) {
-            this.backend.projects.delete(tblProjects.getSelectedRow() + 1);
+            this.backend.projects.delete(1);
             fillForm();
             
             JOptionPane.showMessageDialog(null, "Project deleted succesfully!");

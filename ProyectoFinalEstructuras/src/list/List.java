@@ -34,7 +34,7 @@ public class List {
                     ultimo = ultimo.getNext();
                 } else {
                     Node aux = head;
-                    
+
                     while (project.getId() > aux.getNext().getObject().getId()) {
                         aux = aux.getNext();
                     }
@@ -48,38 +48,38 @@ public class List {
 
             }
         }
-        
+
         ultimo.setNext(head);
         head.setPrevious(ultimo);
     }
-    
+
     public String[] getProjectNames() {
         Node aux = head;
         String[] output = new String[this.length()];
         int current = 0;
-        
+
         do {
             current++;
-            
+
             output[current] = aux.getObject().getTitle();
-            
+
             aux = aux.getNext();
         } while (aux != head);
-        
+
         return output;
     }
-    
+
     public int length() {
         Node aux = head;
         int length = 0;
-        
+
         if (aux != null) {
             do {
                 length++;
                 aux = aux.getNext();
             } while (aux != head);
         }
-        
+
         return length;
     }
 
@@ -87,7 +87,7 @@ public class List {
         Node aux = head;
         Node toGet = null;
         int length = 0;
-        
+
         do {
             length++;
             if (index == length) {
@@ -98,7 +98,7 @@ public class List {
 
         return toGet;
     }
-    
+
     public void delete(int index) {
         Node aux = head;
         Node last = null;

@@ -310,7 +310,10 @@ public class ViewProject extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDiscardActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        if (txtTitle.getText() != null && txtDescription.getText() != null) {
+        if (txtTitle.getText().isEmpty() && txtDescription.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please fill all the fields!");
+        } else {
+
             int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to save this project?");
             if (confirmation == JOptionPane.YES_OPTION) {
                 if (project != null) {
@@ -324,8 +327,6 @@ public class ViewProject extends javax.swing.JFrame {
                 fillForm();
                 setEditable(false);
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Please fill all the fields!");
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 

@@ -347,7 +347,10 @@ public class ViewSprint extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        if (txtTitle.getText() != null && txtDescription.getText() != null && dateStart.getDate() != null && dateEnd.getDate() != null) {
+        if (txtTitle.getText().isEmpty() && txtDescription.getText().isEmpty() && dateStart.getDate() == null && dateEnd.getDate() == null) {
+            JOptionPane.showMessageDialog(null, "Please fill all the fields!");
+        } else {
+
             int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to save this sprint?");
 
             if (confirmation == JOptionPane.YES_OPTION) {
@@ -362,8 +365,6 @@ public class ViewSprint extends javax.swing.JFrame {
                 fillForm();
                 setEditable(false);
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Please fill all the fields!");
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 
