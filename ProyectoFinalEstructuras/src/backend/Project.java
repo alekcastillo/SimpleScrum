@@ -1,5 +1,6 @@
 package backend;
 
+import java.util.Date;
 import stack.Stack;
 
 /**
@@ -9,7 +10,7 @@ import stack.Stack;
 public class Project {
     private int id;
     private String title, description;
-    private Sprint backlog;
+    public Sprint backlog;
     public Stack sprints;
     
     public Project(String title, String description) {
@@ -19,8 +20,8 @@ public class Project {
         this.sprints = new Stack();
     }
     
-    public Sprint addSprint(String title, String description) {
-        Sprint sprint = new Sprint(title, description);
+    public Sprint addSprint(String title, String description, Date startDate, Date endDate) {
+        Sprint sprint = new Sprint(title, description, startDate, endDate);
         sprints.push(sprint);
         return sprint;
     }

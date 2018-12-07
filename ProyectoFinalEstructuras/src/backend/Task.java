@@ -10,11 +10,12 @@ package backend;
  * @author alekc
  */
 public class Task {
-    private int id, status, priority;
-    private String title, description;
+    private int id, priority;
+    private String title, description ,status;
     private User assignee;
     
-    public Task(int status, int priority, String title, String description) {
+    public Task(int id,String status, int priority, String title, String description) {
+        this.id = id;
         this.status = status;
         this.priority = priority;
         this.title = title;
@@ -27,11 +28,16 @@ public class Task {
         return id;
     }
     
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    @Override
+    public String toString() {
+        return "Task{" + "id=" + id + ", priority=" + priority + ", title=" + title + ", description=" + description + ", status=" + status + ", assignee=" + assignee + '}';
+    }
+
+    public void setStatus(String status) {
         this.status = status;
     }
 

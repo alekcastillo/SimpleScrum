@@ -4,12 +4,12 @@ import javax.swing.JOptionPane;
 import backend.BackEnd;
 
 public class Login extends javax.swing.JFrame {
+
     private BackEnd backend;
-    
+
     /**
      * Creates new form Login
      */
-    
     public Login(BackEnd backend) {
         initComponents();
         this.backend = backend;
@@ -53,6 +53,7 @@ public class Login extends javax.swing.JFrame {
         lblTitle.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblTitle.setText("Agiler");
 
+        txtEmail.setBackground(new java.awt.Color(240, 240, 240));
         txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
         lblEmail.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
@@ -61,6 +62,7 @@ public class Login extends javax.swing.JFrame {
         lblPassword.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         lblPassword.setText("Password");
 
+        txtPassword.setBackground(new java.awt.Color(240, 240, 240));
         txtPassword.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -110,13 +112,14 @@ public class Login extends javax.swing.JFrame {
 
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
         boolean loggedIn = backend.tryLogin(txtEmail.getText(), txtPassword.getText());
-        
+
         if (loggedIn) {
             JOptionPane.showMessageDialog(null, "Login successful. Welcome back!");
             new Menu(backend).show();
             dispose();
-        } else
+        } else {
             JOptionPane.showMessageDialog(null, "The email and/or password are incorrect!");
+        }
     }//GEN-LAST:event_btnSignInActionPerformed
 
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
@@ -144,12 +147,13 @@ public class Login extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         //</editor-fold>
 
         /* Create and display the form */
-        BackEnd backend = new BackEnd();
         
+        BackEnd backend = new BackEnd();
+
         java.awt.EventQueue.invokeLater(() -> {
             new Login(backend).setVisible(true);
         });

@@ -7,9 +7,9 @@ import backend.Task;
  * @author alekc
  */
 public class Tree {
+
     private Node raiz;
-    private int length = 0;
-  
+
     public void add(Task task) {
         if (raiz == null) {
             raiz = new Node(task);
@@ -19,7 +19,7 @@ public class Tree {
     }
 
     private void insertaRec(Task task, Node n) {
-        if (task.getPriority() < n.getDato().getPriority()) {
+        if (task.getId() < n.getDato().getId()) {
             if (n.getHijoIzq() == null) {
                 n.setHijoIzq(new Node(task));
             } else {
@@ -36,7 +36,6 @@ public class Tree {
 
     private void inOrdenRec(Node n) {
         if (n != null) {
-            this.length++;
             inOrdenRec(n.getHijoIzq());
             System.out.print(" " + n);
             inOrdenRec(n.getHijoDer());
@@ -49,38 +48,22 @@ public class Tree {
         }
     }
 
-    private void postOrdenRec(Node n) {
-        if (n != null) {
-            postOrdenRec(n.getHijoIzq());
-            postOrdenRec(n.getHijoDer());
-            System.out.print(" " + n);
-        }
+    public Node get(int id) {
+        return search(raiz, id);
     }
 
-    public void postOrden() {
-        if (raiz != null) {
-            postOrdenRec(raiz);
-        }
-    }
+    private Node search(Node root, int key) {
+        Node currentNode = root;
+        while (currentNode != null) {
+            if (currentNode.getDato().getId() == key) {
+                return currentNode;
+            } else if (key < currentNode.getDato().getId()) {
+                currentNode = currentNode.getHijoIzq();
+            } else {
+                currentNode = currentNode.getHijoDer();
+            }
 
-    private void preOrdenRec(Node n) {
-        if (n != null) {
-            System.out.print(" " + n);
-            preOrdenRec(n.getHijoIzq());
-            preOrdenRec(n.getHijoDer());
-
         }
+        return currentNode;
     }
-
-    public void preOrden() {
-        if (raiz != null) {
-            preOrdenRec(raiz);
-        }
-    }
- 
-    //public String[] getTaskNames() {
-        //String[] output = new String[this.length()];
-        
-        //return output;
-    //}
 }
