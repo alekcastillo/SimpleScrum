@@ -52,7 +52,7 @@ public class ViewTask extends javax.swing.JFrame {
         task.setTitle(txtTitle.getText());
         task.setDescription(txtDescription.getText());
         //task.setPriority(txtPriority.getText());
-        //task.setStatus(txtStatus.getText());
+        task.setStatus(cboxStatus.getSelectedItem().toString());
     }
     
     private void fillForm() {
@@ -132,12 +132,19 @@ public class ViewTask extends javax.swing.JFrame {
         lblStatus.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         lblStatus.setText("Status");
 
+        cboxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Done", "Wip", "Spike" }));
+
         lblAsignee.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         lblAsignee.setText("Asignee");
 
         btnReturn.setText("Return");
 
         btnSave.setText("Save changes");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
         txtDescription.setBackground(new java.awt.Color(240, 240, 240));
         txtDescription.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -226,6 +233,10 @@ public class ViewTask extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        
+    }//GEN-LAST:event_btnSaveActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
