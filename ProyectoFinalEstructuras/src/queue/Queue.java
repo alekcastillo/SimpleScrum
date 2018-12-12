@@ -32,6 +32,8 @@ public class Queue {
     public void queue(User user) {
         Node node = new Node(user);
         
+        user.setId(length());
+        
         if (first == null) {
             first = node;
         } else {
@@ -92,6 +94,14 @@ public class Queue {
     
     public String[] getUserNames() {
         String[] output = new String[this.length()];
+        Node aux = first;
+        int index = 0;
+        
+        while (aux != null) {
+            output[index] = aux.getObject().getName();
+            aux = aux.getPrevious();
+            index++;
+        }
         
         return output;
     }

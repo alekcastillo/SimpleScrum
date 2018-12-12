@@ -9,6 +9,7 @@ import backend.BackEnd;
 import backend.Project;
 import backend.Sprint;
 import backend.Task;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -42,29 +43,35 @@ public class ViewTask extends javax.swing.JFrame {
         this.sprint = sprint;
         this.task = task;
         
-        lblInformation.setText("New task");
-        btnDiscard.setEnabled(false);
-        
         fillForm();
     }
     
     private void saveTask() {
         task.setTitle(txtTitle.getText());
         task.setDescription(txtDescription.getText());
-        //task.setPriority(txtPriority.getText());
-        task.setStatus(cboxStatus.getSelectedItem().toString());
+        task.setPriority(Integer.parseInt(txtPriority.getText()));
+        task.setStatus(cboxStatus.getSelectedIndex());
+        task.setAssignee(backend.users.get(cboxAsignee.getSelectedIndex()).getObject());
     }
     
     private void fillForm() {
         txtProject.setText(project.getTitle());
         txtSprint.setText(sprint.getTitle());
+        
+        for (String status : Task.getStatuses()) {
+            cboxStatus.addItem(status);
+        }
+        
+        for (String user : backend.users.getUserNames()) {
+            cboxAsignee.addItem(user);
+        }
             
         if (task != null) {
             txtTitle.setText(task.getTitle());
             txtDescription.setText(task.getDescription());
-            //txtPriority.setText(task.getPriority());
-            //txtStatus.setText(task.getStatus());
-            //fill asignees cbox
+            txtPriority.setText(String.valueOf(task.getPriority()));
+            cboxStatus.setSelectedIndex(task.getStatus());
+            cboxAsignee.setSelectedIndex(task.getAssignee().getId());
         }
     }
 
@@ -132,12 +139,15 @@ public class ViewTask extends javax.swing.JFrame {
         lblStatus.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         lblStatus.setText("Status");
 
-        cboxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Done", "Wip", "Spike" }));
-
         lblAsignee.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         lblAsignee.setText("Asignee");
 
         btnReturn.setText("Return");
+        btnReturn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReturnActionPerformed(evt);
+            }
+        });
 
         btnSave.setText("Save changes");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -151,6 +161,11 @@ public class ViewTask extends javax.swing.JFrame {
         jScrollPane2.setViewportView(txtDescription);
 
         btnDiscard.setText("Discard changes");
+        btnDiscard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDiscardActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -235,8 +250,36 @@ public class ViewTask extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        
+        if (txtTitle.getText().isEmpty() || txtDescription.getText().isEmpty() || txtPriority.getText().isEmpty() || cboxStatus.getSelectedIndex() == -1 || cboxAssignee.getSelectedIndex() == -1) {
+            JOptionPane.showMessageDialog(null, "Please fill all the fields!");
+        } else {
+            int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to save this task?");
+
+            if (confirmation == JOptionPane.YES_OPTION) {
+                if (task != null) {
+                    saveTask();
+                } else {
+                    task = sprint.addTask(txtTitle.getText(), txtDescription.getText(), dateStart.getDate(), dateEnd.getDate());
+                }
+
+                JOptionPane.showMessageDialog(null, "Task saved succesfully!");
+
+                fillForm();
+            }
+        }
     }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnReturnActionPerformed
+
+    private void btnDiscardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiscardActionPerformed
+        int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to discard your changes to this task?");
+
+        if (confirmation == JOptionPane.YES_OPTION) {
+            fillForm();
+        }
+    }//GEN-LAST:event_btnDiscardActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

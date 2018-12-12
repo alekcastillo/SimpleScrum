@@ -18,14 +18,13 @@ import queue.Queue;
  * @author alekc
  */
 public class BackEnd {
-
     public Queue users = new Queue();
     public List projects = new List();
     private User currentUser;
     private final JsonHandler datahelper = new JsonHandler();
 
     public BackEnd() {
-        users = this.datahelper.readUsers();
+        //users = this.datahelper.readUsers();
 //        projects = this.datahelper.readProjects();
     }
 
@@ -53,7 +52,7 @@ public class BackEnd {
 
     public boolean trySignUp(String firstName, String lastName, String email, String password) {
         addUser(firstName, lastName, email, password, 0);
-        this.datahelper.save(users);
+        //this.datahelper.save(users);
 
         return true;
     }

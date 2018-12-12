@@ -10,8 +10,8 @@ package backend;
  * @author alekc
  */
 public class User {
-    String name, lastname, email, password;
-    int type;
+    private String name, lastname, email, password;
+    private int id, type;
     
     public User(String name, String lastname, String email, String password, int type) {
         this.name = name;
@@ -23,6 +23,14 @@ public class User {
     
     //Setters & Getters
 
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    public int getId() {
+        return id;
+    }
+    
     public String getName() {
         return name;
     }

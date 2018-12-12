@@ -10,16 +10,21 @@ package backend;
  * @author alekc
  */
 public class Task {
-    private int id, priority;
-    private String title, description ,status;
+    private int id, priority, status;
+    private String title, description;
     private User assignee;
+    private static final String[] statuses = {"Defined", "In-Progress", "Completed", "Accepted"};
     
-    public Task(int id,String status, int priority, String title, String description) {
+    public Task(int id, int status, int priority, String title, String description) {
         this.id = id;
         this.status = status;
         this.priority = priority;
         this.title = title;
         this.description = description;
+    }
+    
+    public static String[] getStatuses() {
+        return statuses;
     }
     
     //Setters & Getters
@@ -28,7 +33,7 @@ public class Task {
         return id;
     }
     
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
@@ -37,7 +42,7 @@ public class Task {
         return "Task{" + "id=" + id + ", priority=" + priority + ", title=" + title + ", description=" + description + ", status=" + status + ", assignee=" + assignee + '}';
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
