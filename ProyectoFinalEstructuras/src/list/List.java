@@ -88,7 +88,6 @@ public class List {
         Node last = null;
         int length = 0;
         do {
-            length++;
             if (index == length) {
                 if (aux == head) {
                     head = aux.getNext();
@@ -104,8 +103,9 @@ public class List {
                     temp = aux.getNext();
                     temp.setPrevious(last);
                 }
-
             }
+            
+            length++;
             last = aux;
             aux = aux.getNext();
         } while (aux != head);
