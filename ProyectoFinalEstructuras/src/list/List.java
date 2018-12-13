@@ -16,6 +16,7 @@ public class List {
 
     public void insert(Project project) {
         Node toInsert = new Node(project);
+        project.setId(length());
 
         if (head == null) {
             head = toInsert;

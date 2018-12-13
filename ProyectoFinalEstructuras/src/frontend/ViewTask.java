@@ -31,7 +31,6 @@ public class ViewTask extends javax.swing.JFrame {
         this.sprint = sprint;
         
         lblInformation.setText("New task");
-        btnDiscard.setEnabled(false);
         
         fillForm();
     }
@@ -72,7 +71,14 @@ public class ViewTask extends javax.swing.JFrame {
             txtPriority.setText(String.valueOf(task.getPriority()));
             cboxStatus.setSelectedIndex(task.getStatus());
             cboxAssignee.setSelectedIndex(task.getAssignee().getId());
+            
+            setEditable(true);
         }
+    }
+    
+    private void setEditable(boolean editable) {
+        cboxStatus.setEnabled(editable);
+        btnDiscard.setEnabled(editable);
     }
 
     /**
@@ -163,6 +169,7 @@ public class ViewTask extends javax.swing.JFrame {
         jScrollPane2.setViewportView(txtDescription);
 
         btnDiscard.setText("Discard changes");
+        btnDiscard.setEnabled(false);
         btnDiscard.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDiscardActionPerformed(evt);

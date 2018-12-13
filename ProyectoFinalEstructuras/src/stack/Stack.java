@@ -28,6 +28,7 @@ public class Stack {
     
     public void push(Sprint sprint) {
         Node node = new Node(sprint);
+        sprint.setId(length());
         
         if (top != null) {
             node.setPrevious(top);

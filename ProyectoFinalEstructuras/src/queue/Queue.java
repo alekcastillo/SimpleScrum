@@ -31,7 +31,6 @@ public class Queue {
 
     public void queue(User user) {
         Node node = new Node(user);
-        
         user.setId(length());
         
         if (first == null) {
