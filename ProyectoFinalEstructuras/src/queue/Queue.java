@@ -61,10 +61,11 @@ public class Queue {
         int length = 0;
         
         while (aux != null) {
-            length++;
             if (length == index) {
                 toGet = aux;
             }
+            
+            length++;
             aux = aux.getPrevious();
         }
         

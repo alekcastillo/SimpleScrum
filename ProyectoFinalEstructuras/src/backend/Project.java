@@ -25,10 +25,6 @@ public class Project {
         sprints.push(sprint);
         return sprint;
     }
-
-    public void addBacklogTask(Task userStory) {
-        backlog.addTask(userStory);
-    }
     
     public String[] getTableRow() {
         String[] output = {title, String.valueOf(sprints.length()), "0"}; //String.valueOf(backlog.tasks.length())};

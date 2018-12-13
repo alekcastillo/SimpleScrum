@@ -7,63 +7,67 @@ import backend.Task;
  * @author alekc
  */
 public class Tree {
-
-    private Node raiz;
+    private Node root;
+    private int length = 0;
 
     public void add(Task task) {
-        if (raiz == null) {
-            raiz = new Node(task);
+        if (root == null) {
+            root = new Node(task);
         } else {
-            insertaRec(task, raiz);
+            insertaRec(task, root);
         }
+        
+        task.setId(length);
+        length++;
+    }
+    
+    public int length() {
+        return length;
     }
 
     private void insertaRec(Task task, Node n) {
-        if (task.getId() < n.getDato().getId()) {
-            if (n.getHijoIzq() == null) {
-                n.setHijoIzq(new Node(task));
+        if (task.getId() < n.getObject().getId()) {
+            if (n.getLeftChild() == null) {
+                n.setLeftChild(new Node(task));
             } else {
-                insertaRec(task, n.getHijoIzq());
+                insertaRec(task, n.getLeftChild());
             }
         } else {
-            if (n.getHijoDer() == null) {
-                n.setHijoDer(new Node(task));
+            if (n.getRightChild() == null) {
+                n.setRightChild(new Node(task));
             } else {
-                insertaRec(task, n.getHijoDer());
+                insertaRec(task, n.getRightChild());
             }
         }
     }
 
     private void inOrdenRec(Node n) {
         if (n != null) {
-            inOrdenRec(n.getHijoIzq());
+            inOrdenRec(n.getLeftChild());
             System.out.print(" " + n);
-            inOrdenRec(n.getHijoDer());
+            inOrdenRec(n.getRightChild());
         }
     }
 
     public void inOrden() {
-        if (raiz != null) {
-            inOrdenRec(raiz);
+        if (root != null) {
+            inOrdenRec(root);
         }
     }
 
     public Node get(int id) {
-        return search(raiz, id);
-    }
-
-    private Node search(Node root, int key) {
         Node currentNode = root;
+        
         while (currentNode != null) {
-            if (currentNode.getDato().getId() == key) {
+            if (currentNode.getObject().getId() == id) {
                 return currentNode;
-            } else if (key < currentNode.getDato().getId()) {
-                currentNode = currentNode.getHijoIzq();
+            } else if (id < currentNode.getObject().getId()) {
+                currentNode = currentNode.getLeftChild();
             } else {
-                currentNode = currentNode.getHijoDer();
+                currentNode = currentNode.getRightChild();
             }
-
         }
+        
         return currentNode;
     }
 }

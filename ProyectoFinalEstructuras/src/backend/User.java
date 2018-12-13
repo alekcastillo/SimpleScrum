@@ -50,6 +50,4 @@ public class User {
     public int getType() {
         return type;
     }
-    
-    
 }

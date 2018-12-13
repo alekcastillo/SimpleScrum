@@ -17,6 +17,7 @@ public class Sprint {
     public Sprint(String title, String description) {
         this.title = title;
         this.description = description;
+        this.tasks = new Tree();
     }
     
     public Sprint(String title, String description, Date startDate, Date endDate) {
@@ -24,14 +25,17 @@ public class Sprint {
         this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.tasks = new Tree();
     }
     
     public static String dateToString(Date date) {
         return new SimpleDateFormat("dd-mm-yyyy").format(date);  
     }
     
-    public void addTask(Task task) {
+    public Task addTask(int status, int priority, String title, String description, User assignee) {
+        Task task = new Task(status, priority, title, description, assignee);
         tasks.add(task);
+        return task;
     }
     
     public String[] getTableRow() {

@@ -47,7 +47,7 @@ public class ViewSprint extends javax.swing.JFrame {
     }
 
     private void enableEditButtons() {
-        btnDeleteTask.setEnabled(true);
+        btnArchiveTask.setEnabled(true);
         btnEditTask.setEnabled(true);
     }
 
@@ -71,12 +71,12 @@ public class ViewSprint extends javax.swing.JFrame {
 
         DefaultTableModel model = new DefaultTableModel(
                 null,
-                new String[]{"Title", "Priority", "Status"});
+                new String[]{"Title", "Priority", "Status", "Assignee"});
 
         if (sprint != null) {
-            //for (int x = 1; x <= sprint.tasks.length(); x++) {
-            //model.addRow(sprint.tasks.get(x).getObject().getTableRow());
-            //}
+            for (int x = 0; x < sprint.tasks.length(); x++) {
+                model.addRow(sprint.tasks.get(x).getObject().getTableRow());
+            }
 
             txtTitle.setText(sprint.getTitle());
             txtDescription.setText(sprint.getDescription());
@@ -84,6 +84,8 @@ public class ViewSprint extends javax.swing.JFrame {
             dateStart.setDate(sprint.getStartDate());
             dateEnd.setDate(sprint.getEndDate());
         }
+        
+        tblTasks.setModel(model);
     }
 
     private void setEditable(boolean editable) {
@@ -111,7 +113,7 @@ public class ViewSprint extends javax.swing.JFrame {
         lblProject = new javax.swing.JLabel();
         btnReturn = new javax.swing.JButton();
         btnEditTask = new javax.swing.JButton();
-        btnDeleteTask = new javax.swing.JButton();
+        btnArchiveTask = new javax.swing.JButton();
         lblInformation = new javax.swing.JLabel();
         lblTasks = new javax.swing.JLabel();
         txtProject = new javax.swing.JTextField();
@@ -158,11 +160,11 @@ public class ViewSprint extends javax.swing.JFrame {
             }
         });
 
-        btnDeleteTask.setText("Delete task");
-        btnDeleteTask.setEnabled(false);
-        btnDeleteTask.addActionListener(new java.awt.event.ActionListener() {
+        btnArchiveTask.setText("Send to backlog");
+        btnArchiveTask.setEnabled(false);
+        btnArchiveTask.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteTaskActionPerformed(evt);
+                btnArchiveTaskActionPerformed(evt);
             }
         });
 
@@ -257,7 +259,7 @@ public class ViewSprint extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnReturn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnDeleteTask)
+                        .addComponent(btnArchiveTask)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEditTask)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -335,7 +337,7 @@ public class ViewSprint extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDeleteTask)
+                    .addComponent(btnArchiveTask)
                     .addComponent(btnEditTask)
                     .addComponent(btnNewTask)
                     .addComponent(btnReturn))
@@ -390,11 +392,11 @@ public class ViewSprint extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNewTaskActionPerformed
 
     private void btnEditTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditTaskActionPerformed
-        //new ViewTask(backend, project, sprint, sprint.tasks.get(tblTasks.getSelectedRow() + 1).getObject()).show();
+        new ViewTask(backend, project, sprint, sprint.tasks.get(tblTasks.getSelectedRow()).getObject()).show();
         dispose();
     }//GEN-LAST:event_btnEditTaskActionPerformed
 
-    private void btnDeleteTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteTaskActionPerformed
+    private void btnArchiveTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArchiveTaskActionPerformed
         int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this task?");
 
         if (confirmation == JOptionPane.YES_OPTION) {
@@ -403,11 +405,11 @@ public class ViewSprint extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(null, "Task deleted succesfully!");
         }
-    }//GEN-LAST:event_btnDeleteTaskActionPerformed
+    }//GEN-LAST:event_btnArchiveTaskActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDeleteTask;
+    private javax.swing.JButton btnArchiveTask;
     private javax.swing.JButton btnDiscard;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnEditTask;

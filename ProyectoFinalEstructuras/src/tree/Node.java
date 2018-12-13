@@ -12,40 +12,34 @@ import backend.Task;
  * @author alekc
  */
 public class Node {
-        
-    private Task dato;
-    private Node hijoIzq,hijoDer;
+    private Task object;
+    private Node leftChild, rightChild;
 
-    public Node(Task dato) {
-        this.dato = dato;
+    public Node(Task object) {
+        this.object = object;
     }
 
-    public Task getDato() {
-        return dato;
+    public Task getObject() {
+        return object;
     }
 
-    public void setDato(Task dato) {
-        this.dato = dato;
+    public void setObject(Task object) {
+        this.object = object;
     }
 
-    public Node getHijoIzq() {
-        return hijoIzq;
+    public Node getLeftChild() {
+        return leftChild;
     }
 
-    public void setHijoIzq(Node hijoIzq) {
-        this.hijoIzq = hijoIzq;
+    public void setLeftChild(Node leftChild) {
+        this.leftChild = leftChild;
     }
 
-    public Node getHijoDer() {
-        return hijoDer;
+    public Node getRightChild() {
+        return rightChild;
     }
 
-    public void setHijoDer(Node hijoDer) {
-        this.hijoDer = hijoDer;
-    }
-
-    @Override
-    public String toString() {
-        return " " + dato;
+    public void setRightChild(Node rightChild) {
+        this.rightChild = rightChild;
     }
 }

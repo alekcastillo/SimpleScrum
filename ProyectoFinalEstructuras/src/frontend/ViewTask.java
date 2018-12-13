@@ -51,7 +51,7 @@ public class ViewTask extends javax.swing.JFrame {
         task.setDescription(txtDescription.getText());
         task.setPriority(Integer.parseInt(txtPriority.getText()));
         task.setStatus(cboxStatus.getSelectedIndex());
-        task.setAssignee(backend.users.get(cboxAsignee.getSelectedIndex()).getObject());
+        task.setAssignee(backend.users.get(cboxAssignee.getSelectedIndex()).getObject());
     }
     
     private void fillForm() {
@@ -63,7 +63,7 @@ public class ViewTask extends javax.swing.JFrame {
         }
         
         for (String user : backend.users.getUserNames()) {
-            cboxAsignee.addItem(user);
+            cboxAssignee.addItem(user);
         }
             
         if (task != null) {
@@ -71,7 +71,7 @@ public class ViewTask extends javax.swing.JFrame {
             txtDescription.setText(task.getDescription());
             txtPriority.setText(String.valueOf(task.getPriority()));
             cboxStatus.setSelectedIndex(task.getStatus());
-            cboxAsignee.setSelectedIndex(task.getAssignee().getId());
+            cboxAssignee.setSelectedIndex(task.getAssignee().getId());
         }
     }
 
@@ -96,8 +96,8 @@ public class ViewTask extends javax.swing.JFrame {
         txtPriority = new javax.swing.JTextField();
         lblStatus = new javax.swing.JLabel();
         cboxStatus = new javax.swing.JComboBox<>();
-        lblAsignee = new javax.swing.JLabel();
-        cboxAsignee = new javax.swing.JComboBox<>();
+        lblAssignee = new javax.swing.JLabel();
+        cboxAssignee = new javax.swing.JComboBox<>();
         btnReturn = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -139,8 +139,10 @@ public class ViewTask extends javax.swing.JFrame {
         lblStatus.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         lblStatus.setText("Status");
 
-        lblAsignee.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
-        lblAsignee.setText("Asignee");
+        cboxStatus.setEnabled(false);
+
+        lblAssignee.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        lblAssignee.setText("Assignee");
 
         btnReturn.setText("Return");
         btnReturn.addActionListener(new java.awt.event.ActionListener() {
@@ -193,14 +195,14 @@ public class ViewTask extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtPriority)
                             .addComponent(cboxStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cboxAsignee, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtSprint)
+                            .addComponent(cboxAssignee, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblSprint)
                                     .addComponent(lblPriority)
                                     .addComponent(lblStatus)
-                                    .addComponent(lblAsignee))
+                                    .addComponent(lblAssignee))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
@@ -226,18 +228,19 @@ public class ViewTask extends javax.swing.JFrame {
                     .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPriority, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDescription)
-                    .addComponent(lblStatus))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(cboxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblAsignee)
+                        .addComponent(lblDescription)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cboxAsignee, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblAssignee)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cboxAssignee, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblStatus)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cboxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnReturn)
@@ -259,7 +262,7 @@ public class ViewTask extends javax.swing.JFrame {
                 if (task != null) {
                     saveTask();
                 } else {
-                    task = sprint.addTask(txtTitle.getText(), txtDescription.getText(), dateStart.getDate(), dateEnd.getDate());
+                    task = sprint.addTask(cboxStatus.getSelectedIndex(), Integer.valueOf(txtPriority.getText()), txtTitle.getText(), txtDescription.getText(), backend.users.get(cboxAssignee.getSelectedIndex()).getObject());
                 }
 
                 JOptionPane.showMessageDialog(null, "Task saved succesfully!");
@@ -270,6 +273,7 @@ public class ViewTask extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
+        new ViewSprint(backend, project, sprint).show();
         dispose();
     }//GEN-LAST:event_btnReturnActionPerformed
 
@@ -286,10 +290,10 @@ public class ViewTask extends javax.swing.JFrame {
     private javax.swing.JButton btnDiscard;
     private javax.swing.JButton btnReturn;
     private javax.swing.JButton btnSave;
-    private javax.swing.JComboBox<String> cboxAsignee;
+    private javax.swing.JComboBox<String> cboxAssignee;
     private javax.swing.JComboBox<String> cboxStatus;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel lblAsignee;
+    private javax.swing.JLabel lblAssignee;
     private javax.swing.JLabel lblDescription;
     private javax.swing.JLabel lblInformation;
     private javax.swing.JLabel lblPriority;

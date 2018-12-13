@@ -53,13 +53,12 @@ public class Stack {
         int length = 0;
         
         while (aux != null) {
-            length++;
-            
             if (index == length) {
                 toGet = aux;
                 break;
             }
-
+            
+            length++;
             aux = aux.getPrevious();
         }
         
@@ -83,20 +82,5 @@ public class Stack {
 
             aux = aux.getPrevious();
         }
-    }
-    
-    public String[] getSprintNames() {
-        String[] output = new String[this.length()];
-        Node aux = top;
-        int current = 0;
-
-        while (aux != null) {
-            output[current] = aux.getObject().getTitle();
-            
-            current++;
-            aux = aux.getPrevious();
-        }
-        
-        return output;
     }
 }

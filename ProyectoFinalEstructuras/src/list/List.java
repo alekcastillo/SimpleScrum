@@ -12,15 +12,14 @@ import backend.Project;
  * @author alekc
  */
 public class List {
-
-    private Node head, ultimo;
+    private Node head, last;
 
     public void insert(Project project) {
         Node toInsert = new Node(project);
 
         if (head == null) {
             head = toInsert;
-            ultimo = head;
+            last = head;
         } else {
             if (project.getId() <= head.getObject().getId()) {
                 head.setPrevious(toInsert);
@@ -28,10 +27,10 @@ public class List {
                 head = head.getPrevious();
 
             } else {
-                if (project.getId() >= ultimo.getObject().getId()) {
-                    ultimo.setNext(toInsert);
-                    ultimo.getNext().setPrevious(ultimo);
-                    ultimo = ultimo.getNext();
+                if (project.getId() >= last.getObject().getId()) {
+                    last.setNext(toInsert);
+                    last.getNext().setPrevious(last);
+                    last = last.getNext();
                 } else {
                     Node aux = head;
 
@@ -49,24 +48,8 @@ public class List {
             }
         }
 
-        ultimo.setNext(head);
-        head.setPrevious(ultimo);
-    }
-
-    public String[] getProjectNames() {
-        Node aux = head;
-        String[] output = new String[this.length()];
-        int current = 0;
-
-        do {
-            current++;
-
-            output[current] = aux.getObject().getTitle();
-
-            aux = aux.getNext();
-        } while (aux != head);
-
-        return output;
+        last.setNext(head);
+        head.setPrevious(last);
     }
 
     public int length() {
@@ -108,12 +91,12 @@ public class List {
             if (index == length) {
                 if (aux == head) {
                     head = aux.getNext();
-                    ultimo.setNext(aux.getNext());
-                    head.setPrevious(ultimo);
-                } else if (aux == ultimo) {
-                    ultimo = aux.getPrevious();
-                    ultimo.setNext(head);
-                    ultimo.setPrevious(aux.getPrevious().getPrevious());
+                    last.setNext(aux.getNext());
+                    head.setPrevious(last);
+                } else if (aux == last) {
+                    last = aux.getPrevious();
+                    last.setNext(head);
+                    last.setPrevious(aux.getPrevious().getPrevious());
                 } else {
                     last.setNext(aux.getNext());
                     Node temp;

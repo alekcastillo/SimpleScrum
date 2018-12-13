@@ -50,7 +50,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="btnReturn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="btnDeleteTask" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnArchiveTask" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnEditTask" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -150,7 +150,7 @@
               </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnDeleteTask" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnArchiveTask" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnEditTask" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnNewTask" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnReturn" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -186,13 +186,13 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditTaskActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnDeleteTask">
+    <Component class="javax.swing.JButton" name="btnArchiveTask">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Delete task"/>
+        <Property name="text" type="java.lang.String" value="Send to backlog"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteTaskActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnArchiveTaskActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblInformation">

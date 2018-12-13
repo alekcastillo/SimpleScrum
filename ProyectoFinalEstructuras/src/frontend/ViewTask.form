@@ -47,14 +47,14 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="txtPriority" max="32767" attributes="0"/>
                           <Component id="cboxStatus" max="32767" attributes="0"/>
-                          <Component id="cboxAsignee" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtSprint" alignment="0" max="32767" attributes="0"/>
+                          <Component id="cboxAssignee" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblSprint" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblPriority" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblStatus" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblAsignee" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblAssignee" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
@@ -91,20 +91,21 @@
                   <Component id="txtPriority" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblDescription" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblStatus" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="cboxStatus" min="-2" pref="36" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="lblAsignee" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="lblDescription" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="cboxAsignee" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" min="-2" pref="130" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jScrollPane2" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="lblAssignee" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="cboxAssignee" min="-2" pref="36" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lblStatus" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="cboxStatus" min="-2" pref="36" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -215,20 +216,21 @@
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="0"/>
         </Property>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblAsignee">
+    <Component class="javax.swing.JLabel" name="lblAssignee">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI Light" size="24" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Asignee"/>
+        <Property name="text" type="java.lang.String" value="Assignee"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="cboxAsignee">
+    <Component class="javax.swing.JComboBox" name="cboxAssignee">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="0"/>

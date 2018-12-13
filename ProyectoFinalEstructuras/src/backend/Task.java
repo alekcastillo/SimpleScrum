@@ -13,21 +13,30 @@ public class Task {
     private int id, priority, status;
     private String title, description;
     private User assignee;
-    private static final String[] statuses = {"Defined", "In-Progress", "Completed", "Accepted"};
+    private static final String[] statuses = {"Defined", "In-Progress", "Completed", "Accepted", "Cancelled"};
     
-    public Task(int id, int status, int priority, String title, String description) {
-        this.id = id;
+    public Task(int status, int priority, String title, String description, User assignee) {
         this.status = status;
         this.priority = priority;
         this.title = title;
         this.description = description;
+        this.assignee = assignee;
     }
     
     public static String[] getStatuses() {
         return statuses;
     }
     
+    public String[] getTableRow() {
+        String[] output = {title, String.valueOf(priority), statuses[status], assignee.getName()}; //String.valueOf(backlog.tasks.length())};
+        return output;
+    }
+    
     //Setters & Getters
+    
+    public void setId(int id) {
+        this.id = id;
+    }
     
     public int getId() {
         return id;
@@ -35,11 +44,6 @@ public class Task {
     
     public int getStatus() {
         return status;
-    }
-
-    @Override
-    public String toString() {
-        return "Task{" + "id=" + id + ", priority=" + priority + ", title=" + title + ", description=" + description + ", status=" + status + ", assignee=" + assignee + '}';
     }
 
     public void setStatus(int status) {

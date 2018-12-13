@@ -67,7 +67,7 @@ public class ViewProject extends javax.swing.JFrame {
                 new String[]{"Title", "Start date", "End date"});
 
         if (project != null) {
-            for (int x = 1; x <= project.sprints.length(); x++) {
+            for (int x = 0; x < project.sprints.length(); x++) {
                 model.addRow(project.sprints.get(x).getObject().getTableRow());
             }
 
