@@ -15,6 +15,26 @@ public class SignUp extends javax.swing.JFrame {
         this.backend = backend;
     }
 
+    private boolean checkFields() {
+        boolean output = true;
+        
+        if (txtFirstName.getText().isEmpty() || txtLastName.getText().isEmpty() || txtEmail.getText().isEmpty() || txtPassword.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please fill all the fields!");
+            output = false;
+        } else if (!txtEmail.getText().contains("@")) {
+            JOptionPane.showMessageDialog(null, "Please enter a valid email!");
+            output = false;
+        } else if (!backend.users.emailAvailable(txtEmail.getText())) {
+            JOptionPane.showMessageDialog(null, "This email address is already linked to an account!");
+            output = false;
+        } else if (txtPassword.getText().length() < 6) {
+            JOptionPane.showMessageDialog(null, "Please enter a stronger password (6 digits or more)!");
+            output = false;
+        }
+        
+        return output;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -154,21 +174,17 @@ public class SignUp extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReturnActionPerformed
 
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
-        if (txtEmail.getText().contains("@") && txtFirstName.getText() != txtLastName.getText()) {
+        if (checkFields()) {
             boolean registered = backend.trySignUp(txtFirstName.getText(), txtLastName.getText(), txtEmail.getText(), txtPassword.getText());
+            
             if (registered) {
                 JOptionPane.showMessageDialog(null, "Account created sucessfully!");
                 new Login(backend).show();
                 dispose();
             } else {
-                JOptionPane.showMessageDialog(null, "Please, fill all the fields!");
+                JOptionPane.showMessageDialog(null, "An error ocurred!");
             }
-        } else {
-             JOptionPane.showMessageDialog(null, "Por favor ingrese un correo valido");
-        
         }
-
-
     }//GEN-LAST:event_btnSignUpActionPerformed
 
 

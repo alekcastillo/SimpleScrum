@@ -56,4 +56,18 @@ public class BackEnd {
 
         return true;
     }
+    
+    public static boolean isNumber(String string) {
+        boolean output = true;
+        
+        for (char c : string.toCharArray())
+        {
+            if (!Character.isDigit(c)) {
+                output = false;
+                break;
+            }
+        }
+        
+        return output;
+    }
 }

@@ -87,6 +87,17 @@ public class ViewProject extends javax.swing.JFrame {
         btnSave.setEnabled(editable);
         btnDiscard.setEnabled(editable);
     }
+    
+    private boolean checkFields() {
+        boolean output = true;
+        
+        if (txtTitle.getText().isEmpty() || txtDescription.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please fill all the fields!");
+            output = false;
+        }
+        
+        return output;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -310,11 +321,9 @@ public class ViewProject extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDiscardActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        if (txtTitle.getText().isEmpty() && txtDescription.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please fill all the fields!");
-        } else {
-
+        if (checkFields()) {
             int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to save this project?");
+            
             if (confirmation == JOptionPane.YES_OPTION) {
                 if (project != null) {
                     saveProject();
@@ -341,7 +350,7 @@ public class ViewProject extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNewSprintActionPerformed
 
     private void btnEditSprintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditSprintActionPerformed
-        new ViewSprint(backend, project, project.sprints.get(tblSprints.getSelectedRow() + 1).getObject()).show();
+        new ViewSprint(backend, project, project.sprints.get(tblSprints.getSelectedRow()).getObject()).show();
         dispose();
     }//GEN-LAST:event_btnEditSprintActionPerformed
 
@@ -349,7 +358,7 @@ public class ViewProject extends javax.swing.JFrame {
         int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this sprint?");
 
         if (confirmation == JOptionPane.YES_OPTION) {
-            project.sprints.delete(tblSprints.getSelectedRow() + 1);
+            project.sprints.delete(tblSprints.getSelectedRow());
             fillForm();
 
             JOptionPane.showMessageDialog(null, "Sprint deleted succesfully!");

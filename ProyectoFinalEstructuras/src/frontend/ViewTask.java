@@ -80,6 +80,27 @@ public class ViewTask extends javax.swing.JFrame {
         cboxStatus.setEnabled(editable);
         btnDiscard.setEnabled(editable);
     }
+    
+        
+    private boolean checkFields() {
+        boolean output = true;
+        
+        if (txtTitle.getText().isEmpty() || txtDescription.getText().isEmpty() || txtPriority.getText().isEmpty() || cboxAssignee.getSelectedIndex() == -1) {
+            JOptionPane.showMessageDialog(null, "Please fill all the fields!");
+            output = false;
+        }
+        
+        if (!backend.isNumber(txtPriority.getText())) {
+            JOptionPane.showMessageDialog(null, "Please enter a valid priority (from 1 to 10)!");
+            output = false;
+        } else if (Integer.valueOf(txtPriority.getText()) < 1 || Integer.valueOf(txtPriority.getText()) > 10) {
+            JOptionPane.showMessageDialog(null, "Please enter a valid priority (from 1 to 10)!");
+            output = false;
+        }
+        
+        return output;
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -260,9 +281,7 @@ public class ViewTask extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        if (txtTitle.getText().isEmpty() || txtDescription.getText().isEmpty() || txtPriority.getText().isEmpty() || cboxStatus.getSelectedIndex() == -1 || cboxAssignee.getSelectedIndex() == -1) {
-            JOptionPane.showMessageDialog(null, "Please fill all the fields!");
-        } else {
+        if (checkFields()) {
             int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to save this task?");
 
             if (confirmation == JOptionPane.YES_OPTION) {

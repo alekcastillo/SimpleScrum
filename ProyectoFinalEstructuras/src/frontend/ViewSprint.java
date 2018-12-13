@@ -97,6 +97,22 @@ public class ViewSprint extends javax.swing.JFrame {
         dateStart.setEnabled(editable);
         dateEnd.setEnabled(editable);
     }
+    
+    private boolean checkFields() {
+        boolean output = true;
+        
+        if (txtTitle.getText().isEmpty() || txtDescription.getText().isEmpty() || dateStart.getDate() == null || dateEnd.getDate() == null) {
+            JOptionPane.showMessageDialog(null, "Please fill all the fields!");
+            output = false;
+        }
+        
+        if (!dateStart.getDate().before(dateEnd.getDate())) {
+            JOptionPane.showMessageDialog(null, "Please enter a valid timeframe!");
+            output = false;
+        }
+        
+        return output;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -348,9 +364,7 @@ public class ViewSprint extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        if (txtTitle.getText().isEmpty() || txtDescription.getText().isEmpty() || dateStart.getDate() == null || dateEnd.getDate() == null) {
-            JOptionPane.showMessageDialog(null, "Please fill all the fields!");
-        } else {
+        if (checkFields()) {
             int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to save this sprint?");
 
             if (confirmation == JOptionPane.YES_OPTION) {

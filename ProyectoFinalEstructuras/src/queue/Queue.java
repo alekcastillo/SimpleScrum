@@ -111,8 +111,26 @@ public class Queue {
         Node output = null;
         
         while (aux != null) {
-            if (aux.getObject().getEmail().equals(email) && aux.getObject().getPassword().equals(password)) {
-                output = aux;
+            if (aux.getObject().getEmail().equals(email)) {
+                if (aux.getObject().getPassword().equals(password))
+                    output = aux;
+            
+                break;
+            }
+            
+            aux = aux.getPrevious();
+        }
+        
+        return output;
+    }
+    
+    public boolean emailAvailable(String email) {
+        boolean output = true;
+        Node aux = first;
+        
+        while (aux != null) {
+            if (aux.getObject().getEmail().equals(email)) {
+                output = false;
                 break;
             }
             
