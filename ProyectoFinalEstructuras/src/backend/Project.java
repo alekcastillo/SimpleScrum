@@ -3,7 +3,7 @@ package backend;
 import java.util.Date;
 import stack.Stack;
 
-
+//clase principal proyect que funciona como un objeto interfaz entre los otros modelos
 public class Project {
     private int id;
     private String title, description;
@@ -16,13 +16,13 @@ public class Project {
         this.backlog = new Sprint("Backlog", title + "'s backlog");
         this.sprints = new Stack();
     }
-    
+    // agrega un nuevo sprint al stack de sprints
     public Sprint addSprint(String title, String description, Date startDate, Date endDate) {
         Sprint sprint = new Sprint(title, description, startDate, endDate);
         sprints.push(sprint);
         return sprint;
     }
-    
+    // obtiene los titulos para el frontend
     public String[] getTableRow() {
         String[] output = {title, String.valueOf(sprints.length()), String.valueOf(backlog.tasks.length())};
         return output;
