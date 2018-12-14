@@ -5,10 +5,7 @@
  */
 package backend;
 
-/**
- *
- * @author alekc
- */
+// model para los usuarios
 public class User {
     private String name, lastname, email, password;
     private int id, type;

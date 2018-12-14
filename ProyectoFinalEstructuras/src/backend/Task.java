@@ -5,10 +5,7 @@
  */
 package backend;
 
-/**
- *
- * @author alekc
- */
+//model para las tareas con sus respectivos metodos
 public class Task {
     private int id, priority, status;
     private String title, description;
@@ -24,15 +21,17 @@ public class Task {
         this.assignee = assignee;
     }
     
+    //obtener los status de las tareas 
     public static String[] getStatuses() {
         return statuses;
     }
-    
+    //obtiene los titulos para colocarlos en el model de la tabla
+   
     public String[] getTableRow() {
         String[] output = {title, String.valueOf(priority), statuses[status], assignee.getName()}; //String.valueOf(backlog.tasks.length())};
         return output;
     }
-    
+    //mueve una tarea del backlog a un sprint
     public void moveToSprint(Sprint sprint) {
         sprint.addTask(status, priority, title, description, assignee);
         this.deleted = true;
