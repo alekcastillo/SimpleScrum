@@ -13,6 +13,15 @@ public class Task {
     private int id, priority, status;
     private String title, description;
     private User assignee;
+    private boolean deleted;
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
     private static final String[] statuses = {"Defined", "In-Progress", "Completed", "Accepted", "Cancelled"};
     
     public Task(int status, int priority, String title, String description, User assignee) {
