@@ -11,10 +11,11 @@ import backend.Project;
  *
  * @author alekc
  */
+// clase list; estructura lista simple
 public class List {
-
+    
     private Node head;
-
+    //metodo para insertar objetos en la lista
     public void insert(Project project) {
         Node toInsert = new Node(project);
         project.setId(length());
@@ -46,7 +47,7 @@ public class List {
         }
 
     }
-
+    // con este metodos podemos saber cuantos objetos hay en la lista
     public int length() {
         Node aux = head;
         int length = 0;
@@ -60,7 +61,7 @@ public class List {
 
         return length;
     }
-
+    // este metodo simula un arrayList para obtener un objeto con base a su indice
     public Node get(int index) {
         Node aux = head;
         Node toGet = null;
@@ -76,7 +77,7 @@ public class List {
 
         return toGet;
     }
-
+    // elimina un objoet con el indice en la misma forma simulando un arraylist
     public void delete(int index) {
         int length = 0;
         Node aux = head;

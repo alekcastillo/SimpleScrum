@@ -11,6 +11,7 @@ import backend.Project;
  *
  * @author alekc
  */
+// Nodo encargado de almacenar la informacion del obejto
 public class Node {
     private Project object;
     private Node next, previous;
