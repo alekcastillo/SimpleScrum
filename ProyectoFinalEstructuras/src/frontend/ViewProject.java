@@ -350,19 +350,27 @@ public class ViewProject extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNewSprintActionPerformed
 
     private void btnEditSprintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditSprintActionPerformed
-        new ViewSprint(backend, project, project.sprints.get(tblSprints.getSelectedRow()).getObject()).show();
-        dispose();
+        if (tblSprints.getSelectedRow() < 0)
+            JOptionPane.showMessageDialog(null, "Please select a sprint!");
+        else {
+            new ViewSprint(backend, project, project.sprints.get(tblSprints.getSelectedRow()).getObject()).show();
+            dispose();
+        }
     }//GEN-LAST:event_btnEditSprintActionPerformed
 
     private void btnDeleteSprintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteSprintActionPerformed
-        int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this sprint?");
+        if (tblSprints.getSelectedRow() < 0)
+            JOptionPane.showMessageDialog(null, "Please select a sprint!");
+        else {
+            int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this sprint?");
 
-        if (confirmation == JOptionPane.YES_OPTION) {
-            project.sprints.delete(tblSprints.getSelectedRow() + 1 );
-            
-            fillForm();
+            if (confirmation == JOptionPane.YES_OPTION) {
+                project.sprints.delete(tblSprints.getSelectedRow() + 1 );
 
-            JOptionPane.showMessageDialog(null, "Sprint deleted succesfully!");
+                fillForm();
+
+                JOptionPane.showMessageDialog(null, "Sprint deleted succesfully!");
+            }
         }
     }//GEN-LAST:event_btnDeleteSprintActionPerformed
 

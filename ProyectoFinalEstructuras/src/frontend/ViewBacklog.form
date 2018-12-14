@@ -56,7 +56,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnNewTask" min="-2" pref="89" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnNewTask1" min="-2" max="-2" attributes="0"/>
+                      <Component id="cboxMove" min="-2" pref="106" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="lblInformation" min="-2" pref="90" max="-2" attributes="0"/>
@@ -91,7 +91,7 @@
                   <Component id="btnEditTask" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnNewTask" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnReturn" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnNewTask1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cboxMove" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -182,11 +182,21 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNewTaskActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnNewTask1">
+    <Component class="javax.swing.JComboBox" name="cboxMove">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Move task to sprint"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="1">
+            <StringItem index="0" value="Move to sprint"/>
+          </StringArray>
+        </Property>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cboxMoveItemStateChanged"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

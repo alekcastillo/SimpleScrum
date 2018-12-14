@@ -70,4 +70,21 @@ public class Tree {
         
         return currentNode;
     }
+    
+    public Node delete(int id) {
+        Node currentNode = root;
+        
+        while (currentNode != null) {
+            if (currentNode.getObject().getId() == id) {
+                currentNode.getObject().setDeleted(true);
+                break;
+            } else if (id < currentNode.getObject().getId()) {
+                currentNode = currentNode.getLeftChild();
+            } else {
+                currentNode = currentNode.getRightChild();
+            }
+        }
+        
+        return currentNode;
+    }
 }

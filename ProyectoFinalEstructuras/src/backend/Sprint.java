@@ -12,12 +12,14 @@ public class Sprint {
     private int id;
     private String title, description;
     private Date startDate, endDate;
+    private boolean isBacklog;
     public Tree tasks;
     
     public Sprint(String title, String description) {
         this.title = title;
         this.description = description;
         this.tasks = new Tree();
+        this.isBacklog = true;
     }
     
     public Sprint(String title, String description, Date startDate, Date endDate) {
@@ -26,6 +28,7 @@ public class Sprint {
         this.startDate = startDate;
         this.endDate = endDate;
         this.tasks = new Tree();
+        this.isBacklog = false;
     }
     
     public static String dateToString(Date date) {
@@ -53,6 +56,10 @@ public class Sprint {
         return id;
     }
 
+    public boolean isBacklog() {
+        return isBacklog;
+    }
+    
     public String getTitle() {
         return title;
     }

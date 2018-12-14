@@ -288,6 +288,9 @@ public class ViewTask extends javax.swing.JFrame {
                     saveTask();
                 } else {
                     task = sprint.addTask(cboxStatus.getSelectedIndex(), Integer.valueOf(txtPriority.getText()), txtTitle.getText(), txtDescription.getText(), backend.users.get(cboxAssignee.getSelectedIndex()).getObject());
+                
+                    if (sprint.isBacklog())
+                        task.setBacklogged(true);
                 }
 
                 JOptionPane.showMessageDialog(null, "Task saved succesfully!");
@@ -298,7 +301,11 @@ public class ViewTask extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
-        new ViewSprint(backend, project, sprint).show();
+        if (sprint.isBacklog())
+            new ViewBacklog(backend, project).show();
+        else
+            new ViewSprint(backend, project, sprint).show();
+        
         dispose();
     }//GEN-LAST:event_btnReturnActionPerformed
 

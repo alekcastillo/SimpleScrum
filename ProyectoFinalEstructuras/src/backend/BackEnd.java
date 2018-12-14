@@ -25,8 +25,8 @@ public class BackEnd {
     private final JsonHandler datahelper = new JsonHandler();
 
     public BackEnd() {
-        users = this.datahelper.readUsers();
-        projects = this.datahelper.readProjects();
+        //users = this.datahelper.readUsers();
+        //projects = this.datahelper.readProjects();
     }
 
     public Project addProject(String title, String description) {

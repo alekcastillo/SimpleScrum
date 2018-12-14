@@ -196,19 +196,27 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNewProjectActionPerformed
 
     private void btnEditProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditProjectActionPerformed
-        new ViewProject(this.backend, this.backend.projects.get(tblProjects.getSelectedRow() + 1).getObject()).show();
-        dispose();
+        if (tblProjects.getSelectedRow() < 0)
+            JOptionPane.showMessageDialog(null, "Please select a project!");
+        else {
+            new ViewProject(this.backend, this.backend.projects.get(tblProjects.getSelectedRow() + 1).getObject()).show();
+            dispose();
+        }
     }//GEN-LAST:event_btnEditProjectActionPerformed
 
     private void btnDeleteProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteProjectActionPerformed
-        int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this project?");
-        
-        if (confirmation == JOptionPane.YES_OPTION) {
-            System.out.println(tblProjects.getSelectedRow());
-            this.backend.projects.delete(tblProjects.getSelectedRow());
-            fillForm();
-            
-            JOptionPane.showMessageDialog(null, "Project deleted succesfully!");
+        if (tblProjects.getSelectedRow() < 0)
+            JOptionPane.showMessageDialog(null, "Please select a project!");
+        else {
+            int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this project?");
+
+            if (confirmation == JOptionPane.YES_OPTION) {
+                System.out.println(tblProjects.getSelectedRow());
+                this.backend.projects.delete(tblProjects.getSelectedRow());
+                fillForm();
+
+                JOptionPane.showMessageDialog(null, "Project deleted succesfully!");
+            }
         }
     }//GEN-LAST:event_btnDeleteProjectActionPerformed
 
@@ -216,7 +224,6 @@ public class Menu extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Thanks for using Agiler!");
         dispose();
         this.backend.saveAll();
-       
     }//GEN-LAST:event_btnExitActionPerformed
 
 

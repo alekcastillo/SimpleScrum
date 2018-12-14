@@ -8,6 +8,7 @@ package frontend;
 import backend.BackEnd;
 import backend.Project;
 import backend.Sprint;
+import backend.Task;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -38,6 +39,7 @@ public class ViewBacklog extends javax.swing.JFrame {
     private void enableEditButtons() {
         btnDeleteTask.setEnabled(true);
         btnEditTask.setEnabled(true);
+        cboxMove.setEnabled(true);
     }
     
     private void fillForm() {
@@ -55,9 +57,19 @@ public class ViewBacklog extends javax.swing.JFrame {
             null,
             new String [] {"Title", "Priority", "Status"});
         
-        //for (int x = 1; x <= sprint.tasks.length(); x++) {
-            //model.addRow(sprint.tasks.get(x).getObject().getTableRow());
-        //}
+        
+        for (int x = 0; x < sprint.tasks.length(); x++) {
+            Task toAdd = sprint.tasks.get(x).getObject();
+            
+            if (!toAdd.isDeleted() && toAdd.isBacklogged())
+                model.addRow(toAdd.getTableRow());
+        }
+        
+        for (int x = 0; x < project.sprints.length(); x++) {
+            cboxMove.addItem(project.sprints.get(x).getObject().getTitle());
+        }
+        
+        tblTasks.setModel(model);
     }
     
     /**
@@ -82,7 +94,7 @@ public class ViewBacklog extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblTasks = new javax.swing.JTable();
         btnNewTask = new javax.swing.JButton();
-        btnNewTask1 = new javax.swing.JButton();
+        cboxMove = new javax.swing.JComboBox<>();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -149,8 +161,13 @@ public class ViewBacklog extends javax.swing.JFrame {
             }
         });
 
-        btnNewTask1.setText("Move task to sprint");
-        btnNewTask1.setEnabled(false);
+        cboxMove.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Move to sprint" }));
+        cboxMove.setEnabled(false);
+        cboxMove.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboxMoveItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -168,7 +185,7 @@ public class ViewBacklog extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnNewTask, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnNewTask1))
+                        .addComponent(cboxMove, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(lblInformation, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -197,7 +214,7 @@ public class ViewBacklog extends javax.swing.JFrame {
                     .addComponent(btnEditTask)
                     .addComponent(btnNewTask)
                     .addComponent(btnReturn)
-                    .addComponent(btnNewTask1))
+                    .addComponent(cboxMove, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -215,28 +232,57 @@ public class ViewBacklog extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNewTaskActionPerformed
 
     private void btnEditTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditTaskActionPerformed
-        //new ViewTask(backend, project, sprint, sprint.tasks.get(tblTasks.getSelectedRow() + 1).getObject()).show();
-        dispose();
+        if (tblTasks.getSelectedRow() < 0)
+            JOptionPane.showMessageDialog(null, "Please select a task!");
+        else {
+            new ViewTask(backend, project, sprint, sprint.tasks.get(tblTasks.getSelectedRow()).getObject()).show();
+            dispose();
+        }
     }//GEN-LAST:event_btnEditTaskActionPerformed
 
     private void btnDeleteTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteTaskActionPerformed
-        int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this task?");
-        
-        if (confirmation == JOptionPane.YES_OPTION) {
-            //sprint.tasks.delete(tblTasks.getSelectedRow() + 1);
-            fillForm();
-            
-            JOptionPane.showMessageDialog(null, "Task deleted succesfully!");
+        if (tblTasks.getSelectedRow() < 0)
+            JOptionPane.showMessageDialog(null, "Please select a task!");
+        else {
+            int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this task?");
+
+            if (confirmation == JOptionPane.YES_OPTION) {
+                sprint.tasks.delete(tblTasks.getSelectedRow());
+                fillForm();
+
+                JOptionPane.showMessageDialog(null, "Task deleted succesfully!");
+            }
         }
     }//GEN-LAST:event_btnDeleteTaskActionPerformed
+
+    private void cboxMoveItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboxMoveItemStateChanged
+        if (tblTasks.getSelectedRow() < 0)
+            JOptionPane.showMessageDialog(null, "Please select a task!");
+        else {
+            Sprint newSprint = project.sprints.get(tblTasks.getSelectedRow()).getObject();
+            
+            int confirmation = JOptionPane.showConfirmDialog(null, String.format("Are you sure you want to send this task to the sprint %s?", newSprint.getTitle()));
+
+            if (confirmation == JOptionPane.YES_OPTION) {
+                Task toMove = sprint.tasks.get(tblTasks.getSelectedRow()).getObject();
+                toMove.setBacklogged(false);
+                newSprint.tasks.add(toMove);
+                fillForm();
+
+                JOptionPane.showMessageDialog(null, "Task moved succesfully!");
+            }
+    }
+            
+        cboxMove.setSelectedIndex(0);
+    }//GEN-LAST:event_cboxMoveItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDeleteTask;
     private javax.swing.JButton btnEditTask;
     private javax.swing.JButton btnNewTask;
-    private javax.swing.JButton btnNewTask1;
     private javax.swing.JButton btnReturn;
+    private javax.swing.JComboBox<String> cboxMove;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
