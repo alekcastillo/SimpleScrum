@@ -7,9 +7,11 @@ import backend.Task;
  * @author alekc
  */
 public class Tree {
+    
     private Node root;
     private int length = 0;
-
+    private Node toGet = null;
+    
     public void add(Task task) {
         if (root == null) {
             root = new Node(task);
@@ -24,7 +26,7 @@ public class Tree {
     public int length() {
         return length;
     }
-
+    
     private void insertaRec(Task task, Node n) {
         if (task.getId() < n.getObject().getId()) {
             if (n.getLeftChild() == null) {
@@ -40,50 +42,42 @@ public class Tree {
             }
         }
     }
-
-    private void inOrdenRec(Node n) {
+    
+    private void search(Node n, int id) {
         if (n != null) {
-            inOrdenRec(n.getLeftChild());
-            inOrdenRec(n.getRightChild());
-        }
-    }
-
-    public void inOrden() {
-        if (root != null) {
-            inOrdenRec(root);
-        }
-    }
-
-    public Node get(int id) {
-        Node currentNode = root;
-        
-        while (currentNode != null) {
-            if (currentNode.getObject().getId() == id) {
-                return currentNode;
-            } else if (id < currentNode.getObject().getId()) {
-                currentNode = currentNode.getLeftChild();
-            } else {
-                currentNode = currentNode.getRightChild();
+            search(n.getLeftChild(), id);
+            if (n.getObject().getId() == id) {
+                toGet = n;
             }
+            search(n.getRightChild(), id);
         }
-        
-        return currentNode;
     }
     
-    public Node delete(int id) {
-        Node currentNode = root;
+    public void inOrden() {
         
-        while (currentNode != null) {
-            if (currentNode.getObject().getId() == id) {
-                currentNode.getObject().setDeleted(true);
-                break;
-            } else if (id < currentNode.getObject().getId()) {
-                currentNode = currentNode.getLeftChild();
-            } else {
-                currentNode = currentNode.getRightChild();
-            }
-        }
-        
-        return currentNode;
     }
+    
+    public Node get(int id) {
+        if (root != null) {
+            search(root, id);
+        }
+        return toGet;
+    }
+    
+    public void delete(int id) {
+        if (root != null) {
+            deleteTask(root, id);
+        }
+    }
+    
+    public void deleteTask(Node n, int id) {
+        if (n != null) {
+            deleteTask(n.getLeftChild(), id);
+            if (n.getObject().getId() == id) {
+                n.getObject().setDeleted(true);
+            }
+            deleteTask(n.getRightChild(), id);
+        }
+    }
+    
 }
