@@ -7,14 +7,11 @@ package stack;
 
 import backend.Sprint;
 
-/**
- *
- * @author alekc
- */
+
 public class Stack {
 
     private Node top;
-
+    // averiguamos el tamaño de la cola
     public int length() {
         int length = 0;
         Node aux = top;
@@ -26,7 +23,7 @@ public class Stack {
 
         return length;
     }
-
+    // agrega un elemento a la pila
     public void push(Sprint sprint) {
         Node node = new Node(sprint);
         sprint.setId(length());
@@ -38,6 +35,7 @@ public class Stack {
         top = node;
     }
 
+    // saca el ultimo elemento de la pila
     public Node pop() {
         Node output = top;
 
@@ -48,7 +46,7 @@ public class Stack {
 
         return output;
     }
-
+    //obtiene un elemento con base al indice
     public Node get(int index) {
         Node toGet = null;
         Node aux = top;
@@ -66,7 +64,7 @@ public class Stack {
 
         return toGet;
     }
-
+    // elimina un numero con base al indice calculado con el length 
     public void delete(int index) {
         Node aux = top;
         Node last = null;

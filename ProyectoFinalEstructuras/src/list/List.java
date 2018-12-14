@@ -7,10 +7,7 @@ package list;
 
 import backend.Project;
 
-/**
- *
- * @author alekc
- */
+
 // clase list; estructura lista simple
 public class List {
     

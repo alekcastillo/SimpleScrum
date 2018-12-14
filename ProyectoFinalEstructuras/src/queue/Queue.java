@@ -15,7 +15,7 @@ import queue.Node;
 public class Queue {
     private Node first, last;
     
-    //Control
+    // metodo length para saber cuantos elementos estan almacenados en la cola
    
     public int length() {
         Node aux = first;
@@ -29,6 +29,7 @@ public class Queue {
         return length;
     }
 
+    //encola(agrega) elementos a la cola
     public void queue(User user) {
         Node node = new Node(user);
         user.setId(length());
@@ -42,6 +43,7 @@ public class Queue {
         last = node;
     }
 
+    // extrae el primer elemento de la cola
     public Node attend() {
         Node output = first;
         
@@ -53,7 +55,7 @@ public class Queue {
 
         return output;
     }
-
+    // saca un elemento de la cola con base al length podemos calcular su indice
     public Node get(int index) {
         Node aux = first;
         Node toGet = null;
@@ -71,6 +73,7 @@ public class Queue {
         return toGet;
     }
 
+    // elimina un elemento de la cola con base al length podemos calcular su indice
     public void delete(int index) {
         Node aux = first;
         Node previous = null;
@@ -90,8 +93,7 @@ public class Queue {
         }
     }
     
-    //Other
-    
+    //Obtiene los nombres de los usuarios, es decir recorre la cola y obtiene un atributo y lo almacena en un vector
     public String[] getUserNames() {
         String[] output = new String[this.length()];
         Node aux = first;
@@ -105,7 +107,7 @@ public class Queue {
         
         return output;
     }
-    
+    // hace una busqueda en la cola para obtener los credenciales del usuario
     public Node find(String email, String password) {
         Node aux = first;
         Node output = null;
@@ -123,7 +125,7 @@ public class Queue {
         
         return output;
     }
-    
+    // verifica si el email ingresado esta disponible
     public boolean emailAvailable(String email) {
         boolean output = true;
         Node aux = first;

@@ -7,10 +7,8 @@ package queue;
 
 import backend.User;
 
-/**
- *
- * @author alekc
- */
+
+// Nodo encargado de almacenar la informacion del objeto en la cola
 public class Node {
     private User object;
     private Node previous;
