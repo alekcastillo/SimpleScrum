@@ -283,7 +283,6 @@ public class ViewTask extends javax.swing.JFrame {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         if (checkFields()) {
             int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to save this task?");
-
             if (confirmation == JOptionPane.YES_OPTION) {
                 if (task != null) {
                     saveTask();
