@@ -12,45 +12,43 @@ import backend.Project;
  * @author alekc
  */
 public class List {
-    private Node head, last;
+
+    private Node head;
 
     public void insert(Project project) {
         Node toInsert = new Node(project);
         project.setId(length());
 
         if (head == null) {
-            head = toInsert;
-            last = head;
+            head = new Node(project);
+
         } else {
             if (project.getId() <= head.getObject().getId()) {
-                head.setPrevious(toInsert);
-                head.getPrevious().setNext(head);
-                head = head.getPrevious();
+                Node aux = new Node(project);
+                aux.setNext(head);
+                head = aux;
 
             } else {
-                if (project.getId() >= last.getObject().getId()) {
-                    last.setNext(toInsert);
-                    last.getNext().setPrevious(last);
-                    last = last.getNext();
+                if (head.getNext() == null) {
+                    head.setNext(new Node(project));
+
                 } else {
                     Node aux = head;
+                    while (aux.getNext() != null && project.getId() > aux.getObject().getId()) {
 
-                    while (project.getId() > aux.getNext().getObject().getId()) {
                         aux = aux.getNext();
-                    }
 
-                    Node temp = toInsert;
+                    }
+                    Node temp = new Node(project);
                     temp.setNext(aux.getNext());
-                    temp.setPrevious(aux);
                     aux.setNext(temp);
-                    temp.getNext().setPrevious(temp);
+
                 }
 
             }
+
         }
 
-        last.setNext(head);
-        head.setPrevious(last);
     }
 
     public int length() {
@@ -58,10 +56,10 @@ public class List {
         int length = 0;
 
         if (aux != null) {
-            do {
+            while (aux != null) {
                 length++;
                 aux = aux.getNext();
-            } while (aux != head);
+            }
         }
 
         return length;
@@ -72,42 +70,38 @@ public class List {
         Node toGet = null;
         int length = 0;
 
-        do {
+        while (aux != null) {
             length++;
             if (index == length) {
                 toGet = aux;
             }
             aux = aux.getNext();
-        } while (aux != head);
+        }
 
         return toGet;
     }
 
     public void delete(int index) {
-        Node aux = head;
-        Node last = null;
         int length = 0;
-        do {
-            if (index == length) {
-                if (aux == head) {
-                    head = aux.getNext();
-                    last.setNext(aux.getNext());
-                    head.setPrevious(last);
-                } else if (aux == last) {
-                    last = aux.getPrevious();
-                    last.setNext(head);
-                    last.setPrevious(aux.getPrevious().getPrevious());
-                } else {
-                    last.setNext(aux.getNext());
-                    Node temp;
-                    temp = aux.getNext();
-                    temp.setPrevious(last);
+        Node aux = head;
+        if (length == index) {
+            head = head.getNext();
+        } else {
+            while (aux != null) {
+                if (length == index) {
+                    if (aux.getNext()== null) {
+                        aux.clearPointers();
+
+                    } else {
+                        aux.setNext(aux.getNext().getNext());
+                    }
+
                 }
+                aux = aux.getNext();
+                length++;
+
             }
-            
-            length++;
-            last = aux;
-            aux = aux.getNext();
-        } while (aux != head);
+
+        }
     }
 }

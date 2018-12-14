@@ -1,6 +1,7 @@
 package data;
 
-//import com.google.gson.Gson;
+import backend.Project;
+import com.google.gson.Gson;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -17,27 +18,27 @@ import queue.Queue;
  * @author jorer
  */
 public class JsonHandler {
-
-    //Gson gson = new Gson();
+  
+    Gson gson = new Gson();
 
     public JsonHandler() {
     }
 
     public void save(Queue queue) {
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\jorer\\Desktop\\Proyecto Final\\proyecto_estructuras\\users.json"));
-            //this.gson.toJson(queue, writer);
+            BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\jorer\\Desktop\\proyecto_estructurasusers.json"));
+            this.gson.toJson(queue, writer);
             writer.close();
         } catch (IOException ex) {
             Logger.getLogger(JsonHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
-
+    
     public void save(List list) {
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\jorer\\Desktop\\projects.json"));
-            //this.gson.toJson(list, writer);
+            BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\jorer\\Desktop\\proyecto_estructuras\\projects.json"));
+            this.gson.toJson(list, writer);
             writer.close();
         } catch (IOException ex) {
             Logger.getLogger(JsonHandler.class.getName()).log(Level.SEVERE, null, ex);
@@ -49,8 +50,8 @@ public class JsonHandler {
         BufferedReader bufferedReader;
         Queue json = null;
         try {
-            bufferedReader = new BufferedReader(new FileReader("C:\\Users\\jorer\\Desktop\\Proyecto Final\\proyecto_estructuras\\users.json"));
-            //json = gson.fromJson(bufferedReader, Queue.class);
+            bufferedReader = new BufferedReader(new FileReader("C:\\Users\\jorer\\Desktop\\proyecto_estructuras\\users.json"));
+            json = gson.fromJson(bufferedReader, Queue.class);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(JsonHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -62,8 +63,8 @@ public class JsonHandler {
         BufferedReader bufferedReader;
         List json = null;
         try {
-            bufferedReader = new BufferedReader(new FileReader("C:\\Users\\jorer\\Desktop\\projects.json"));
-            //json = gson.fromJson(bufferedReader, List.class);
+            bufferedReader = new BufferedReader(new FileReader("C:\\Users\\jorer\\Desktop\\proyecto_estructuras\\projects.json"));
+            json = gson.fromJson(bufferedReader, List.class);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(JsonHandler.class.getName()).log(Level.SEVERE, null, ex);
         }

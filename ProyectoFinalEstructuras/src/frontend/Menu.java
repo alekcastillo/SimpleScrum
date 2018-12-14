@@ -204,7 +204,8 @@ public class Menu extends javax.swing.JFrame {
         int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this project?");
         
         if (confirmation == JOptionPane.YES_OPTION) {
-            this.backend.projects.delete(1);
+            System.out.println(tblProjects.getSelectedRow());
+            this.backend.projects.delete(tblProjects.getSelectedRow());
             fillForm();
             
             JOptionPane.showMessageDialog(null, "Project deleted succesfully!");
@@ -214,6 +215,8 @@ public class Menu extends javax.swing.JFrame {
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         JOptionPane.showMessageDialog(null, "Thanks for using Agiler!");
         dispose();
+        this.backend.saveAll();
+       
     }//GEN-LAST:event_btnExitActionPerformed
 
 
