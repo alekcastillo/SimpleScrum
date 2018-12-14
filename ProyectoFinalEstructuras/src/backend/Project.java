@@ -3,10 +3,7 @@ package backend;
 import java.util.Date;
 import stack.Stack;
 
-/**
- *
- * @author alekc
- */
+
 public class Project {
     private int id;
     private String title, description;

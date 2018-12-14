@@ -4,10 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import tree.Tree;
 
-/**
- *
- * @author alekc
- */
+
 public class Sprint {
     private int id;
     private String title, description;

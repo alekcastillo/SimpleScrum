@@ -6,29 +6,26 @@
 package backend;
 
 import data.JsonHandler;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import list.List;
 import queue.Node;
 import queue.Queue;
 
-/**
- *
- * @author alekc
- */
+// clase backedn que va ser la interfaz entre el front end y los models de las estructuras de las bases de datos
 public class BackEnd {
 
+    //Cola de usuarios
     public Queue users = new Queue();
+    //lista de proyectos
     public List projects = new List();
     private User currentUser;
     private final JsonHandler datahelper = new JsonHandler();
 
+    // mediante el constructor va a leer la " base de datos " que son los archivos JSON 
     public BackEnd() {
         users = this.datahelper.readUsers();
         projects = this.datahelper.readProjects();
     }
-
+    // crea una instancia de un proyecto y lo agrega a la lista de proyectos
     public Project addProject(String title, String description) {
         Project project = new Project(title, description);
         projects.insert(project);
