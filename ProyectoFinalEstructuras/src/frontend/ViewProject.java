@@ -358,7 +358,7 @@ public class ViewProject extends javax.swing.JFrame {
         int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this sprint?");
 
         if (confirmation == JOptionPane.YES_OPTION) {
-            project.sprints.delete(tblSprints.getSelectedRow());
+            project.sprints.delete(tblSprints.getSelectedRow() + 1 );
             
             fillForm();
 

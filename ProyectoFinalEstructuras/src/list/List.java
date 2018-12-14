@@ -18,10 +18,8 @@ public class List {
     public void insert(Project project) {
         Node toInsert = new Node(project);
         project.setId(length());
-
         if (head == null) {
             head = new Node(project);
-
         } else {
             if (project.getId() <= head.getObject().getId()) {
                 Node aux = new Node(project);
@@ -35,9 +33,7 @@ public class List {
                 } else {
                     Node aux = head;
                     while (aux.getNext() != null && project.getId() > aux.getObject().getId()) {
-
                         aux = aux.getNext();
-
                     }
                     Node temp = new Node(project);
                     temp.setNext(aux.getNext());
@@ -84,19 +80,20 @@ public class List {
     public void delete(int index) {
         int length = 0;
         Node aux = head;
+        Node previous = null;
         if (length == index) {
             head = head.getNext();
         } else {
             while (aux != null) {
                 if (length == index) {
-                    if (aux.getNext()== null) {
-                        aux.clearPointers();
-
+                    if (aux.getNext() == null) {
+                        previous.setNext(null);
                     } else {
                         aux.setNext(aux.getNext().getNext());
                     }
 
                 }
+                previous = aux;
                 aux = aux.getNext();
                 length++;
 
