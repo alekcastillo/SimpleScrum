@@ -44,7 +44,6 @@ public class Tree {
     private void inOrdenRec(Node n) {
         if (n != null) {
             inOrdenRec(n.getLeftChild());
-            System.out.print(" " + n);
             inOrdenRec(n.getRightChild());
         }
     }

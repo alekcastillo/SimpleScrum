@@ -27,7 +27,7 @@ public class Project {
     }
     
     public String[] getTableRow() {
-        String[] output = {title, String.valueOf(sprints.length()), "0"}; //String.valueOf(backlog.tasks.length())};
+        String[] output = {title, String.valueOf(sprints.length()), String.valueOf(backlog.tasks.length())};
         return output;
     }
     

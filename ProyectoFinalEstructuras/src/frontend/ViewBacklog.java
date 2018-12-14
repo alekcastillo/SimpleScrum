@@ -57,7 +57,7 @@ public class ViewBacklog extends javax.swing.JFrame {
             null,
             new String [] {"Title", "Priority", "Status"});
         
-        
+        System.out.println("Tasks in backlog: " + sprint.tasks.length());
         for (int x = 0; x < sprint.tasks.length(); x++) {
             Task toAdd = sprint.tasks.get(x).getObject();
             
@@ -256,11 +256,15 @@ public class ViewBacklog extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeleteTaskActionPerformed
 
     private void cboxMoveItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboxMoveItemStateChanged
-        if (cboxMove.getSelectedIndex() > 0) {
+        int index = cboxMove.getSelectedIndex();
+        
+        if (index > 0) {
+            cboxMove.setSelectedIndex(0);
+            
             if (tblTasks.getSelectedRow() < 0)
                 JOptionPane.showMessageDialog(null, "Please select a task!");
             else {
-                Sprint newSprint = project.sprints.get(tblTasks.getSelectedRow()).getObject();
+                Sprint newSprint = project.sprints.get(index - 1).getObject();
 
                 int confirmation = JOptionPane.showConfirmDialog(null, String.format("Are you sure you want to send this task to the sprint %s?", newSprint.getTitle()));
 
@@ -272,8 +276,6 @@ public class ViewBacklog extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Task moved succesfully!");
                 }
             }
-
-            cboxMove.setSelectedIndex(0);
         }
     }//GEN-LAST:event_cboxMoveItemStateChanged
 
