@@ -283,14 +283,12 @@ public class ViewTask extends javax.swing.JFrame {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         if (checkFields()) {
             int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to save this task?");
+            
             if (confirmation == JOptionPane.YES_OPTION) {
                 if (task != null) {
                     saveTask();
                 } else {
                     task = sprint.addTask(cboxStatus.getSelectedIndex(), Integer.valueOf(txtPriority.getText()), txtTitle.getText(), txtDescription.getText(), backend.users.get(cboxAssignee.getSelectedIndex()).getObject());
-                
-                    if (sprint.isBacklog())
-                        task.setBacklogged(true);
                 }
 
                 JOptionPane.showMessageDialog(null, "Task saved succesfully!");

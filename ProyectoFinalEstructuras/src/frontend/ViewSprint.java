@@ -79,7 +79,7 @@ public class ViewSprint extends javax.swing.JFrame {
             for (int x = 0; x < sprint.tasks.length(); x++) {
                 Task toAdd = sprint.tasks.get(x).getObject();
 
-                if (!toAdd.isDeleted() && !toAdd.isBacklogged())
+                if (!toAdd.isDeleted())
                     model.addRow(toAdd.getTableRow());
             }
 
@@ -437,8 +437,7 @@ public class ViewSprint extends javax.swing.JFrame {
 
             if (confirmation == JOptionPane.YES_OPTION) {
                 Task toMove = sprint.tasks.get(tblTasks.getSelectedRow()).getObject();
-                toMove.setBacklogged(true);
-                project.backlog.tasks.add(toMove);
+                toMove.moveToSprint(project.backlog);
                 fillForm();
 
                 JOptionPane.showMessageDialog(null, "Task backlogged succesfully!");

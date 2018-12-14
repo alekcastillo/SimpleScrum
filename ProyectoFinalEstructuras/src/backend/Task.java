@@ -13,7 +13,7 @@ public class Task {
     private int id, priority, status;
     private String title, description;
     private User assignee;
-    private boolean deleted, backlogged;
+    private boolean deleted;
     private static final String[] statuses = {"Defined", "In-Progress", "Completed", "Accepted", "Cancelled"};
     
     public Task(int status, int priority, String title, String description, User assignee) {
@@ -33,6 +33,11 @@ public class Task {
         return output;
     }
     
+    public void moveToSprint(Sprint sprint) {
+        sprint.addTask(status, priority, title, description, assignee);
+        this.deleted = true;
+    }
+    
     //Setters & Getters
     
     public void setId(int id) {
@@ -49,14 +54,6 @@ public class Task {
 
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
-    }
-    
-    public boolean isBacklogged() {
-        return backlogged;
-    }
-
-    public void setBacklogged(boolean backlogged) {
-        this.backlogged = backlogged;
     }
     
     public int getStatus() {

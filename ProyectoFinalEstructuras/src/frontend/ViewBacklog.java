@@ -61,7 +61,7 @@ public class ViewBacklog extends javax.swing.JFrame {
         for (int x = 0; x < sprint.tasks.length(); x++) {
             Task toAdd = sprint.tasks.get(x).getObject();
             
-            if (!toAdd.isDeleted() && toAdd.isBacklogged())
+            if (!toAdd.isDeleted())
                 model.addRow(toAdd.getTableRow());
         }
         
@@ -256,24 +256,25 @@ public class ViewBacklog extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeleteTaskActionPerformed
 
     private void cboxMoveItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboxMoveItemStateChanged
-        if (tblTasks.getSelectedRow() < 0)
-            JOptionPane.showMessageDialog(null, "Please select a task!");
-        else {
-            Sprint newSprint = project.sprints.get(tblTasks.getSelectedRow()).getObject();
-            
-            int confirmation = JOptionPane.showConfirmDialog(null, String.format("Are you sure you want to send this task to the sprint %s?", newSprint.getTitle()));
+        if (cboxMove.getSelectedIndex() > 0) {
+            if (tblTasks.getSelectedRow() < 0)
+                JOptionPane.showMessageDialog(null, "Please select a task!");
+            else {
+                Sprint newSprint = project.sprints.get(tblTasks.getSelectedRow()).getObject();
 
-            if (confirmation == JOptionPane.YES_OPTION) {
-                Task toMove = sprint.tasks.get(tblTasks.getSelectedRow()).getObject();
-                toMove.setBacklogged(false);
-                newSprint.tasks.add(toMove);
-                fillForm();
+                int confirmation = JOptionPane.showConfirmDialog(null, String.format("Are you sure you want to send this task to the sprint %s?", newSprint.getTitle()));
 
-                JOptionPane.showMessageDialog(null, "Task moved succesfully!");
+                if (confirmation == JOptionPane.YES_OPTION) {
+                    Task toMove = sprint.tasks.get(tblTasks.getSelectedRow()).getObject();
+                    toMove.moveToSprint(newSprint);
+                    fillForm();
+
+                    JOptionPane.showMessageDialog(null, "Task moved succesfully!");
+                }
             }
-    }
-            
-        cboxMove.setSelectedIndex(0);
+
+            cboxMove.setSelectedIndex(0);
+        }
     }//GEN-LAST:event_cboxMoveItemStateChanged
 
 
