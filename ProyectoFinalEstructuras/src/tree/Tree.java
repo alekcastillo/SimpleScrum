@@ -1,7 +1,6 @@
 package tree;
 
 import backend.Task;
-
 // clase arbol data structure
 public class Tree {
     
@@ -20,10 +19,12 @@ public class Tree {
         task.setId(length);
         length++;
     }
-    //ge del atributo length
+    
+    //get del atributo length
     public int length() {
         return length;
     }
+    
     // inserta un nodo en e arbol con base al id asignado
     private void insertaRec(Task task, Node n) {
         if (task.getId() < n.getObject().getId()) {
@@ -40,41 +41,31 @@ public class Tree {
             }
         }
     }
+    
     //busca recursivamente un nodo en el arbol
     private void search(Node n, int id) {
         if (n != null) {
             search(n.getLeftChild(), id);
+            
             if (n.getObject().getId() == id) {
                 toGet = n;
             }
+            
             search(n.getRightChild(), id);
         }
     }
-    
     
     //obtiene un nodo que es buscado con un metodo recursivo con base a su id
     public Node get(int id) {
         if (root != null) {
             search(root, id);
         }
+        
         return toGet;
     }
     
     // elimina a nivel logico un elemento del arbol mediante un metodo recursivo
     public void delete(int id) {
-        if (root != null) {
-            deleteTask(root, id);
-        }
+        get(id).getObject().setDeleted(true);
     }
-    //busca un elemento y lo elimina a nivel logico
-    public void deleteTask(Node n, int id) {
-        if (n != null) {
-            deleteTask(n.getLeftChild(), id);
-            if (n.getObject().getId() == id) {
-                n.getObject().setDeleted(true);
-            }
-            deleteTask(n.getRightChild(), id);
-        }
-    }
-    
 }

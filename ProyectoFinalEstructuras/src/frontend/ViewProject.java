@@ -64,7 +64,7 @@ public class ViewProject extends javax.swing.JFrame {
 
         DefaultTableModel model = new DefaultTableModel(
                 null,
-                new String[]{"Title", "Start date", "End date"});
+                new String[]{"ID", "Title", "Start date", "End date"});
 
         if (project != null) {
             for (int x = 0; x < project.sprints.length(); x++) {
@@ -125,9 +125,9 @@ public class ViewProject extends javax.swing.JFrame {
         btnSave = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
         btnDiscard = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txtDescription = new javax.swing.JTextPane();
         btnBacklog = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtDescription = new javax.swing.JTextArea();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -221,11 +221,6 @@ public class ViewProject extends javax.swing.JFrame {
             }
         });
 
-        txtDescription.setEditable(false);
-        txtDescription.setBackground(new java.awt.Color(240, 240, 240));
-        txtDescription.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jScrollPane2.setViewportView(txtDescription);
-
         btnBacklog.setText("View backlog");
         btnBacklog.setEnabled(false);
         btnBacklog.addActionListener(new java.awt.event.ActionListener() {
@@ -234,6 +229,15 @@ public class ViewProject extends javax.swing.JFrame {
             }
         });
 
+        txtDescription.setEditable(false);
+        txtDescription.setBackground(new java.awt.Color(240, 240, 240));
+        txtDescription.setColumns(20);
+        txtDescription.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtDescription.setLineWrap(true);
+        txtDescription.setRows(5);
+        txtDescription.setWrapStyleWord(true);
+        jScrollPane3.setViewportView(txtDescription);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -241,7 +245,7 @@ public class ViewProject extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblInformation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblInformation, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
                     .addComponent(txtTitle)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -249,26 +253,28 @@ public class ViewProject extends javax.swing.JFrame {
                         .addComponent(btnDiscard)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSave))
-                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTitle)
                             .addComponent(lblDescription)
                             .addComponent(btnReturn))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnDeleteSprint)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEditSprint)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnNewSprint, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnBacklog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblSprints)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btnDeleteSprint)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnEditSprint)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnNewSprint, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnBacklog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(339, 339, 339)
+                            .addComponent(lblSprints)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -279,28 +285,31 @@ public class ViewProject extends javax.swing.JFrame {
                     .addComponent(lblSprints)
                     .addComponent(lblInformation))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblTitle)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(3, 3, 3)
                         .addComponent(lblDescription)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnDiscard, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDeleteSprint)
-                    .addComponent(btnEditSprint)
-                    .addComponent(btnNewSprint)
-                    .addComponent(btnReturn)
-                    .addComponent(btnBacklog))
+                            .addComponent(btnDiscard, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnDeleteSprint)
+                        .addComponent(btnEditSprint)
+                        .addComponent(btnNewSprint)
+                        .addComponent(btnBacklog))
+                    .addComponent(btnReturn))
                 .addContainerGap())
         );
 
@@ -353,7 +362,8 @@ public class ViewProject extends javax.swing.JFrame {
         if (tblSprints.getSelectedRow() < 0)
             JOptionPane.showMessageDialog(null, "Please select a sprint!");
         else {
-            new ViewSprint(backend, project, project.sprints.get(tblSprints.getSelectedRow()).getObject()).show();
+            int id = Integer.parseInt(String.valueOf(tblSprints.getModel().getValueAt(tblSprints.getSelectedRow(), 0)));
+            new ViewSprint(backend, project, project.sprints.get(id).getObject()).show();
             dispose();
         }
     }//GEN-LAST:event_btnEditSprintActionPerformed
@@ -365,7 +375,8 @@ public class ViewProject extends javax.swing.JFrame {
             int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this sprint?");
 
             if (confirmation == JOptionPane.YES_OPTION) {
-                project.sprints.delete(tblSprints.getSelectedRow() + 1 );
+                int id = Integer.parseInt(String.valueOf(tblSprints.getModel().getValueAt(tblSprints.getSelectedRow(), 0)));
+                project.sprints.delete(id);
 
                 fillForm();
 
@@ -393,13 +404,13 @@ public class ViewProject extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblDescription;
     private javax.swing.JLabel lblInformation;
     private javax.swing.JLabel lblSprints;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tblSprints;
-    private javax.swing.JTextPane txtDescription;
+    private javax.swing.JTextArea txtDescription;
     private javax.swing.JTextField txtTitle;
     // End of variables declaration//GEN-END:variables
 }

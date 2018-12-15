@@ -40,7 +40,7 @@ public class Sprint {
     }
     //obtiene los titulos para ponerlos en el frontend
     public String[] getTableRow() {
-        String[] output = {title, dateToString(startDate), dateToString(endDate)}; //String.valueOf(backlog.tasks.length())};
+        String[] output = {String.valueOf(id), title, dateToString(startDate), dateToString(endDate)}; //String.valueOf(backlog.tasks.length())};
         return output;
     }
     

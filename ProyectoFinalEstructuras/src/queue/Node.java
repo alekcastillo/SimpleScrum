@@ -17,6 +17,10 @@ public class Node {
         this.object = object;
     }
     
+    public void clearPointers() {
+        previous = null;
+    }
+    
     public User getObject() {
         return object;
     }

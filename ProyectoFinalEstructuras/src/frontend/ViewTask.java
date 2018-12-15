@@ -127,9 +127,9 @@ public class ViewTask extends javax.swing.JFrame {
         cboxAssignee = new javax.swing.JComboBox<>();
         btnReturn = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txtDescription = new javax.swing.JTextPane();
         btnDiscard = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtDescription = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -185,10 +185,6 @@ public class ViewTask extends javax.swing.JFrame {
             }
         });
 
-        txtDescription.setBackground(new java.awt.Color(240, 240, 240));
-        txtDescription.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jScrollPane2.setViewportView(txtDescription);
-
         btnDiscard.setText("Discard changes");
         btnDiscard.setEnabled(false);
         btnDiscard.addActionListener(new java.awt.event.ActionListener() {
@@ -197,6 +193,14 @@ public class ViewTask extends javax.swing.JFrame {
             }
         });
 
+        txtDescription.setBackground(new java.awt.Color(240, 240, 240));
+        txtDescription.setColumns(20);
+        txtDescription.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtDescription.setLineWrap(true);
+        txtDescription.setRows(5);
+        txtDescription.setWrapStyleWord(true);
+        jScrollPane3.setViewportView(txtDescription);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -204,7 +208,7 @@ public class ViewTask extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblInformation, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
+                    .addComponent(lblInformation, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnReturn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -216,21 +220,21 @@ public class ViewTask extends javax.swing.JFrame {
                             .addComponent(lblProject)
                             .addComponent(lblTitle)
                             .addComponent(lblDescription)
-                            .addComponent(txtProject, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
                             .addComponent(txtTitle)
-                            .addComponent(jScrollPane2))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+                            .addComponent(txtProject))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtPriority)
+                            .addComponent(txtSprint, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cboxStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtSprint)
-                            .addComponent(cboxAssignee, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblSprint)
-                                    .addComponent(lblPriority)
-                                    .addComponent(lblStatus)
-                                    .addComponent(lblAssignee))
+                            .addComponent(cboxAssignee, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblStatus, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblSprint, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblPriority, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblAssignee, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
@@ -256,18 +260,20 @@ public class ViewTask extends javax.swing.JFrame {
                     .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPriority, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblDescription)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(lblAssignee)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblDescription)
+                        .addGap(15, 15, 15)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(cboxAssignee, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblStatus)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblStatus)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cboxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -322,7 +328,7 @@ public class ViewTask extends javax.swing.JFrame {
     private javax.swing.JButton btnSave;
     private javax.swing.JComboBox<String> cboxAssignee;
     private javax.swing.JComboBox<String> cboxStatus;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblAssignee;
     private javax.swing.JLabel lblDescription;
     private javax.swing.JLabel lblInformation;
@@ -331,7 +337,7 @@ public class ViewTask extends javax.swing.JFrame {
     private javax.swing.JLabel lblSprint;
     private javax.swing.JLabel lblStatus;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JTextPane txtDescription;
+    private javax.swing.JTextArea txtDescription;
     private javax.swing.JTextField txtPriority;
     private javax.swing.JTextField txtProject;
     private javax.swing.JTextField txtSprint;

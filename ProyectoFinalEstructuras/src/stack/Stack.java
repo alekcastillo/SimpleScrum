@@ -9,9 +9,9 @@ import backend.Sprint;
 
 
 public class Stack {
-
     private Node top;
-    // averiguamos el tamaño de la cola
+    
+    // averiguamos el tamaño de la pila
     public int length() {
         int length = 0;
         Node aux = top;
@@ -46,32 +46,31 @@ public class Stack {
 
         return output;
     }
-    //obtiene un elemento con base al indice
-    public Node get(int index) {
+    
+    // obtiene un elemento con base a su id
+    public Node get(int id) {
         Node toGet = null;
         Node aux = top;
-        int length = 0;
 
         while (aux != null) {
-            if (index == length) {
+            if (aux.getObject().getId() == id) {
                 toGet = aux;
                 break;
             }
-
-            length++;
+            
             aux = aux.getPrevious();
         }
 
         return toGet;
     }
-    // elimina un numero con base al indice calculado con el length 
-    public void delete(int index) {
+    
+    // elimina un elemento con base a su id
+    public void delete(int id) {
         Node aux = top;
         Node last = null;
-        int length = 0;
+        
         while (aux != null) {
-            length++;
-            if (index == length) {
+            if (aux.getObject().getId() == id) {
                 if (aux == top) {
                     top = null;
                 } else if (last != null) {
@@ -79,7 +78,6 @@ public class Stack {
                 } else {
                     top = aux.getPrevious();
                 }
-
             }
 
             aux = aux.getPrevious();

@@ -19,11 +19,6 @@ public class Node {
     public Node(Project object) {
         this.object = object;
     }
-
-    @Override
-    public String toString() {
-        return "" + object;
-    }
     
     public void clearPointers() {
         next = null;

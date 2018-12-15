@@ -28,7 +28,7 @@ public class Task {
     //obtiene los titulos para colocarlos en el model de la tabla
    
     public String[] getTableRow() {
-        String[] output = {title, String.valueOf(priority), statuses[status], assignee.getName()}; //String.valueOf(backlog.tasks.length())};
+        String[] output = {String.valueOf(id), title, String.valueOf(priority), statuses[status], assignee.getName()}; //String.valueOf(backlog.tasks.length())};
         return output;
     }
     //mueve una tarea del backlog a un sprint

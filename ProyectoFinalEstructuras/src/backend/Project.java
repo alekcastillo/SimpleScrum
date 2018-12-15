@@ -24,7 +24,7 @@ public class Project {
     }
     // obtiene los titulos para el frontend
     public String[] getTableRow() {
-        String[] output = {title, String.valueOf(sprints.length()), String.valueOf(backlog.tasks.length())};
+        String[] output = {String.valueOf(id), title, String.valueOf(sprints.length()), String.valueOf(backlog.tasks.length())};
         return output;
     }
     

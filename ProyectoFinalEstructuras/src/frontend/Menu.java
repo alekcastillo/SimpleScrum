@@ -44,9 +44,9 @@ public class Menu extends javax.swing.JFrame {
         
         DefaultTableModel model = new DefaultTableModel(
             null,
-            new String [] {"Title", "Sprints", "Tasks in backlog"});
+            new String [] {"ID", "Title", "Sprints", "Tasks in backlog"});
         
-        for (int x = 1; x <= backend.projects.length(); x++) {
+        for (int x = 0; x < backend.projects.length(); x++) {
             model.addRow(backend.projects.get(x).getObject().getTableRow());
         }
         
@@ -73,8 +73,8 @@ public class Menu extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProjects = new javax.swing.JTable();
         btnNewProject = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txtWelcome = new javax.swing.JTextPane();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtWelcome = new javax.swing.JTextArea();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -136,10 +136,14 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        txtWelcome.setEditable(false);
         txtWelcome.setBackground(new java.awt.Color(240, 240, 240));
-        txtWelcome.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jScrollPane2.setViewportView(txtWelcome);
+        txtWelcome.setColumns(20);
+        txtWelcome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtWelcome.setLineWrap(true);
+        txtWelcome.setRows(5);
+        txtWelcome.setText("Agiler is a system used to manage projects using a simplified version of the SCRUM Agile Methodology.\n\nFeel free to use Agiler for whatever you need!");
+        txtWelcome.setWrapStyleWord(true);
+        jScrollPane3.setViewportView(txtWelcome);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -150,13 +154,13 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2))
+                            .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane3))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblProjects))
-                        .addGap(0, 7, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnExit)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -177,7 +181,7 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2))
+                    .addComponent(jScrollPane3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDeleteProject)
@@ -199,7 +203,8 @@ public class Menu extends javax.swing.JFrame {
         if (tblProjects.getSelectedRow() < 0)
             JOptionPane.showMessageDialog(null, "Please select a project!");
         else {
-            new ViewProject(this.backend, this.backend.projects.get(tblProjects.getSelectedRow() + 1).getObject()).show();
+            int id = Integer.parseInt(String.valueOf(tblProjects.getModel().getValueAt(tblProjects.getSelectedRow(), 0)));
+            new ViewProject(this.backend, this.backend.projects.get(id).getObject()).show();
             dispose();
         }
     }//GEN-LAST:event_btnEditProjectActionPerformed
@@ -211,8 +216,8 @@ public class Menu extends javax.swing.JFrame {
             int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this project?");
 
             if (confirmation == JOptionPane.YES_OPTION) {
-                System.out.println(tblProjects.getSelectedRow());
-                this.backend.projects.delete(tblProjects.getSelectedRow());
+                int id = Integer.parseInt(String.valueOf(tblProjects.getModel().getValueAt(tblProjects.getSelectedRow(), 0)));
+                this.backend.projects.delete(id);
                 fillForm();
 
                 JOptionPane.showMessageDialog(null, "Project deleted succesfully!");
@@ -236,10 +241,10 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblProjects;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tblProjects;
-    private javax.swing.JTextPane txtWelcome;
+    private javax.swing.JTextArea txtWelcome;
     // End of variables declaration//GEN-END:variables
 }

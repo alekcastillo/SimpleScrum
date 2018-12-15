@@ -19,10 +19,9 @@ public class Node {
         this.object = object;
     }
     
-    //@Override
-    //public String toString() {
-        //return "Nodo{" + "dato=" + dato + '}';
-    //}
+    public void clearPointers() {
+        previous = null;
+    }
     
     public Sprint getObject() {
         return object;

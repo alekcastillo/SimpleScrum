@@ -56,7 +56,7 @@ public class ViewBacklog extends javax.swing.JFrame {
         
         DefaultTableModel model = new DefaultTableModel(
             null,
-            new String [] {"Title", "Priority", "Status"});
+            new String [] {"ID", "Title", "Priority", "Status"});
         
         System.out.println("Tasks in backlog: " + sprint.tasks.length());
         for (int x = 0; x < sprint.tasks.length(); x++) {
@@ -236,7 +236,8 @@ public class ViewBacklog extends javax.swing.JFrame {
         if (tblTasks.getSelectedRow() < 0)
             JOptionPane.showMessageDialog(null, "Please select a task!");
         else {
-            new ViewTask(backend, project, sprint, sprint.tasks.get(tblTasks.getSelectedRow()).getObject()).show();
+            int id = Integer.parseInt(String.valueOf(tblTasks.getModel().getValueAt(tblTasks.getSelectedRow(), 0)));
+            new ViewTask(backend, project, sprint, sprint.tasks.get(id).getObject()).show();
             dispose();
         }
     }//GEN-LAST:event_btnEditTaskActionPerformed
@@ -248,7 +249,8 @@ public class ViewBacklog extends javax.swing.JFrame {
             int confirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this task?");
 
             if (confirmation == JOptionPane.YES_OPTION) {
-                sprint.tasks.delete(tblTasks.getSelectedRow());
+                int id = Integer.parseInt(String.valueOf(tblTasks.getModel().getValueAt(tblTasks.getSelectedRow(), 0)));
+                sprint.tasks.delete(id);
                 fillForm();
 
                 JOptionPane.showMessageDialog(null, "Task deleted succesfully!");
