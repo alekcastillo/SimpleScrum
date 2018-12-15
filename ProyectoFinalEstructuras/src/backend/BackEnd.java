@@ -50,6 +50,7 @@ public class BackEnd {
 
     public void saveAll() {
         this.datahelper.save(projects);
+        this.datahelper.save(users);
     }
 
     public boolean trySignUp(String firstName, String lastName, String email, String password) {

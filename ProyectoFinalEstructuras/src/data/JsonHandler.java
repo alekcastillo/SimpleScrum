@@ -27,7 +27,7 @@ public class JsonHandler {
     public void save(Queue queue) {
         try {
             // buffer para abrir el archivo 
-            BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\jorer\\Desktop\\proyecto_estructurasusers.json"));
+            BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\jorer\\Desktop\\proyecto_estructuras\\users.json"));
             // serializa los objetos en la clase final
             this.gson.toJson(queue, writer);
             writer.close();
