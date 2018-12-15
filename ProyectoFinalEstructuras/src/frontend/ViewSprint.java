@@ -76,8 +76,6 @@ public class ViewSprint extends javax.swing.JFrame {
                 new String[]{"ID", "Title", "Priority", "Status", "Assignee"});
 
         if (sprint != null) {
-            System.out.println("Tasks in sprint: " + sprint.tasks.length());
-            
             for (int x = 0; x < sprint.tasks.length(); x++) {
                 Task toAdd = sprint.tasks.get(x).getObject();
 

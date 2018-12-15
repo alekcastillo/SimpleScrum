@@ -58,7 +58,6 @@ public class ViewBacklog extends javax.swing.JFrame {
             null,
             new String [] {"ID", "Title", "Priority", "Status"});
         
-        System.out.println("Tasks in backlog: " + sprint.tasks.length());
         for (int x = 0; x < sprint.tasks.length(); x++) {
             Task toAdd = sprint.tasks.get(x).getObject();
             
@@ -67,7 +66,8 @@ public class ViewBacklog extends javax.swing.JFrame {
         }
         
         for (int x = 0; x < project.sprints.length(); x++) {
-            cboxMove.addItem(project.sprints.get(x).getObject().getTitle());
+            Sprint toAdd = project.sprints.get(x).getObject();
+            cboxMove.addItem(toAdd.getId() + " - " + toAdd.getTitle());
         }
         
         tblTasks.setModel(model);
@@ -267,7 +267,9 @@ public class ViewBacklog extends javax.swing.JFrame {
             if (tblTasks.getSelectedRow() < 0)
                 JOptionPane.showMessageDialog(null, "Please select a task!");
             else {
-                Sprint newSprint = project.sprints.get(index - 1).getObject();
+                String selected = cboxMove.getItemAt(index);
+                int sprintId = Integer.parseInt(selected.substring(0, selected.indexOf("-") - 1));
+                Sprint newSprint = project.sprints.get(sprintId).getObject();
 
                 int confirmation = JOptionPane.showConfirmDialog(null, String.format("Are you sure you want to send this task to the sprint %s?", newSprint.getTitle()));
 
