@@ -9,6 +9,7 @@ import backend.BackEnd;
 import backend.Project;
 import backend.Sprint;
 import backend.Task;
+import java.awt.event.ItemEvent;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -258,7 +259,7 @@ public class ViewBacklog extends javax.swing.JFrame {
     private void cboxMoveItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboxMoveItemStateChanged
         int index = cboxMove.getSelectedIndex();
         
-        if (index > 0) {
+        if (evt.getStateChange() == ItemEvent.SELECTED && index > 0) {
             cboxMove.setSelectedIndex(0);
             
             if (tblTasks.getSelectedRow() < 0)
