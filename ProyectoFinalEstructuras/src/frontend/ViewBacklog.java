@@ -36,12 +36,20 @@ public class ViewBacklog extends javax.swing.JFrame {
         this.sprint = project.backlog;
         
         fillForm();
+        fillcBoxes();
     }
     
     private void enableEditButtons() {
         btnDeleteTask.setEnabled(true);
         btnEditTask.setEnabled(true);
         cboxMove.setEnabled(true);
+    }
+    
+    private void fillcBoxes() {
+        for (int x = 0; x < project.sprints.length(); x++) {
+            Sprint toAdd = project.sprints.get(x).getObject();
+            cboxMove.addItem(toAdd.getId() + " - " + toAdd.getTitle());
+        }
     }
     
     private void fillForm() {
@@ -64,11 +72,6 @@ public class ViewBacklog extends javax.swing.JFrame {
 
             if (toAdd != null && !toAdd.getObject().isDeleted())
                 model.addRow(toAdd.getObject().getTableRow());
-        }
-        
-        for (int x = 0; x < project.sprints.length(); x++) {
-            Sprint toAdd = project.sprints.get(x).getObject();
-            cboxMove.addItem(toAdd.getId() + " - " + toAdd.getTitle());
         }
         
         tblTasks.setModel(model);

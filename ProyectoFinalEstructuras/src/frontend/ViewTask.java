@@ -33,6 +33,7 @@ public class ViewTask extends javax.swing.JFrame {
         lblInformation.setText("New task");
         
         fillForm();
+        fillcBoxes();
     }
     
     public ViewTask(BackEnd backend, Project project, Sprint sprint, Task task) {
@@ -43,6 +44,7 @@ public class ViewTask extends javax.swing.JFrame {
         this.task = task;
         
         fillForm();
+        fillcBoxes();
     }
     
     private void saveTask() {
@@ -53,10 +55,7 @@ public class ViewTask extends javax.swing.JFrame {
         task.setAssignee(backend.users.get(cboxAssignee.getSelectedIndex()).getObject());
     }
     
-    private void fillForm() {
-        txtProject.setText(project.getTitle());
-        txtSprint.setText(sprint.getTitle());
-        
+    private void fillcBoxes() {
         for (String status : Task.getStatuses()) {
             cboxStatus.addItem(status);
         }
@@ -64,6 +63,11 @@ public class ViewTask extends javax.swing.JFrame {
         for (String user : backend.users.getUserNames()) {
             cboxAssignee.addItem(user);
         }
+    }
+    
+    private void fillForm() {
+        txtProject.setText(project.getTitle());
+        txtSprint.setText(sprint.getTitle());
             
         if (task != null) {
             txtTitle.setText(task.getTitle());
@@ -132,6 +136,7 @@ public class ViewTask extends javax.swing.JFrame {
         txtDescription = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         lblInformation.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblInformation.setText("Task Information");
