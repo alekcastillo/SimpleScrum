@@ -22,8 +22,8 @@ public class BackEnd {
 
     // mediante el constructor va a leer la " base de datos " que son los archivos JSON 
     public BackEnd() {
-        //users = this.datahelper.readUsers();
-        //projects = this.datahelper.readProjects();
+        users = this.datahelper.readUsers();
+        projects = this.datahelper.readProjects();
     }
     // crea una instancia de un proyecto y lo agrega a la lista de proyectos
     public Project addProject(String title, String description) {
@@ -49,12 +49,12 @@ public class BackEnd {
     }
 
     public void saveAll() {
-        //this.datahelper.save(projects);
+        this.datahelper.save(projects);
     }
 
     public boolean trySignUp(String firstName, String lastName, String email, String password) {
         addUser(firstName, lastName, email, password, 0);
-        //this.datahelper.save(users);
+        this.datahelper.save(users);
 
         return true;
     }
