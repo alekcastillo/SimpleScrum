@@ -3,12 +3,11 @@ package tree;
 import backend.Task;
 // clase arbol data structure
 public class Tree {
-    
     private Node root;
-    private int length = 0;
     private Node toGet = null;
+    private int maxLength = 0;
     
-    //agrega un elemento al arbol 
+    // agrega un elemento al arbol 
     public void add(Task task) {
         if (root == null) {
             root = new Node(task);
@@ -16,13 +15,13 @@ public class Tree {
             insertaRec(task, root);
         }
         
-        task.setId(length);
-        length++;
+        task.setId(maxLength());
+        maxLength++;
     }
     
-    //get del atributo length
-    public int length() {
-        return length;
+    // get del atributo maxLength
+    public int maxLength() {
+        return maxLength;
     }
     
     // inserta un nodo en e arbol con base al id asignado
@@ -42,7 +41,7 @@ public class Tree {
         }
     }
     
-    //busca recursivamente un nodo en el arbol
+    // busca recursivamente un nodo en el arbol
     private void search(Node n, int id) {
         if (n != null) {
             search(n.getLeftChild(), id);
@@ -55,7 +54,7 @@ public class Tree {
         }
     }
     
-    //obtiene un nodo que es buscado con un metodo recursivo con base a su id
+    // obtiene un nodo que es buscado con un metodo recursivo con base a su id
     public Node get(int id) {
         if (root != null) {
             search(root, id);

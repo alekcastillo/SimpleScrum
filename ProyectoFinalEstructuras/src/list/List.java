@@ -10,12 +10,14 @@ import backend.Project;
 
 // clase list; estructura lista simple
 public class List {
-    
     private Node head;
+    private int maxLength = 0;
+    
     //metodo para insertar objetos en la lista
     public void insert(Project project) {
         Node toInsert = new Node(project);
-        project.setId(length());
+        project.setId(maxLength());
+        maxLength++;
         
         if (head == null) {
             head = new Node(project);
@@ -26,10 +28,9 @@ public class List {
                 head = aux;
 
             } else {
-                if (head.getNext() == null) {
+                if (head.getNext() == null)
                     head.setNext(new Node(project));
-
-                } else {
+                else {
                     Node aux = head;
                     while (aux.getNext() != null && project.getId() > aux.getObject().getId()) {
                         aux = aux.getNext();
@@ -37,14 +38,16 @@ public class List {
                     Node temp = new Node(project);
                     temp.setNext(aux.getNext());
                     aux.setNext(temp);
-
                 }
-
             }
-
         }
-
     }
+    
+    //get del atributo maxLength
+    public int maxLength() {
+        return maxLength;
+    }
+    
     // con este metodos podemos saber cuantos objetos hay en la lista
     public int length() {
         Node aux = head;
@@ -86,8 +89,13 @@ public class List {
                     if (aux.getNext() == null) {
                         previous.setNext(null);
                     } else {
-                        aux.setNext(aux.getNext().getNext());
+                        previous.setNext(aux.getNext());
+                        aux.getNext().setPrevious(previous);
                     }
+                    
+                    aux.clearPointers();
+                    
+                    break;
                 }
                 
                 previous = aux;

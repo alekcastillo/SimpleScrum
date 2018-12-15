@@ -6,10 +6,12 @@
 package frontend;
 
 import backend.BackEnd;
+import backend.Project;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+import list.Node;
 
 /**
  *
@@ -46,8 +48,11 @@ public class Menu extends javax.swing.JFrame {
             null,
             new String [] {"ID", "Title", "Sprints", "Tasks in backlog"});
         
-        for (int x = 0; x < backend.projects.length(); x++) {
-            model.addRow(backend.projects.get(x).getObject().getTableRow());
+        for (int x = 0; x < backend.projects.maxLength(); x++) {
+            Node toAdd = backend.projects.get(x);
+            
+            if (toAdd != null)
+                model.addRow(toAdd.getObject().getTableRow());
         }
         
         tblProjects.setModel(model);

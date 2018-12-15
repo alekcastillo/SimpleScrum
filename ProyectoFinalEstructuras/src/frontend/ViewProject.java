@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+import stack.Node;
 
 /**
  *
@@ -67,8 +68,11 @@ public class ViewProject extends javax.swing.JFrame {
                 new String[]{"ID", "Title", "Start date", "End date"});
 
         if (project != null) {
-            for (int x = 0; x < project.sprints.length(); x++) {
-                model.addRow(project.sprints.get(x).getObject().getTableRow());
+            for (int x = 0; x < project.sprints.maxLength(); x++) {
+                Node toAdd = project.sprints.get(x);
+                
+                if (toAdd != null)
+                    model.addRow(toAdd.getObject().getTableRow());
             }
 
             txtTitle.setText(project.getTitle());

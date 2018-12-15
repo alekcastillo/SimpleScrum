@@ -28,16 +28,19 @@ public class Sprint {
         this.tasks = new Tree();
         this.isBacklog = false;
     }
+    
     // cambia el formato del objeto date a un string 
     public static String dateToString(Date date) {
         return new SimpleDateFormat("dd-mm-yyyy").format(date);  
     }
+    
     // crea una tarea nueva y la agrega al arbol de tareas por cada sprint
     public Task addTask(int status, int priority, String title, String description, User assignee) {
         Task task = new Task(status, priority, title, description, assignee);
         tasks.add(task);
         return task;
     }
+    
     //obtiene los titulos para ponerlos en el frontend
     public String[] getTableRow() {
         String[] output = {String.valueOf(id), title, dateToString(startDate), dateToString(endDate)}; //String.valueOf(backlog.tasks.length())};

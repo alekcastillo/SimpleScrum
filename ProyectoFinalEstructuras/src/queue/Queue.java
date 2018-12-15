@@ -14,9 +14,14 @@ import queue.Node;
  */
 public class Queue {
     private Node first, last;
+    private int maxLength = 0;
+    
+    //get del atributo maxLength
+    public int maxLength() {
+        return maxLength;
+    }
     
     // metodo length para saber cuantos elementos estan almacenados en la cola
-   
     public int length() {
         Node aux = first;
         int length = 0;
@@ -32,7 +37,8 @@ public class Queue {
     //encola(agrega) elementos a la cola
     public void queue(User user) {
         Node node = new Node(user);
-        user.setId(length());
+        user.setId(maxLength());
+        maxLength++;
         
         if (first == null) {
             first = node;

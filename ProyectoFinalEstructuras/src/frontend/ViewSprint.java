@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+import tree.Node;
 
 /**
  *
@@ -76,11 +77,11 @@ public class ViewSprint extends javax.swing.JFrame {
                 new String[]{"ID", "Title", "Priority", "Status", "Assignee"});
 
         if (sprint != null) {
-            for (int x = 0; x < sprint.tasks.length(); x++) {
-                Task toAdd = sprint.tasks.get(x).getObject();
+            for (int x = 0; x < sprint.tasks.maxLength(); x++) {
+                Node toAdd = sprint.tasks.get(x);
 
-                if (!toAdd.isDeleted())
-                    model.addRow(toAdd.getTableRow());
+                if (toAdd != null && !toAdd.getObject().isDeleted())
+                    model.addRow(toAdd.getObject().getTableRow());
             }
 
             txtTitle.setText(sprint.getTitle());

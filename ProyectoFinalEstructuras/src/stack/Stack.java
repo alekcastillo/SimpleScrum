@@ -10,6 +10,7 @@ import backend.Sprint;
 
 public class Stack {
     private Node top;
+    private int maxLength = 0;
     
     // averiguamos el tamaño de la pila
     public int length() {
@@ -23,15 +24,22 @@ public class Stack {
 
         return length;
     }
+    
+    // get del atributo maxLength
+    public int maxLength() {
+        return maxLength;
+    }
+    
     // agrega un elemento a la pila
     public void push(Sprint sprint) {
         Node node = new Node(sprint);
-        sprint.setId(length());
+        sprint.setId(maxLength());
+        maxLength++;
 
         if (top != null) {
             node.setPrevious(top);
         }
-
+        
         top = node;
     }
 

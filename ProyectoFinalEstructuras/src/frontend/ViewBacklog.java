@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+import tree.Node;
 
 /**
  *
@@ -58,11 +59,11 @@ public class ViewBacklog extends javax.swing.JFrame {
             null,
             new String [] {"ID", "Title", "Priority", "Status"});
         
-        for (int x = 0; x < sprint.tasks.length(); x++) {
-            Task toAdd = sprint.tasks.get(x).getObject();
-            
-            if (!toAdd.isDeleted())
-                model.addRow(toAdd.getTableRow());
+        for (int x = 0; x < sprint.tasks.maxLength(); x++) {
+            Node toAdd = sprint.tasks.get(x);
+
+            if (toAdd != null && !toAdd.getObject().isDeleted())
+                model.addRow(toAdd.getObject().getTableRow());
         }
         
         for (int x = 0; x < project.sprints.length(); x++) {
